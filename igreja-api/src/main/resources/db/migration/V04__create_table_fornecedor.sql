@@ -19,5 +19,7 @@ CREATE TABLE fornecedor(
 	bairro VARCHAR(50),
 	estado VARCHAR(15),
 	cidade VARCHAR(50),
-	cep VARCHAR(50)
+	cep VARCHAR(50),
+	codigo_igreja BIGINT(20),
+	FOREIGN KEY (codigo_igreja) REFERENCES igreja(codigo)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;

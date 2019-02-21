@@ -34,6 +34,8 @@ CREATE TABLE membro (
 	codigo_tipo_adesao BIGINT(20),
 	codigo_situacao_membro BIGINT(20),
 	codigo_cargo_ministro BIGINT(20),
+	codigo_igreja BIGINT(20),
+	FOREIGN KEY (codigo_igreja) REFERENCES igreja(codigo),
 	FOREIGN KEY (codigo_situacao_membro) REFERENCES situacao_membro(codigo),
 	FOREIGN KEY (codigo_cargo_ministro) REFERENCES cargo_ministro(codigo),
 	FOREIGN KEY (codigo_tipo_adesao) REFERENCES tipo_adesao(codigo)

@@ -16,3 +16,8 @@ CREATE TABLE igreja (
 	cep VARCHAR(20),
 	FOREIGN KEY (distrito_codigo) REFERENCES distrito(codigo)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO igreja (nome, cnpj, telefone, responsavel, distrito_codigo, tipo_igreja, porcentagem_contribuicao, email, rua, numero, bairro, estado, cidade, cep) values ('Igreja teste', '11111', '999999',
+'Alisson', 1, 'sede', '15%', 'teste@teste.com', 'teste', '30', 'teste', 'teste', 'teste', '86825970');
+
+

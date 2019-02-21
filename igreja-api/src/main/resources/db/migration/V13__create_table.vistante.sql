@@ -11,5 +11,7 @@ CREATE TABLE visitante (
 	cep VARCHAR(20),
 	observacao VARCHAR(100),
 	cargo_ministro_codigo BIGINT(20),
+	codigo_igreja BIGINT(20),
+	FOREIGN KEY (codigo_igreja) REFERENCES igreja(codigo),
 	FOREIGN KEY(cargo_ministro_codigo) REFERENCES cargo_ministro(codigo)
 )ENGINE=Innodb DEFAULT CHARSET=utf8;
