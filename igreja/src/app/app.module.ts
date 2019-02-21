@@ -16,6 +16,8 @@ import { TipoadesaoModule } from './tipoadesao/tipoadesao.module';
 import { SituacaomembroModule } from './situacaomembro/situacaomembro.module';
 import { NaoAutorizadoModule } from './nao-autorizado/nao-autorizado.module';
 import { CaixaModule } from './caixa/caixa.module';
+import { EscolherIgrejaModule } from './escolher-igreja/escolher-igreja.module';
+
 
 import { AppComponent } from './app.component';
 
@@ -62,7 +64,8 @@ registerLocaleData(localePt);
     MembroModule,
     VisitanteModule,
     NaoAutorizadoModule,
-    CaixaModule
+    CaixaModule,
+    EscolherIgrejaModule    
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},

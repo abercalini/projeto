@@ -27,7 +27,11 @@ export class LoginComponent implements OnInit {
   logar(email: string, senha: string) {
     this.segurancaService.logar(email, senha).subscribe(response => {
       this.historicoService.salvar('Entrou no sistema', this.segurancaService.nomeUsuario);
-      this.router.navigate(['/igreja']);
+      if (this.segurancaService.nomeUsuario === 'bercalini_alisson@hotmail.com') {
+        this.router.navigate(['/escolherigreja']);
+      } else {
+        this.router.navigate(['/igreja']);
+      } 
     });
   }
 }

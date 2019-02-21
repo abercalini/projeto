@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "historico")
@@ -22,6 +24,18 @@ public class Historico implements Serializable{
 	private String usuario;
 	
 	private LocalDateTime data;
+	
+	@OneToOne
+	@JoinColumn(name = "codigo_igreja")
+	private Igreja igreja;
+	
+	public Igreja getIgreja() {
+		return igreja;
+	}
+
+	public void setIgreja(Igreja igreja) {
+		this.igreja = igreja;
+	}
 
 	public Long getCodigo() {
 		return codigo;

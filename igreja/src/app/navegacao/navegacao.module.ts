@@ -24,6 +24,7 @@ import { FuncaomembroCadastroComponent } from '../funcaomembro/funcaomembro-cada
 import { FuncaomembroPesquisaComponent } from '../funcaomembro/funcaomembro-pesquisa/funcaomembro-pesquisa.component';
 import { VisitanteCadastroComponent } from '../visitante/visitante-cadastro/visitante-cadastro.component';
 import { NaoAutorizadoComponent } from '../nao-autorizado/nao-autorizado/nao-autorizado.component';
+import { EscolherIgrejaComponent } from '../escolher-igreja/escolher-igreja/escolher-igreja.component';
 
 const router: Routes = [
   {path: 'login', component: LoginComponent},
@@ -63,6 +64,8 @@ const router: Routes = [
   {path: 'visitante/novo', component: VisitanteCadastroComponent},
   {path: 'visitante', component: VisitantePesquisaComponent},
   {path: 'visitante/:codigo', component: VisitanteCadastroComponent},
+
+  {path: 'escolherigreja', component: EscolherIgrejaComponent},
 
   {path: 'historico', component: HistoricoPesquisaComponent},
 

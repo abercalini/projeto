@@ -11,7 +11,12 @@ export class AppComponent {
 
   constructor(private router: Router) {}
 
-  exibirMenu() {
-    return this.router.url !== '/login';
+  exibirMenu(): Boolean {
+
+   if (this.router.url !== '/login' && this.router.url !== '/escolherigreja') {
+      return true;
+   }
+
   }
+  
 }

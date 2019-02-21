@@ -12,6 +12,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "fornecedor")
@@ -52,6 +54,12 @@ public class Fornecedor implements Serializable {
 	
 	@Embedded
 	private Endereco endereco;
+	
+	@OneToOne
+	@JoinColumn(name = "codigo_igreja")
+	private Igreja igreja;
+	
+	
 
 	public Long getCodigo() {
 		return codigo;
@@ -183,6 +191,14 @@ public class Fornecedor implements Serializable {
 
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
+	}
+	
+	public Igreja getIgreja() {
+		return igreja;
+	}
+
+	public void setIgreja(Igreja igreja) {
+		this.igreja = igreja;
 	}
 
 	@Override

@@ -44,6 +44,11 @@ export class IgrejaService {
       .map(response => response);
   }
 
+  listarTodos(): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}`, {headers: this.adicionarHeaders()})
+      .map(response => response);
+  }
+
   buscarPorCep(cep: string): Observable<any> {
     return this.httpClient.get<any>(`https://viacep.com.br/ws/${cep}/json/`).map(response => response);
   }

@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 
@@ -93,6 +94,9 @@ public class Membro implements Serializable{
 	@JoinColumn(name = "codigo_cargo_ministro")
 	private CargoMinitro cargoMinistro;
 	
+	@OneToOne
+	@JoinColumn(name = "codigo_igreja")
+	private Igreja igreja;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
 	@JoinTable(name = "membro_funcoes", joinColumns = @JoinColumn(name = "codigo_membro"),
@@ -103,6 +107,19 @@ public class Membro implements Serializable{
 	public Membro() {
 		
 	}
+	
+
+	public Igreja getIgreja() {
+		return igreja;
+	}
+
+
+
+	public void setIgreja(Igreja igreja) {
+		this.igreja = igreja;
+	}
+
+
 
 	public Long getCodigo() {
 		return codigo;

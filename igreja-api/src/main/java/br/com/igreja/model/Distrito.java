@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "distrito")
@@ -18,6 +20,12 @@ public class Distrito implements Serializable {
 	private Long codigo;
 	
 	private String nome;
+	
+	@OneToOne
+	@JoinColumn(name = "codigo_igreja")
+	private Igreja igreja;
+	
+	
 
 	public Long getCodigo() {
 		return codigo;
@@ -29,6 +37,14 @@ public class Distrito implements Serializable {
 
 	public String getNome() {
 		return nome;
+	}
+
+	public Igreja getIgreja() {
+		return igreja;
+	}
+
+	public void setIgreja(Igreja igreja) {
+		this.igreja = igreja;
 	}
 
 	public void setNome(String nome) {

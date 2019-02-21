@@ -33,6 +33,18 @@ public class Visitante implements Serializable {
 	private Endereco endereco;
 	
 	private String observacao;
+	
+	@OneToOne
+	@JoinColumn(name = "codigo_igreja")
+	private Igreja igreja;
+	
+	public Igreja getIgreja() {
+		return igreja;
+	}
+
+	public void setIgreja(Igreja igreja) {
+		this.igreja = igreja;
+	}
 
 	public Long getCodigo() {
 		return codigo;
