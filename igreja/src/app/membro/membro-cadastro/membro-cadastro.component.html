@@ -1,0 +1,209 @@
+<div class="container">
+  <form #formularioMembro="ngForm" (ngSubmit)="prepararSalvar(formularioMembro)">
+
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-12">
+          <p-toast position="bottom-right"></p-toast>
+      </div>
+    </div>
+
+    <p-fieldset legend="{{editando() === true ? 'Editando ' : 'Cadastro de '}}  membro">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <label>Nome</label>
+            <input type="text" pInputText  [(ngModel)]="membro.nome" name="nome" />
+        </div>
+        <div class="ui-g-6 ui-md-2 ui-fluid">
+            <label>Ativo</label>
+            <p-toggleButton [(ngModel)]="membro.situacao" name="situacao" onLabel="Sim" offLabel="Não"></p-toggleButton>
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Tipo</label>
+          <p-dropdown [options]="tipos" [(ngModel)]="membro.tipo" name="tipo" [autoWidth]="false"
+            placeholder="Selecione..." [filter]="true"></p-dropdown>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Sexo</label>
+          <p-dropdown [options]="sexo" [(ngModel)]="membro.sexo" name="sexo" [autoWidth]="false"
+            placeholder="Selecione..." [filter]="true"></p-dropdown>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Estado Civil</label>
+          <p-dropdown [options]="estadoCivil" [(ngModel)]="membro.estadoCivil" name="estadoCivil" [autoWidth]="false"
+            placeholder="Selecione..." [filter]="true"></p-dropdown>
+        </div>
+
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Data Nascimento</label>
+          <p-calendar [(ngModel)]="membro.dataNascimento" name="dataNascimento" dateFormat="dd/mm/yy"></p-calendar>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>CPF</label>
+          <p-inputMask [(ngModel)]="membro.cpf" mask="999.999.999-99" name="cpf"></p-inputMask>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>RG</label>
+          <input type="text" pInputText [(ngModel)]="membro.rg" name="rg" />
+        </div>
+
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Nacionalidade</label>
+          <input type="text" pInputText [(ngModel)]="membro.nacionalidade" name="nacionalidade" />
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Profissão</label>
+          <input type="text" pInputText [(ngModel)]="membro.profissao" name="profissao" />
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Naturalidade</label>
+          <input type="text" pInputText [(ngModel)]="membro.naturalidade" name="naturalidade" />
+        </div>
+
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Email</label>
+          <input type="text" pInputText [(ngModel)]="membro.email" name="email" />
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Telefone</label>
+          <input type="text" pInputText [(ngModel)]="membro.telefone" name="telefone" />
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Celular</label>
+          <p-inputMask [(ngModel)]="membro.celular" name="celular" mask="(99)999999999"></p-inputMask>
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+          <h3>Dados Residênciais</h3>
+        </div>
+      </div>
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-2 ui-fluid">
+          <label>CEP</label>
+          <p-inputMask [(ngModel)]="membro.endereco.cep" mask="99999/999" (keydown.Tab)="buscarCep(membro.endereco.cep)" name="cep"></p-inputMask>
+        </div>
+        <div class="ui-g-12 ui-md-2 ui-fluid">
+           <label style="color: white;">AA</label>
+          <button pButton type="button" label="Pesquisar" icon="pi pi-search"></button>
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Cidade</label>
+          <input type="text" pInputText [(ngModel)]="membro.endereco.cidade" name="cidade" />
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Bairro</label>
+          <input type="text" pInputText [(ngModel)]="membro.endereco.bairro" name="bairro" />
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Rua</label>
+          <input type="text" pInputText [(ngModel)]="membro.endereco.rua" name="cidade" />
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Estado</label>
+          <input type="text" pInputText [(ngModel)]="membro.endereco.estado" name="estado" />
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Numero</label>
+          <input type="text" pInputText [(ngModel)]="membro.endereco.numero" name="numero" />
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+          <h3>Dados familiares</h3>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Nome do pai</label>
+          <input type="text" pInputText [(ngModel)]="membro.nomePai" name="nomePai" />
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Nome da mãe</label>
+          <input type="text" pInputText [(ngModel)]="membro.nomeMae" name="nomeMae" />
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <h3>Dados Ministeriais</h3>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Situação</label>
+          <p-dropdown [options]="situacao" [(ngModel)]="membro.situacaoMembro.codigo" name="situacaoMembro" placeholder="Selecione..."
+            [filter]="true" [autoWidth]="false" ></p-dropdown>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Cargo Ministerial</label>
+          <p-dropdown [options]="cargos" [(ngModel)]="membro.cargoMinistro.codigo" name="cargoMembro" placeholder="Selecione..."
+              [filter]="true" [autoWidth]="false" ></p-dropdown>
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Data Consagração</label>
+          <p-calendar [(ngModel)]="membro.dataConsagracao" name="dataConsagracao" dateFormat="dd/mm/yy"></p-calendar>
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Data Batismo</label>
+          <p-calendar [(ngModel)]="membro.dataBatismo" name="dataBatismo" dateFormat="dd/mm/yy"></p-calendar>
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Como se converteu</label>
+          <input type="text" pInputText [(ngModel)]="membro.comoSeConverteu" name="comoSeConverteu" />
+        </div>
+        <div class="ui-g-12 ui-md-6 ui-fluid">
+          <label>Igreja Procedência</label>
+          <input type="text" pInputText [(ngModel)]="membro.igrejaProcedencia" name="igrejaProcedencia" />
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+            <label>Batismo Espirito Santo</label>
+            <p-dropdown [options]="batismo" [(ngModel)]="membro.bastimoEspiritoSanto" name="bastimoEspiritoSanto"
+              [filter]="true" placeholder="Selecione..." [autoWidth]="false"></p-dropdown>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Dizimista</label>
+          <p-dropdown [options]="dizimista" [(ngModel)]="membro.dizimista" name="dizimista"
+            [filter]="true" placeholder="Selecione..." [autoWidth]="false"></p-dropdown>
+        </div>
+        <div class="ui-g-12 ui-md-4 ui-fluid">
+          <label>Tipo de Adesão</label>
+          <p-dropdown [options]="tipoAdesao" [(ngModel)]="membro.tipoAdesao.codigo" name="tipoAdesao"
+              [filter]="true" placeholder="Selecione..." [autoWidth]="false"></p-dropdown>
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+          <label>Funçoes que exerce</label>
+          <p-multiSelect [options]="funcoes" [(ngModel)]="membro.funcoes" name="funcoes" defaultLabel="Selecione..." 
+              selectedItemsLabel="{0} Itens selecionado"></p-multiSelect>
+        </div>
+      </div>
+
+      <div class="ui-g">
+        <div class="ui-g-6 ui-md-2 ui-fluid">
+              <button pButton type="submit" label="Salvar" class="ui-button-success" icon="pi pi-plus"></button>
+        </div>
+        <div class="ui-g-6 ui-md-2 ui-fluid">
+              <button pButton type="button" label="Voltar" icon="pi pi-arrow-left" routerLink="/membro"></button>
+        </div>
+      </div>
+
+
+
+    </p-fieldset>
+  </form>
+</div>
