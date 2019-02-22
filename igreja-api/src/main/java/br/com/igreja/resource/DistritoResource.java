@@ -34,10 +34,10 @@ public class DistritoResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(distritoSalvo);
 	}
 	
-	@GetMapping
+	@GetMapping("/filtrarPorIgreja/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_OBJETO')")
-	public List<Distrito> listarTodos() {
-		return distritoRepository.findAll();
+	public List<Distrito> listarTodos(@PathVariable Long codigo) {
+		return distritoRepository.filtrarPorIgreja(codigo);
 	}
 	
 	@DeleteMapping("/{codigo}")

@@ -15,6 +15,7 @@ export class Fornecedor {
   telefone: string;
   celular: string;
   endereco = new Endereco();
+  igreja = new Igreja();
 }
 
 export class Endereco {
@@ -24,4 +25,8 @@ export class Endereco {
   estado: string;
   cidade: string;
   cep: string;
+}
+
+export class Igreja {
+  codigo: any;
 }

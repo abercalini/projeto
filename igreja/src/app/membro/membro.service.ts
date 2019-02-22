@@ -36,8 +36,8 @@ export class MembroService {
     return this.httpClient.delete<Membro>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()});
   }
 
-  listarTodos(): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl, {headers: this.adicionarHeaders()}).map(response => response);
+  listarTodos(codigo: any): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/listarPorIgreja/${codigo}`, {headers: this.adicionarHeaders()}).map(response => response);
   }
 
   buscarPorCodigo(codigo: number): Observable<Membro> {

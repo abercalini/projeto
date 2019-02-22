@@ -35,11 +35,11 @@ public class FornecedorResoruce {
 		return ResponseEntity.status(HttpStatus.CREATED).body(fornecedorSalvo);
 	}
 	
-	@GetMapping
+	@GetMapping("/filtrarPorIgreja/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_OBJETO')")
 	@ResponseStatus(HttpStatus.OK)
-	public List<Fornecedor> listar(FornecedorFilter fornecedorFilter) {
-		return fornecedorRepository.buscarPorNome(fornecedorFilter);
+	public List<Fornecedor> listar(@PathVariable Long codigo, FornecedorFilter fornecedorFilter) {
+		return fornecedorRepository.buscarPorNome(codigo, fornecedorFilter);
 	}
 	
 	@DeleteMapping("/{codigo}")

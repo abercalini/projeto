@@ -37,12 +37,12 @@ export class VisitanteService {
     return this.httpClient.get<Visitante>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()}).map(response => response);
   }
 
-  listarTodos(visitanteFilter: VisitanteFilter): Observable<any> {
+  listarTodos(codigo: any, visitanteFilter: VisitanteFilter): Observable<any> {
     let params = new HttpParams();
     if (visitanteFilter.nome) {
       params = params.set('nome', visitanteFilter.nome);
     }
-    return this.httpClient.get<any>(this.baseUrl, {params, headers: this.adicionarHeaders()}).map(response => response);
+    return this.httpClient.get<any>(`${this.baseUrl}/filtrarPorIgreja/${codigo}`, {params, headers: this.adicionarHeaders()}).map(response => response);
   }
 
   buscarCep(cep: string): Observable<any> {

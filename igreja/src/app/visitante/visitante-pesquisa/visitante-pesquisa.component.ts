@@ -35,7 +35,8 @@ export class VisitantePesquisaComponent implements OnInit {
   }
 
   pesquisar() {
-    this.visitanteService.listarTodos(this.visitanteFilter).subscribe(response => this.visitantes = response);
+    const codigo = localStorage.getItem('codigo_igreja');
+    this.visitanteService.listarTodos(codigo, this.visitanteFilter).subscribe(response => this.visitantes = response);
   }
 
 

@@ -55,6 +55,7 @@ export class CargoministroCadastroComponent implements OnInit {
   }
 
   salvar(ngForm: NgForm) {
+    this.cargoMinistro.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.cargoMinistroService.salvar(this.cargoMinistro).subscribe(response => {
       this.adicionarMenssagem('success', 'Cadastrado com sucesso', 'Cadastrado com sucesso');
       this.historicoService.salvar('Cadastrou um cargo do ministro ' + response.nome, this.segurancaService.nomeUsuario);

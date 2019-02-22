@@ -39,7 +39,6 @@ export class FornecedorPesquisaComponent implements OnInit {
   ngOnInit() {
     this.titleService.setTitle('Pesquisa de fornecedor');
     this.listarTodos();
-
   }
 
   excluir(codigo: number) {
@@ -58,12 +57,8 @@ export class FornecedorPesquisaComponent implements OnInit {
 
   listarTodos() {
     this.fornecedorFilter.nome = this.nomeFilter;
-    this.forncedorService.listarTodosParams(this.fornecedorFilter).subscribe(response => this.fornecedores = response);
-    
-   /* this.forncedorService.listarTodos().then(response => this.fornecedores = response)
-      .catch(response => {
-        this.adicionarMenssagem('error', 'Falha ao listar fornecedor', response.message);
-      });*/
+    const codigo = localStorage.getItem('codigo_igreja');
+    this.forncedorService.listarTodosParams(codigo, this.fornecedorFilter).subscribe(response => this.fornecedores = response);
   }
 
 
@@ -87,7 +82,8 @@ export class FornecedorPesquisaComponent implements OnInit {
   }
 
   verificarCondicaoGrafico() {
-    this.forncedorService.listarTodos().subscribe(response => {
+    const codigo = localStorage.getItem('codigo_igreja');
+    this.forncedorService.listarTodosParams(codigo, this.fornecedorFilter).subscribe(response => {
       for (const fornecedor of response) {
         if (fornecedor.colaborador === true) {
           this.quantidadeColaborador ++;

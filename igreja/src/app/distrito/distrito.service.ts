@@ -30,8 +30,8 @@ export class DistritoService {
     return this.httpClient.delete<Distrito>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()});
   }
 
-  listarTodos(): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseUrl}`, {headers: this.adicionarHeaders()}).map(response => response);
+  listarTodos(codigo: any): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/filtrarPorIgreja/${codigo}`, {headers: this.adicionarHeaders()}).map(response => response);
   }
 
   buscarPorCodigo(codigo: number): Observable<Distrito> {

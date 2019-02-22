@@ -46,6 +46,7 @@ export class DistricoCadastroComponent implements OnInit {
   }
 
   salvar(ngForm: NgForm) {
+    this.distrito.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.distritoService.salvar(this.distrito).subscribe(response => {
       this.historicoService.salvar('Cadastro do Distrito ' + response.nome, this.segurancaService.nomeUsuario);
       this.adicionarMensagem('success', 'Distrito cadastrado com sucesso', 'Distrito cadastrado com sucesso');

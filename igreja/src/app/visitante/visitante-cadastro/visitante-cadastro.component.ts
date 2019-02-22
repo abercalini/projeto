@@ -50,6 +50,7 @@ export class VisitanteCadastroComponent implements OnInit {
   }
 
   salvar(form: NgForm) {
+      this.visitante.igreja.codigo = localStorage.getItem('codigo_igreja');
       this.visitanteService.salvar(this.visitante).subscribe(response => {
         form.reset();
         this.visitante = new Visitante();

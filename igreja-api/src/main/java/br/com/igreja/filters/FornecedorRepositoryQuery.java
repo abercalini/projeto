@@ -7,5 +7,6 @@ import br.com.igreja.model.Fornecedor;
 
 public interface FornecedorRepositoryQuery {
 	
-	public List<Fornecedor> buscarPorNome(FornecedorFilter fornecedorFilter);
+	public List<Fornecedor> buscarPorNome(Long codigo, FornecedorFilter fornecedorFilter);
+	
 }

@@ -88,7 +88,7 @@ export class IgrejaCadastroComponent implements OnInit {
   }
 
   listarDistritos() {
-    this.distritoService.listarTodos().subscribe(response => {
+    this.distritoService.listarTodos(localStorage.getItem('codigo_igreja')).subscribe(response => {
       this.distritos = response.map(d => ({label: d.nome, value: d.codigo}));
     });
   }

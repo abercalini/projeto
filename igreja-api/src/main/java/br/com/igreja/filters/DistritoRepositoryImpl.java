@@ -12,38 +12,28 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.springframework.util.StringUtils;
-
-import br.com.igreja.filter.VisitanteFilter;
+import br.com.igreja.model.Distrito;
 import br.com.igreja.model.Igreja;
-import br.com.igreja.model.Visitante;
 
-public class VisitanteRepositoryImpl implements VisitanteRepositoryQuery {
+public class DistritoRepositoryImpl implements DistritoRepositoryQuery {
 	
 	@PersistenceContext
 	private EntityManager manager;
-
+	
 	@Override
-	public List<Visitante> filtrarPorNome(Long codigo, VisitanteFilter visitanteFilter) {
+	public List<Distrito> filtrarPorIgreja(Long codigo) {
 		CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder();
-		CriteriaQuery<Visitante> query = criteriaBuilder.createQuery(Visitante.class);
-		Root<Visitante> root = query.from(Visitante.class);
+		CriteriaQuery<Distrito> query = criteriaBuilder.createQuery(Distrito.class);
+		Root<Distrito> distrito = query.from(Distrito.class);
 		
-		Join<Visitante, Igreja> joinIgreja = root.join("igreja", JoinType.INNER);
+		Join<Distrito, Igreja> joinIgreja = distrito.join("igreja", JoinType.INNER);
 		
 		List<Predicate> predicates = new ArrayList<>();
-		
 		predicates.add(criteriaBuilder.equal(joinIgreja.get("codigo"), codigo));
-		
-		if (!StringUtils.isEmpty(visitanteFilter.getNome())) {
-			predicates.add(criteriaBuilder.like(criteriaBuilder.lower(root.get("nome")), "%" + visitanteFilter.getNome() + "%"));
-		}
 		
 		query.where(predicates.toArray(new Predicate[predicates.size()]));
 		
 		return manager.createQuery(query).getResultList();
 	}
-
-
 
 }

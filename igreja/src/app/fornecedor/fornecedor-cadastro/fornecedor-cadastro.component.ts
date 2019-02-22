@@ -49,6 +49,8 @@ export class FornecedorCadastroComponent implements OnInit {
   }
 
   salvar(ngForm: NgForm) {
+    const codigo = localStorage.getItem('codigo_igreja');
+    this.fornecedor.igreja.codigo = codigo;
     this.fornecedorService.salvar(this.fornecedor).subscribe(response => {
       this.posicao = 0;
       this.historicoService.salvar('Cadastro de fornecedor/Colaborador ' + response.nome, this.segurancaService.nomeUsuario);

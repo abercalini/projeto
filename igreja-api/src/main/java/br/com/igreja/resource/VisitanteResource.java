@@ -39,10 +39,10 @@ public class VisitanteResource {
 	}
 	
 	
-	@GetMapping
+	@GetMapping("/filtrarPorIgreja/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_OBJETO')")
-	public List<Visitante> listarTodos(VisitanteFilter visitanteFilter) {
-		return visitanteRepository.filtrarPorNome(visitanteFilter);
+	public List<Visitante> listarTodos(@PathVariable Long codigo, VisitanteFilter visitanteFilter) {
+		return visitanteRepository.filtrarPorNome(codigo, visitanteFilter);
 	}
 	
 	@GetMapping("/{codigo}")

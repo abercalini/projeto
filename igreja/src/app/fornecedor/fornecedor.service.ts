@@ -43,16 +43,16 @@ export class FornecedorService {
       });
   }
 
-  listarTodos(): Observable<any> {
+  /* listarTodos(): Observable<any> {
     return this.httpClient.get<any>(`${this.urlBase}`, {headers: this.adicionarHeaeders()}).map(response => response);
-  }
+  } */
 
-  listarTodosParams(fornecedorFilter: FornecedorFilter): Observable<any> {
+  listarTodosParams(codigo: any, fornecedorFilter: FornecedorFilter): Observable<any> {
     let params = new HttpParams();
     if (fornecedorFilter.nome) {
       params = params.append('nome', fornecedorFilter.nome);
     }
-    return this.httpClient.get<any>(`${this.urlBase}`, {params, headers: this.adicionarHeaeders()}).map(response => response);
+    return this.httpClient.get<any>(`${this.urlBase}/filtrarPorIgreja/${codigo}`, {params, headers: this.adicionarHeaeders()}).map(response => response);
   }
 
   buscarCep(cep: string): Observable<any> {

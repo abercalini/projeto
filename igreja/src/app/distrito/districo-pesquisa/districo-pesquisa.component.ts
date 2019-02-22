@@ -34,9 +34,8 @@ export class DistricoPesquisaComponent implements OnInit {
   }
 
   listarTodos() {
-    this.distritoService.listarTodos().subscribe(response => {
-      this.distritos = response;
-    });
+    const codigo = localStorage.getItem('codigo_igreja');
+    this.distritoService.listarTodos(codigo).subscribe(response => {this.distritos = response});
   }
 
   excluir(codigo: number) {

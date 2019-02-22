@@ -7,5 +7,5 @@ import br.com.igreja.model.Visitante;
 
 public interface VisitanteRepositoryQuery {
 	
-	public List<Visitante> filtrarPorNome(VisitanteFilter visitanteFilter);
+	public List<Visitante> filtrarPorNome(Long codigo, VisitanteFilter visitanteFilter);
 }

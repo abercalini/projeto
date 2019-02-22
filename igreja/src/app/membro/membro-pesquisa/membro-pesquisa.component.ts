@@ -44,7 +44,8 @@ export class MembroPesquisaComponent implements OnInit {
   }
 
   listarTodos() {
-    this.membroService.listarTodos().subscribe(response => this.membros = response);
+    const codigoIgreja = localStorage.getItem('codigo_igreja');
+    this.membroService.listarTodos(codigoIgreja).subscribe(response => this.membros = response);
   }
 
   showDialog(codigo: number) {

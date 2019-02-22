@@ -6,6 +6,7 @@ export class Visitante {
     email: string;
     observacao: string;
     endereco = new Endereco();
+    igreja = new Igreja();
 }
 
 export class CargoMinistro {
@@ -19,4 +20,8 @@ export class Endereco {
     estado: string;
     cidade: string;
     cep: string;
+}
+
+export class Igreja {
+    codigo: any;
 }

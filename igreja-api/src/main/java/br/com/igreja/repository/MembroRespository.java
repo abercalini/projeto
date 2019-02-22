@@ -2,8 +2,9 @@ package br.com.igreja.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import br.com.igreja.filters.MembroRepositoryQuery;
 import br.com.igreja.model.Membro;
 
-public interface MembroRespository extends JpaRepository<Membro, Long>{
+public interface MembroRespository extends JpaRepository<Membro, Long>, MembroRepositoryQuery {
 
 }
