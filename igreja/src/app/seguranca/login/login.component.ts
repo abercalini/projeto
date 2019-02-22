@@ -1,3 +1,4 @@
+import { Igreja } from './../../igreja/igreja';
 import { HistoricoService } from './../../historico/historico.service';
 import { MessageService } from 'primeng/api';
 import { SegurancaService } from './../seguranca.service';
@@ -12,6 +13,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  emailUsuario: string;
 
   constructor(
     private segurancaService: SegurancaService,
@@ -30,8 +33,11 @@ export class LoginComponent implements OnInit {
       if (this.segurancaService.nomeUsuario === 'bercalini_alisson@hotmail.com') {
         this.router.navigate(['/escolherigreja']);
       } else {
-        this.router.navigate(['/igreja']);
-      } 
+        this.segurancaService.listarUsuario(this.emailUsuario).subscribe(data => {
+          localStorage.setItem('codigo_igreja', data.igreja.codigo);
+          this.router.navigate(['/membro']);
+        });
+      }
     });
   }
 }

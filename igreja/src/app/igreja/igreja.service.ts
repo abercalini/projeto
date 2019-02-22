@@ -21,8 +21,8 @@ export class IgrejaService {
   }
 
   editar(igreja: Igreja): Observable<Igreja> {
-    return this.httpClient.put<Igreja>(`${this.baseUrl}/${igreja.codigo}`, JSON.stringify(igreja), {headers : this.adicionarHeadersSalvar()})
-      .map(response => response);
+    return this.httpClient.put<Igreja>(`${this.baseUrl}/${igreja.codigo}`,
+    JSON.stringify(igreja), {headers : this.adicionarHeadersSalvar()}).map(response => response);
   }
 
   excluir(codigo: number): Observable<Igreja> {

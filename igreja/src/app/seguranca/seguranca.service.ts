@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
@@ -34,11 +34,12 @@ export class SegurancaService {
     return this.httpClient.post<any>(`${this.baseUrl}`, body, {headers, withCredentials: true})
       .map(response => {
         this.tokenPayload = response;
-        this.armazenarToken(this.tokenPayload.access_token)
+        this.armazenarToken(this.tokenPayload.access_token);
        // console.log('Response com token payload');
       //  console.log(this.tokenPayload);
       });
   }
+
 
   novoAccessToken(): Observable<any> {
     let headers = new HttpHeaders();
@@ -52,6 +53,18 @@ export class SegurancaService {
         this.tokenPayload = response;
         this.armazenarToken(this.tokenPayload.access_token);
       });
+  }
+
+  listarUsuario(emailUsuario: string): Observable<any> {
+    let params = new HttpParams();
+    if (emailUsuario) {
+      params = params.set('email', emailUsuario);
+    }
+    let headers = new HttpHeaders();
+    const token = localStorage.getItem('token');
+
+    headers = headers.set('Authorization', `Bearer ${token}`);
+    return this.httpClient.get<any>('http://localhost:8080/usuario', {params, headers}).map(response => response);
   }
 
   temPermissao(permissao: string) {

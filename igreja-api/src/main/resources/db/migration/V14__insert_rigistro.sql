@@ -19,3 +19,5 @@ INSERT INTO funcao_membro (nome) VALUES ('Dirigente de Mocidade');
 INSERT INTO funcao_membro (nome) VALUES ('Dirigente do Circulo de Oração');
 INSERT INTO funcao_membro (nome) VALUES ('DISCIPULO');
 INSERT INTO funcao_membro (nome) VALUES ('maestro');
+
+insert into distrito(nome, codigo_igreja) values ('teste', 1);

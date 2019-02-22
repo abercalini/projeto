@@ -31,6 +31,7 @@ export class Membro {
   situacaoMembro = new SituacaoMembro();
   cargoMinistro = new CargoMinistro();
   funcoes: Funcoes[] = [];
+  igreja = new Igreja();
 }
 
 
@@ -58,4 +59,8 @@ export class Enderereco {
   estado: string;
   cidade: string;
   cep: string;
+}
+
+export class Igreja {
+  codigo: any;
 }

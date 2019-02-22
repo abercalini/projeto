@@ -33,6 +33,8 @@ export class MembroPesquisaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const codigo = localStorage.getItem('codigo_igreja');
+
     this.listarTodos();
     this.titleService.setTitle('Pesquisa de membro');
   }

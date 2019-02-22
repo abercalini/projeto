@@ -26,9 +26,9 @@ public class Igreja implements Serializable {
 	private String telefone;
 	private String responsavel;
 	
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "distrito_codigo")
-	private Distrito distrito;
+	private Distrito distrito; */
 	
 	@Column(name = "tipo_igreja")
 	private String tipoIgreja;
@@ -70,12 +70,6 @@ public class Igreja implements Serializable {
 	}
 	public void setResponsavel(String responsavel) {
 		this.responsavel = responsavel;
-	}
-	public Distrito getDistrito() {
-		return distrito;
-	}
-	public void setDistrito(Distrito distrito) {
-		this.distrito = distrito;
 	}
 	public String getTipoIgreja() {
 		return tipoIgreja;

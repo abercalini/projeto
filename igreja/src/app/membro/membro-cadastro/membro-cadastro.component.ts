@@ -74,6 +74,9 @@ export class MembroCadastroComponent implements OnInit {
 
 
   salvar(form: NgForm) {
+    const codigoIgreja = localStorage.getItem('codigo_igreja');
+    this.membro.igreja.codigo = codigoIgreja;
+
     this.membroService.salvar(this.membro).subscribe(response => {
       form.reset();
       this.membro = new Membro();
