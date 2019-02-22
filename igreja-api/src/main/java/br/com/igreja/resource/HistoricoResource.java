@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,9 +30,10 @@ public class HistoricoResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(historicoSalvo);
 	}
 	
-	@GetMapping
+	@GetMapping("/filtrarporigreja/{codigo}")
 	@ResponseStatus(HttpStatus.OK)
-	public List<Historico> listarTodos(HistoricoFilter historicoFilter) {
-		return historicoRepository.buscarPorHistorico(historicoFilter);
+	public List<Historico> listarTodos(@PathVariable Long codigo, HistoricoFilter historicoFilter) {
+		return historicoRepository.buscarPorHistorico(codigo, historicoFilter);
 	}
+	
 }

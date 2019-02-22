@@ -61,7 +61,7 @@ export class MembroPesquisaComponent implements OnInit {
         this.membroService.excluir(this.codigo).subscribe(() => {
           this.tabela.first = 0;
           this.listarTodos();
-          this.historicoService.salvar('Excluiu um membro', this.segurancaService.nomeUsuario);
+          this.historicoService.salvar('Excluiu um membro', this.segurancaService.nomeUsuario).subscribe();
           this.messageService.add({severity: 'success', detail: 'Excluido com sucesso', summary: 'Excluido com sucesso'});
         });
       }

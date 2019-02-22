@@ -49,6 +49,8 @@ public class SituacaoMembro implements Serializable {
 	public void setSituacao(String situacao) {
 		this.situacao = situacao;
 	}
+	
+	
 
 	@Override
 	public int hashCode() {

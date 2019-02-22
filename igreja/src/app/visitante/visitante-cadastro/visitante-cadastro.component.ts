@@ -54,7 +54,7 @@ export class VisitanteCadastroComponent implements OnInit {
       this.visitanteService.salvar(this.visitante).subscribe(response => {
         form.reset();
         this.visitante = new Visitante();
-        this.historicoService.salvar('Cadastrou um visitante ' + response.nome, this.segurancaService.nomeUsuario);
+        this.historicoService.salvar('Cadastrou um visitante ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
         this.adicionarMensagem('success', 'Cadastrou com sucesso', 'Cadastrou com sucesso');
       });
   }
@@ -71,7 +71,7 @@ export class VisitanteCadastroComponent implements OnInit {
 
   editar() {
     this.visitanteService.editar(this.visitante).subscribe(response => {
-      this.historicoService.salvar('Editou um visitante ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Editou um visitante ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
       this.adicionarMensagem('success', 'Editou com sucesso', 'Editou com sucesso');
       this.adicionarTitulo();
     });
@@ -90,7 +90,7 @@ export class VisitanteCadastroComponent implements OnInit {
   }
 
   listarCargos() {
-    this.cargoMinistroService.listarTodos().subscribe(response => this.cargos = response.map(c => ({label: c.nome, value: c.codigo})));
+    this.cargoMinistroService.listarTodos(localStorage.getItem('codigo_igreja')).subscribe(response => this.cargos = response.map(c => ({label: c.nome, value: c.codigo})));
   }
 
   adicionarTitulo() {

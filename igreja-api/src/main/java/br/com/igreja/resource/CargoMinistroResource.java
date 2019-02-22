@@ -34,11 +34,11 @@ public class CargoMinistroResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(cargoMinitroSalvo);
 	}
 	
-	@GetMapping
+	@GetMapping("/filtrarPorIgreja/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_OBJETO')")
 	@ResponseStatus(HttpStatus.OK)
-	public List<CargoMinitro> listar() {
-		return cargoMinistroRepository.findAll();
+	public List<CargoMinitro> listar(@PathVariable Long codigo) {
+		return cargoMinistroRepository.filtrarPorIgreja(codigo);
 	}
 	
 	@DeleteMapping("/{codigo}")

@@ -50,7 +50,7 @@ export class CargoministroCadastroComponent implements OnInit {
     this.cargoMinistroService.editar(this.cargoMinistro).subscribe(response => {
       this.adicionarMenssagem('success', 'Editado com sucesso', 'Editado com sucesso');
       this.adicionarTitulo();
-      this.historicoService.salvar('Editou um cargo ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Editou um cargo ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
     });
   }
 
@@ -58,7 +58,7 @@ export class CargoministroCadastroComponent implements OnInit {
     this.cargoMinistro.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.cargoMinistroService.salvar(this.cargoMinistro).subscribe(response => {
       this.adicionarMenssagem('success', 'Cadastrado com sucesso', 'Cadastrado com sucesso');
-      this.historicoService.salvar('Cadastrou um cargo do ministro ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Cadastrou um cargo do ministro ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
       ngForm.reset();
       this.cargoMinistro = new CargoMinistro();
     });

@@ -33,7 +33,7 @@ export class FuncaomembroPesquisaComponent implements OnInit {
   }
 
   listarTodos() {
-    this.funcaoMembroService.listaTodos().subscribe(response => this.funcoes = response);
+    this.funcaoMembroService.listaTodos(localStorage.getItem('codigo_igreja')).subscribe(response => this.funcoes = response);
   }
 
   excluir(codigo: number) {
@@ -44,7 +44,7 @@ export class FuncaomembroPesquisaComponent implements OnInit {
           this.tabela.first = 0;
           this.listarTodos();
           this.adicionarMensagem('success', 'Excluido com sucesso', 'Excluido com sucesso');
-          this.historicoService.salvar('Excluiu uma função do membro', this.segurancaService.nomeUsuario);
+          this.historicoService.salvar('Excluiu uma função do membro', this.segurancaService.nomeUsuario).subscribe();
         });
       }
     });

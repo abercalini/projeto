@@ -46,7 +46,7 @@ export class DistricoPesquisaComponent implements OnInit {
           this.tabela.first = 0;
           this.listarTodos();
           this.adicionarMensagem('success', 'Excluido com sucesso', 'Excluido com sucesso');
-          this.historicoService.salvar('Excluiu um distrito', this.segurancaService.nomeUsuario);
+          this.historicoService.salvar('Excluiu um distrito', this.segurancaService.nomeUsuario).subscribe();
         });
       }
     });

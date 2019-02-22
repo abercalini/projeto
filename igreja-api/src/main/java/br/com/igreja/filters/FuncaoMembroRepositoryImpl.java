@@ -12,27 +12,27 @@ import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import br.com.igreja.model.CargoMinitro;
+import br.com.igreja.model.FuncaoMembro;
 import br.com.igreja.model.Igreja;
 
-public class CargoMinistroRepositoryImpl implements CargoMinistroRespositoryQuery {
-	
+public class FuncaoMembroRepositoryImpl implements FuncaoMembroRepositoryQuery {
 	
 	@PersistenceContext
 	private EntityManager manager;
 	
+	
 	@Override
-	public List<CargoMinitro> filtrarPorIgreja(Long codigo) {
+	public List<FuncaoMembro> filtrarPorIgreja(Long codigo) {
 		CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder();
-		CriteriaQuery<CargoMinitro> query = criteriaBuilder.createQuery(CargoMinitro.class);
-		Root<CargoMinitro> cargoMinistro = query.from(CargoMinitro.class);
+		CriteriaQuery<FuncaoMembro> query = criteriaBuilder.createQuery(FuncaoMembro.class);
+		Root<FuncaoMembro> funcaoMembro = query.from(FuncaoMembro.class);
 		
-		Join<CargoMinitro, Igreja> joinIgreja = cargoMinistro.join("igreja", JoinType.INNER);
+		Join<FuncaoMembro, Igreja> joinIgreja = funcaoMembro.join("igreja", JoinType.INNER);
+		
 		List<Predicate> predicates = new ArrayList<>();
-		
 		predicates.add(criteriaBuilder.equal(joinIgreja.get("codigo"), codigo));
-		query.where(predicates.toArray(new Predicate[predicates.size()]));
 		
+		query.where(predicates.toArray(new Predicate[predicates.size()]));
 		return manager.createQuery(query).getResultList();
 	}
 

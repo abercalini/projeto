@@ -48,7 +48,7 @@ export class DistricoCadastroComponent implements OnInit {
   salvar(ngForm: NgForm) {
     this.distrito.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.distritoService.salvar(this.distrito).subscribe(response => {
-      this.historicoService.salvar('Cadastro do Distrito ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Cadastro do Distrito ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
       this.adicionarMensagem('success', 'Distrito cadastrado com sucesso', 'Distrito cadastrado com sucesso');
       ngForm.reset();
     });
@@ -56,7 +56,7 @@ export class DistricoCadastroComponent implements OnInit {
 
   editar() {
     this.distritoService.editar(this.distrito).subscribe(() => {
-      this.historicoService.salvar('Editando Distrito', this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Editando Distrito', this.segurancaService.nomeUsuario).subscribe();
       this.adicionarMensagem('success', 'Distrito editado com sucesso', 'Distrito editado com sucesso');
       this.titleService.setTitle('Editando Distrito ' + this.distrito.nome);
     });

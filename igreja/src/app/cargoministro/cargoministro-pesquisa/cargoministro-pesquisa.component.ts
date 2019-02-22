@@ -35,7 +35,8 @@ export class CargoministroPesquisaComponent implements OnInit {
   }
 
   listarTodos() {
-    this.cargoMinistroService.listarTodos().subscribe(response => this.cargos = response);
+    const codigo = localStorage.getItem('codigo_igreja');
+    this.cargoMinistroService.listarTodos(codigo).subscribe(response => this.cargos = response);
   }
 
   adicionarMensagem(severity: string, detail: string, sumary: string) {
@@ -47,7 +48,7 @@ export class CargoministroPesquisaComponent implements OnInit {
       message: 'Deseja excluir o cargo ministerial?',
       accept: () => {
         this.cargoMinistroService.excluir(codigo).subscribe(() => {
-          this.historicoService.salvar('Excluiu um cargo ministerial', this.segurancaService.nomeUsuario);
+          this.historicoService.salvar('Excluiu um cargo ministerial', this.segurancaService.nomeUsuario).subscribe();
           this.adicionarMensagem('success', 'Excluido com sucesso', 'Excluido com sucesso');
           this.tabela.fist = 0;
           this.listarTodos();

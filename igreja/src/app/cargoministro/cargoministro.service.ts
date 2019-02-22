@@ -37,9 +37,8 @@ export class CargoministroService {
     return this.httpClient.get(this.baseUrl, {headers: this.adicionarHeaders()}).toPromise().then(response => response);
   } */
 
-  listarTodos(): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl, {headers: this.adicionarHeaders()})
-      .map(response => response);
+  listarTodos(codigo: any): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/filtrarPorIgreja/${codigo}`, {headers: this.adicionarHeaders()}).map(response => response);
   }
 
   adicionarHeaders() {

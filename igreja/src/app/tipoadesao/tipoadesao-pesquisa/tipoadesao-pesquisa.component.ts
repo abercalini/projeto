@@ -33,7 +33,7 @@ export class TipoadesaoPesquisaComponent implements OnInit {
   }
 
   listarTodos() {
-    this.tipoAdesaoService.listarTodos().subscribe(response => this.adesoes = response);
+    this.tipoAdesaoService.listarTodos(localStorage.getItem('codigo_igreja')).subscribe(response => this.adesoes = response);
   }
 
   excluir(codigo: number) {
@@ -43,7 +43,7 @@ export class TipoadesaoPesquisaComponent implements OnInit {
         this.tipoAdesaoService.excluir(codigo).subscribe(() => {
           this.tabela.first = 0;
           this.listarTodos();
-          this.historicoService.salvar('Excluiu um tipo de adesão', this.segurancaService.nomeUsuario);
+          this.historicoService.salvar('Excluiu um tipo de adesão', this.segurancaService.nomeUsuario).subscribe();
           this.adicionarMensagem('success', 'Excluido com sucesso', 'Excluido com sucesso');
         });
       }

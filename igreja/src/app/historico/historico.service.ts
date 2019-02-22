@@ -16,9 +16,9 @@ export class HistoricoService {
 
   constructor(private httpClient: HttpClient) { }
 
-  salvar(descricao: string, usuario: string): Promise<any> {
+  salvar(descricao: string, usuario: string): Observable<any> {
     return this.httpClient.post<any>(`${this.urlBase}`, JSON.stringify(this.cadastrarHistorico(descricao, usuario)),
-      {headers : this.cadastrarHeaders()}).toPromise().then(null);
+      {headers : this.cadastrarHeaders()});
   }
 
  /* salvarTeste(descricao: string, usuario: string): Observable<string> {
@@ -27,13 +27,13 @@ export class HistoricoService {
       {headers : this.cadastrarHeaders()}).map(response => response);
   } */
 
-  listar(historicoFilter: HistoricoFilter): Observable<any> {
+  listar(codigo: any, historicoFilter: HistoricoFilter): Observable<any> {
     let headers = new HttpHeaders();
     const token = localStorage.getItem('token');
 
     headers = headers.set('Authorization', `Bearer ${token}`);
 
-    return this.httpClient.get<any>(`${this.urlBase}`, {headers, params : this.adicionarParams(historicoFilter)})
+    return this.httpClient.get<any>(`${this.urlBase}/filtrarporigreja/${codigo}`, {headers, params : this.adicionarParams(historicoFilter)})
       .map(response => response);
   }
 
@@ -50,6 +50,7 @@ export class HistoricoService {
     historico.descricao = descricao;
     historico.usuario = usuario;
     historico.data = new Date();
+    historico.igreja.codigo = localStorage.getItem('codigo_igreja');
 
     return historico;
   }

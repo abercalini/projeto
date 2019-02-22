@@ -18,14 +18,14 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.igreja.model.SituacaoMembro;
-import br.com.igreja.repository.SituacaoRespository;
+import br.com.igreja.repository.SituacaoMembroRepository;
 
 @RestController
 @RequestMapping("/situacaomembro")
 public class SituacaoMembroResource {
 	
 	@Autowired
-	private SituacaoRespository situacaoRepository;
+	private SituacaoMembroRepository situacaoRepository;
 	
 	@PostMapping 
 	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_OBJETO')")
@@ -34,10 +34,10 @@ public class SituacaoMembroResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(situacaoMembroSalvo);
 	}
 	
-	@GetMapping
+	@GetMapping("/filtrarPorIgreja/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_OBJETO')")
-	public List<SituacaoMembro> listarTodos() {
-		return situacaoRepository.findAll();
+	public List<SituacaoMembro> listarTodos(@PathVariable Long codigo) {
+		return situacaoRepository.filtrarPorIgreja(codigo);
 	}
 	
 	@GetMapping("/{codigo}")

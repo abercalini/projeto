@@ -47,17 +47,18 @@ export class FuncaomembroCadastroComponent implements OnInit {
   editar() {
     this.funcaoMembroService.editar(this.funcaoMembro).subscribe(response => {
       this.adicionarMensagem('success', 'Alterado com sucesso', 'Alterado com sucesso');
-      this.historicoService.salvar('Alterou uma função membro ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Alterou uma função membro ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
       this.titleService.setTitle('Editando função ' + response.nome);
     });
   }
 
   salvar(form: NgForm) {
+    this.funcaoMembro.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.funcaoMembroService.salvar(this.funcaoMembro).subscribe(response => {
       form.reset();
       this.funcaoMembro = new FuncaoMembro();
       this.adicionarMensagem('success', 'Cadastrado com sucesso', 'Cadastrado com sucesso');
-      this.historicoService.salvar('Cadastrou uma função do membro ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Cadastrou uma função do membro ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
     });
   }
 

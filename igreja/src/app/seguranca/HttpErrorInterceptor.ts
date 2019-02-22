@@ -6,11 +6,12 @@ import { Injectable } from '@angular/core';
    import {MessageService} from 'primeng/api';
    import { Observable, throwError } from 'rxjs';
    import { retry, catchError } from 'rxjs/operators';
+import { SegurancaService } from './seguranca.service';
    
    @Injectable()
    export class HttpErrorInterceptor implements HttpInterceptor {
 
-    constructor(private messageService: MessageService) {}
+    constructor(private messageService: MessageService, private segurancaService: SegurancaService) {}
 
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       return next.handle(request)
@@ -32,6 +33,12 @@ import { Injectable } from '@angular/core';
             if (error.error.status === 500 && error.error.exception === 'org.springframework.dao.DataIntegrityViolationException') {
                 errorMessage = 'Não pode excluir esse cadastro, pois está sendo movimentada em outra função do sistema';
                 this.messageService.add({severity: 'error', detail: errorMessage, summary: errorMessage});
+            }
+
+            if (error.error.error === 'invalid_token' && error.error.error_description.includes('Access token expired')) {
+                errorMessage = 'Por favor recarregue a página';
+                this.messageService.add({severity: 'error', detail: errorMessage, summary: errorMessage});
+                this.segurancaService.novoAccessToken().subscribe();
             }
             
             return throwError(errorMessage);

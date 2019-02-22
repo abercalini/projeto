@@ -48,7 +48,7 @@ export class VisitantePesquisaComponent implements OnInit {
           this.adicionarMensagem('success', 'Excluido com sucesso', 'Excluido com sucesso');
           this.tabela.first = 0;
           this.pesquisar();
-          this.historicoService.salvar('Excluiu um visitante ', this.segurancaService.nomeUsuario);
+          this.historicoService.salvar('Excluiu um visitante ', this.segurancaService.nomeUsuario).subscribe();
         });
       }
     });

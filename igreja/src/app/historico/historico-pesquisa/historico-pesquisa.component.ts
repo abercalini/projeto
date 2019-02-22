@@ -27,7 +27,7 @@ export class HistoricoPesquisaComponent implements OnInit {
 
   listarTodos() {
     this.historicoFilter.usuario = this.pesquisarUsuario;
-    this.historicoService.listar(this.historicoFilter).subscribe(response => this.historicos = response);
+    this.historicoService.listar(localStorage.getItem('codigo_igreja'), this.historicoFilter).subscribe(response => this.historicos = response);
   }
 
 }

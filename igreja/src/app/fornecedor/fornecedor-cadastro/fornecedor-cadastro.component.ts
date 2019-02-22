@@ -53,7 +53,7 @@ export class FornecedorCadastroComponent implements OnInit {
     this.fornecedor.igreja.codigo = codigo;
     this.fornecedorService.salvar(this.fornecedor).subscribe(response => {
       this.posicao = 0;
-      this.historicoService.salvar('Cadastro de fornecedor/Colaborador ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Cadastro de fornecedor/Colaborador ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
       ngForm.reset();
       this.messageService.add({severity: 'success', summary: 'Cadastrado com sucesso', detail: 'Cadastrado com sucesso'});
     });
@@ -63,7 +63,7 @@ export class FornecedorCadastroComponent implements OnInit {
     this.fornecedorService.editar(this.fornecedor).subscribe(response => {
       this.messageService.add({severity: 'success', summary: 'Editado com sucesso', detail: 'Editado com sucesso'});
       this.adicionarTitulo();
-      this.historicoService.salvar('Edição do fornecedor / colaborador ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Edição do fornecedor / colaborador ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
     });
   }
 

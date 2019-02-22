@@ -34,7 +34,7 @@ export class SituacaomembroPesquisaComponent implements OnInit {
   }
 
   listarTodos() {
-    this.situacaoMembroService.listarTodos().subscribe(response => this.situacoes = response);
+    this.situacaoMembroService.listarTodos(localStorage.getItem('codigo_igreja')).subscribe(response => this.situacoes = response);
   }
 
   excluir(codigo: number) {
@@ -46,7 +46,7 @@ export class SituacaomembroPesquisaComponent implements OnInit {
           this.messageService.add({severity: 'success', summary: 'Excluido com sucesso', detail: 'Excluido com sucesso'});
           this.tabela.firs = 0;
           this.listarTodos();
-          this.historicoService.salvar('Excluiu uma situação de membro ', this.seugancaService.nomeUsuario);
+          this.historicoService.salvar('Excluiu uma situação de membro ', this.seugancaService.nomeUsuario).subscribe();
         });
       }
     });

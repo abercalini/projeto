@@ -51,7 +51,7 @@ export class TipoadesaoCadastroComponent implements OnInit {
     this.tipoAdesaoService.editar(this.tipoAdesao).subscribe(response => {
       this.adicionarMensagem('success', 'Atualizado com sucesso', 'Atualizado com sucesso');
       this.adicionarTitulo();
-      this.historicoService.salvar('Editou um tipo de adesão ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Editou um tipo de adesão ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
     });
   }
 
@@ -63,11 +63,12 @@ export class TipoadesaoCadastroComponent implements OnInit {
   }
 
   salvar(form: NgForm) {
+    this.tipoAdesao.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.tipoAdesaoService.salvar(this.tipoAdesao).subscribe(response => {
       form.reset();
       this.tipoAdesao = new TipoAdesao();
       this.adicionarMensagem('success', 'Cadastrado com sucesso', 'Cadastrado com sucesso');
-      this.historicoService.salvar('Tipo de adesão cadastrada ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Tipo de adesão cadastrada ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
     });
   }
 

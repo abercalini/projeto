@@ -25,8 +25,8 @@ export class SituacaomembroService {
       {headers : this.cadastrarHeaders()}).map(response => response);
   }
 
-  listarTodos(): Observable<any> {
-    return this.httpClient.get<any>(this.baseUrl, {headers: this.cabecalho()}).map(response => response);
+  listarTodos(codigo: any): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/filtrarPorIgreja/${codigo}`, {headers: this.cabecalho()}).map(response => response);
   }
 
   exluir(codigo: number): Observable<SituacaoMembro> {

@@ -7,5 +7,5 @@ import br.com.igreja.model.Historico;
 
 public interface HistoricoRepositoryQuery {
 	
-	public List<Historico> buscarPorHistorico(HistoricoFilter historicoFilter);
+	public List<Historico> buscarPorHistorico(Long codigo, HistoricoFilter historicoFilter);
 }

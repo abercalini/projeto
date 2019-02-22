@@ -49,7 +49,7 @@ export class FornecedorPesquisaComponent implements OnInit {
           this.adicionarMenssagem('success', 'Excluido com sucesso', 'Excluido com sucesso');
           this.tabela.first = 0;
           this.listarTodos();
-          this.historicoService.salvar('Excluiu um Fornecedor/Colaborador', this.seguracaService.nomeUsuario);
+          this.historicoService.salvar('Excluiu um Fornecedor/Colaborador', this.seguracaService.nomeUsuario).subscribe();
         });
       }
     });

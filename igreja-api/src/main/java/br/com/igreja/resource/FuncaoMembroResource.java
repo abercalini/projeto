@@ -34,10 +34,10 @@ public class FuncaoMembroResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(funcaoMembroSalvo);
 	}
 	
-	@GetMapping
+	@GetMapping("/filtrarporigreja/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_OBJETO')")
-	public List<FuncaoMembro> listarTodos() {
-		return funcaoMembroRepository.findAll();
+	public List<FuncaoMembro> listarTodos(@PathVariable Long codigo) {
+		return funcaoMembroRepository.filtrarPorIgreja(codigo);
 	}
 	
 	@DeleteMapping("/{codigo}")

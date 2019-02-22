@@ -80,14 +80,14 @@ export class MembroCadastroComponent implements OnInit {
     this.membroService.salvar(this.membro).subscribe(response => {
       form.reset();
       this.membro = new Membro();
-      this.historicoService.salvar('Cadastrou um membro ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Cadastrou um membro ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
       this.adicionarMensagem('success', 'Cadastro com sucesso', 'Cadastro com sucesso');
     });
   }
 
   editar() {
     this.membroService.editar(this.membro).subscribe(response => {
-      this.historicoService.salvar('Editou um membro ' + response.nome, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Editou um membro ' + response.nome, this.segurancaService.nomeUsuario).subscribe();
       this.adicionarMensagem('success', 'Editado com sucesso', 'Editado com sucesso');
       this.adicionarTitulo();
     });
@@ -103,22 +103,22 @@ export class MembroCadastroComponent implements OnInit {
 
 
   adicionarFuncoes() {
-    this.funcaoMembroService.listaTodos().subscribe(response => this.funcoes = response.map
+    this.funcaoMembroService.listaTodos(localStorage.getItem('codigo_igreja')).subscribe(response => this.funcoes = response.map
         (f => ({label: f.nome, value: {codigo: f.codigo, nome: f.nome}})));
   }
 
   adicionarAdesao() {
-    this.tipoAdesaoService.listarTodos().subscribe(response => this.tipoAdesao = response.map(t => ({value: t.codigo, label: t.nome})));
+    this.tipoAdesaoService.listarTodos(localStorage.getItem('codigo_igreja')).subscribe(response => this.tipoAdesao = response.map(t => ({value: t.codigo, label: t.nome})));
   }
 
   adicionarCargos() {
-    this.cargoMinistroService.listarTodos().subscribe(response => {
+    this.cargoMinistroService.listarTodos(localStorage.getItem('codigo_igreja')).subscribe(response => {
       this.cargos = response.map(c => ({value: c.codigo, label: c.nome}));
     });
   }
 
   adiconarSituacao() {
-    this.situacaoMembroService.listarTodos().subscribe(response => {
+    this.situacaoMembroService.listarTodos(localStorage.getItem('codigo_igreja')).subscribe(response => {
       this.situacao = response.map(s => ({value: s.codigo, label: s.situacao}));
     });
   }

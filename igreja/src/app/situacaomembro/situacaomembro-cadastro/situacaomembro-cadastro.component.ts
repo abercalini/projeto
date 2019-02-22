@@ -57,15 +57,16 @@ export class SituacaomembroCadastroComponent implements OnInit {
   editar() {
     this.situacaoMembroService.editar(this.situacaoMembro).subscribe(response => {
       this.adicionarMensagem('success', 'Editado com sucesso', 'Editado com sucesso');
-      this.historicoService.salvar('Editou uma situação do membro ' + response.situacao, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Editou uma situação do membro ' + response.situacao, this.segurancaService.nomeUsuario).subscribe();
       this.titleService.setTitle('Editando situação membro ' + response.situacao);
     });
   }
 
   salvar(form: NgForm) {
+    this.situacaoMembro.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.situacaoMembroService.salvar(this.situacaoMembro).subscribe(response => {
       this.adicionarMensagem('success', 'Cadastrado com sucesso', 'Cadastrado com sucesso');
-      this.historicoService.salvar('Cadastrou uma situação do membro ' + response.situacao, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Cadastrou uma situação do membro ' + response.situacao, this.segurancaService.nomeUsuario).subscribe();
       form.reset();
       this.situacaoMembro = new SituacaoMembro();
     });

@@ -34,11 +34,11 @@ public class TipoAdesaoResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(tipoAdesaosSalvo);
 	}
 	
-	@GetMapping
+	@GetMapping("/filtrarporigreja/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_OBJETO')")
 	@ResponseStatus(HttpStatus.OK)
-	public List<TipoAdesao> listarTodos() {
-		return tipoAdesaoRepository.findAll();
+	public List<TipoAdesao> listarTodos(@PathVariable Long codigo) {
+		return tipoAdesaoRepository.filtarPorIgreja(codigo);
 	}
 	
 	@DeleteMapping("/{codigo}")
