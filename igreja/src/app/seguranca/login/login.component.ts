@@ -29,12 +29,13 @@ export class LoginComponent implements OnInit {
 
   logar(email: string, senha: string) {
     this.segurancaService.logar(email, senha).subscribe(response => {
-      this.historicoService.salvar('Entrou no sistema', this.segurancaService.nomeUsuario).subscribe();
+    //  this.historicoService.salvar('Entrou no sistema', this.segurancaService.nomeUsuario).subscribe();
       if (this.segurancaService.nomeUsuario === 'bercalini_alisson@hotmail.com') {
         this.router.navigate(['/escolherigreja']);
       } else {
         this.segurancaService.listarUsuario(this.emailUsuario).subscribe(data => {
           localStorage.setItem('codigo_igreja', data.igreja.codigo);
+          this.historicoService.salvar('Entrou no sistema', this.segurancaService.nomeUsuario).subscribe();
           this.router.navigate(['/membro']);
         });
       }

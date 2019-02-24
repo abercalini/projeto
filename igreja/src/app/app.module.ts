@@ -4,7 +4,6 @@ import { CargoministroModule } from './cargoministro/cargoministro.module';
 import { IgrejaModule } from './igreja/igreja.module';
 import { DistritoModule } from './distrito/distrito.module';
 import { FornecedorModule } from './fornecedor/fornecedor.module';
-import { CoreModule } from './core/core.module';
 import { HistoricoModule } from './historico/historico.module';
 import { PaginaNaoEncontradaModule } from './pagina-nao-encontrada/pagina-nao-encontrada.module';
 import { BrowserModule, Title } from '@angular/platform-browser';
@@ -53,7 +52,6 @@ registerLocaleData(localePt);
     PaginaNaoEncontradaModule,
     HttpClientModule,
     HistoricoModule,
-    CoreModule,
     FornecedorModule,
     DistritoModule,
     IgrejaModule,
@@ -65,7 +63,7 @@ registerLocaleData(localePt);
     VisitanteModule,
     NaoAutorizadoModule,
     CaixaModule,
-    EscolherIgrejaModule    
+    EscolherIgrejaModule,
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},

@@ -41,7 +41,7 @@ export class SegurancaService {
   }
 
 
-  novoAccessToken(): Observable<any> {    
+  novoAccessToken(): Observable<any> {
     let headers = new HttpHeaders();
     headers = headers.append('Authorization', 'Basic YW5ndWxhcjphbmd1bGFy');
     headers = headers.append('Content-Type', 'application/x-www-form-urlencoded');

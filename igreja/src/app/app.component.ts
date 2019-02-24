@@ -14,9 +14,10 @@ export class AppComponent {
   exibirMenu(): Boolean {
 
    if (this.router.url !== '/login' && this.router.url !== '/escolherigreja') {
+      console.log(this.router.url);
       return true;
    }
 
   }
-  
+
 }
