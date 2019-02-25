@@ -37,8 +37,8 @@
         </div>
 
         <div class="ui-g-12 ui-md-4 ui-fluid">
-          <label>Data Nascimento</label>
-          <p-calendar [(ngModel)]="membro.dataNascimento" name="dataNascimento" dateFormat="dd/mm/yy"></p-calendar>
+              <label>Data Nascimento</label>
+              <p-calendar [(ngModel)]="membro.dataNascimento" name="dataNascimento" dateFormat="dd/mm/yy" class="ui-inputtext ui-corner-all ui-widget"></p-calendar>
         </div>
         <div class="ui-g-12 ui-md-4 ui-fluid">
           <label>CPF</label>
@@ -188,7 +188,7 @@
       <div class="ui-g">
         <div class="ui-g-12 ui-md-12 ui-fluid">
           <label>Funçoes que exerce</label>
-          <p-multiSelect [options]="funcoes" [(ngModel)]="membro.funcoes" name="funcoes" defaultLabel="Selecione..." 
+          <p-multiSelect [options]="funcoes" [(ngModel)]="membro.funcoes" name="funcoes" defaultLabel="Selecione..."
               selectedItemsLabel="{0} Itens selecionado"></p-multiSelect>
         </div>
       </div>

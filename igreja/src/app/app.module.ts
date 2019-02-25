@@ -1,3 +1,4 @@
+import { AppTopBarComponent } from './app.topbar.component';
 import { MembroModule } from './membro/membro.module';
 import { FuncaomembroModule } from './funcaomembro/funcaomembro.module';
 import { CargoministroModule } from './cargoministro/cargoministro.module';
@@ -19,6 +20,9 @@ import { EscolherIgrejaModule } from './escolher-igreja/escolher-igreja.module';
 
 
 import { AppComponent } from './app.component';
+import { AppMenuComponent, AppSubMenuComponent } from './app.menu.component';
+
+import { ScrollPanel } from 'primeng/primeng';
 
 import { SegurancaService } from './seguranca/seguranca.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -39,11 +43,16 @@ import { VisitanteModule } from './visitante/visitante.module';
 import { VisitanteService } from './visitante/visitante.service';
 import { RefreshTokenInterceptor } from './seguranca/RefreshTokenInterceptor';
 import { HttpErrorInterceptor } from './seguranca/HttpErrorInterceptor';
+
 registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
     AppComponent,
+    ScrollPanel,
+    AppMenuComponent,
+    AppSubMenuComponent,
+    AppTopBarComponent
   ],
   imports: [
     BrowserModule,
