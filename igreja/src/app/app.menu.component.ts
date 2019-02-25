@@ -116,6 +116,12 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                 ]
             },
             {
+                label: 'Caixa', icon: 'attach_money',
+                items: [
+                    {label: 'Caixa', icon: 'attach_money', routerLink: ['/caixa']}
+                ]
+            },  
+            {
                 label: 'Cadastros', icon: 'list',
                 items: [
                     {label: 'Igreja', icon: 'home', routerLink: ['/igreja']},
