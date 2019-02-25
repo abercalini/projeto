@@ -1,5 +1,7 @@
 INSERT INTO usuario_permissao(codigo, codigo_usuario, codigo_permissao) VALUES (1, 1, 1);
 INSERT INTO usuario_permissao(codigo, codigo_usuario, codigo_permissao) VALUES (2, 1, 2);
+INSERT INTO usuario_permissao(codigo, codigo_usuario, codigo_permissao) VALUES (11, 1, 3);
+INSERT INTO usuario_permissao(codigo, codigo_usuario, codigo_permissao) VALUES (12, 1, 4);
 
 INSERT INTO usuario_permissao(codigo, codigo_usuario, codigo_permissao) VALUES (3, 2, 1);
 INSERT INTO usuario_permissao(codigo, codigo_usuario, codigo_permissao) VALUES (4, 2, 2);

@@ -1,3 +1,94 @@
-<p>
-  caixa-cadastro works!
-</p>
+<br>
+<br>
+<br>
+<br>
+<div class="container">
+    <form #inputCaixa="ngForm" (ngSubmit)="salvar(inputCaixa)">
+        <p-fieldset legend="Cadastro do caixa">
+              <div class="ui-g">
+                  <div class="ui-g-12 ui-md-12 ui-fluid">
+                    <span class="md-inputfield">            
+                        <input type="text" pInputText [(ngModel)]="caixa.nome" name="nome" >
+                        <label>Name</label>
+                    </span>    
+                 </div> 
+              </div>
+
+              <br>
+
+
+              <div class="ui-g">
+                    <div class="ui-g-12 ui-md-3 ui-fluid">
+                        <span class="md-inputfield">
+                            <input currencyMask [(ngModel)]="caixa.saldoAbertura" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText name="saldoAbertura" placeholder="0.00"/>
+                            <label>Saldo abertura</label>
+                        </span>
+                    </div>
+
+                    <div class="ui-g-12 ui-md-3 ui-fluid">
+                        <span class="md-inputfield">
+                            <input currencyMask [(ngModel)]="caixa.saldoFechamento" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText name="saldoFechamento" placeholder="0.00"
+                               [disabled]="caixa.status === false" />
+                            <label>Saldo Fechamento</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3 ui-fluid">
+                        <span class="md-inputfield">
+                            <input currencyMask [(ngModel)]="caixa.valorReceita" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText name="valorReceita" placeholder="0.00"
+                                [disabled]="caixa.status === false"/>
+                            <label>Valor Receita</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-3 ui-fluid">
+                        <span class="md-inputfield">
+                            <input currencyMask [(ngModel)]="caixa.valorDespesas" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" pInputText name="valorDespesa" placeholder="0.00"
+                                [disabled]="caixa.status === false"/>
+                            <label>Valor Despesa</label>
+                        </span>
+                    </div>
+
+                    <br/>
+                    <br/>
+                    <br/>
+
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <span class="md-inputfield">
+                            <p-calendar [(ngModel)]="caixa.dataAbertura" name="dataAbertura" dateFormat="dd/mm/yy"></p-calendar>
+                            <label>Data Abertura</label>
+                        </span>
+                    </div>
+                    <div class="ui-g-12 ui-md-6 ui-fluid">
+                        <span class="md-inputfield">
+                                <p-calendar [(ngModel)]="caixa.dataFechamento" name="dataFechamento" dateFormat="dd/mm/yy" [disabled]="caixa.status === false"></p-calendar>
+                                <label>Data Fechamento</label>
+                        </span>
+                    </div>
+              </div>
+
+              <div class="ui-g">
+                    <div class="ui-g-6 ui-md-2 ui-fluid">
+                            <button pButton type="submit" label="Salvar" class="ui-button-success" icon="pi pi-save"></button>
+                    </div>
+                    <div class="ui-g-6 ui-md-2 ui-fluid"> 
+                            <button pButton type="button" label="Voltar" icon="pi pi-arrow-left" routerLink="/caixa"></button>
+                    </div>
+              </div>
+
+              <div class="ui-g"> 
+                <div class="ui-g-12 ui-md-12">    
+                    <p-toast position="bottom-left"></p-toast>
+                </div>   
+              </div>
+        </p-fieldset>
+
+
+
+     <!-- <div class="ui-g-12 ui-md-4">
+        <span class="md-inputfield">
+            <input type="text" pInputText>
+            <label>Name</label>
+        </span>
+      </div> -->
+
+    </form>
+</div>

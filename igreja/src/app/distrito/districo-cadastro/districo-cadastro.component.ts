@@ -74,7 +74,7 @@ export class DistricoCadastroComponent implements OnInit {
   }
 
   adicionarMensagem(severity: string, detail: string, sumary: string) {
-    this.messageService.add({severity: severity, detail: detail, summary: sumary});
+    this.messageService.add({ severity: severity, detail: detail, summary: sumary });
   }
 
 }

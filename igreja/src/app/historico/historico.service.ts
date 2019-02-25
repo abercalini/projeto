@@ -17,6 +17,8 @@ export class HistoricoService {
   constructor(private httpClient: HttpClient) { }
 
   salvar(descricao: string, usuario: string): Observable<any> {
+    console.log('salvo historico');
+    
     return this.httpClient.post<any>(`${this.urlBase}`, JSON.stringify(this.cadastrarHistorico(descricao, usuario)),
       {headers : this.cadastrarHeaders()});
   }

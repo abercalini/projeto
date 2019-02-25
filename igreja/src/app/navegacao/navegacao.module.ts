@@ -25,6 +25,8 @@ import { FuncaomembroPesquisaComponent } from '../funcaomembro/funcaomembro-pesq
 import { VisitanteCadastroComponent } from '../visitante/visitante-cadastro/visitante-cadastro.component';
 import { NaoAutorizadoComponent } from '../nao-autorizado/nao-autorizado/nao-autorizado.component';
 import { EscolherIgrejaComponent } from '../escolher-igreja/escolher-igreja/escolher-igreja.component';
+import { CaixaCadastroComponent } from '../caixa/caixa-cadastro/caixa-cadastro.component';
+import { CaixaPesquisaComponent } from '../caixa/caixa-pesquisa/caixa-pesquisa.component';
 
 const router: Routes = [
   {path: 'login', component: LoginComponent},
@@ -68,6 +70,9 @@ const router: Routes = [
   {path: 'escolherigreja', component: EscolherIgrejaComponent},
 
   {path: 'historico', component: HistoricoPesquisaComponent},
+
+  {path: 'caixa/novo', component: CaixaCadastroComponent},
+  {path: 'caixa', component: CaixaPesquisaComponent},
 
   {path: 'naoautorizado', component: NaoAutorizadoComponent},
   {path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},

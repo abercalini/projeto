@@ -43,6 +43,7 @@ import { VisitanteModule } from './visitante/visitante.module';
 import { VisitanteService } from './visitante/visitante.service';
 import { RefreshTokenInterceptor } from './seguranca/RefreshTokenInterceptor';
 import { HttpErrorInterceptor } from './seguranca/HttpErrorInterceptor';
+import { CaixaService } from './caixa/caixa.service';
 
 registerLocaleData(localePt);
 
@@ -90,7 +91,7 @@ registerLocaleData(localePt);
 
     SegurancaService, JwtHelperService, MessageService, HistoricoService, FornecedorService, ConfirmationService,
     Title, DistritoService, IgrejaService, CargoministroService, SituacaomembroService, TipoadesaoService, FuncaomembroService,
-    MembroService, VisitanteService
+    MembroService, VisitanteService, CaixaService
   ],
   bootstrap: [AppComponent]
 })

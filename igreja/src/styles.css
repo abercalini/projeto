@@ -4,3 +4,7 @@
    margin: 0 auto;
   }
 }
+
+
+.layout-wrapper .layout-main .layout-topbar .topbar-logo {
+  display: none; }
