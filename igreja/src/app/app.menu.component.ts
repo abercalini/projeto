@@ -29,9 +29,9 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         this.model = [
-            {label: 'Dashboard', icon: 'dashboard', routerLink: ['/']},
+         /*   {label: 'Dashboard', icon: 'dashboard', routerLink: ['/']}, */
             {
-                label: 'Menu Modes', icon: 'settings',
+                label: 'Modo de menu', icon: 'settings',
                 items: [
                     {label: 'Static Menu', icon: 'view_quilt', command: (event) => {this.app.layoutMode = 'static'; }},
                     {label: 'Overlay Menu', icon: 'flip_to-front', command: (event) => {this.app.layoutMode = 'overlay'; }},
@@ -116,21 +116,32 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                 ]
             },
             {
-                label: 'Components', icon: 'list', badge: '2', badgeStyleClass: 'orange-badge',
+                label: 'Cadastros', icon: 'list',
                 items: [
-                    {label: 'Sample Page', icon: 'desktop_mac', routerLink: ['/sample']},
-                    {label: 'Forms', icon: 'input', routerLink: ['/forms']},
-                    {label: 'Data', icon: 'grid_on', routerLink: ['/data']},
-                    {label: 'Panels', icon: 'content_paste', routerLink: ['/panels']},
-                    {label: 'Overlays', icon: 'content_copy', routerLink: ['/overlays']},
-                    {label: 'Menus', icon: 'menu', routerLink: ['/menus']},
-                    {label: 'Messages', icon: 'message', routerLink: ['/messages']},
-                    {label: 'Charts', icon: 'insert_chart', routerLink: ['/charts']},
-                    {label: 'File', icon: 'attach_file', routerLink: ['/file']},
-                    {label: 'Misc', icon: 'toys', routerLink: ['/misc']}
+                    {label: 'Igreja', icon: 'home', routerLink: ['/igreja']},
+                    {label: 'Fornecedor', icon: 'person_add', routerLink: ['/fornecedor']},
+                    {label: 'Distrito', icon: 'grid_on', routerLink: ['/distrito']},
+                    {label: 'Membro', icon: 'person_add', routerLink: ['/membro']},
+                    {label: 'Visitante', icon: 'person_add', routerLink: ['/visitante']},
                 ]
             },
             {
+                label: 'Configurar Membro', icon: 'settings',
+                items: [
+                    {label: 'Cargos Miniterias', icon: 'perm_identity' , routerLink: ['/cargoministro']},
+                    {label: 'Situação Membro', icon: 'transfer_within_a_station' , routerLink: ['/situacaomembro']},
+                    {label: 'Tipo de Adesão', icon: 'loyalty' , routerLink: ['/tipoadesao']},
+                    {label: 'Função Membro', icon: 'perm_identity' , routerLink: ['/funcaomembro']},
+                ]
+            },
+            {
+                label: 'Historico', icon: 'timer_10',
+                items: [
+                    {label: 'Log do Sistema', icon: 'timer', routerLink: ['/historico']}
+                ]
+
+            }
+         /*   {
                 label: 'Template Pages', icon: 'get_app',
                 items: [
                     {label: 'Empty Page', icon: 'hourglass_empty', routerLink: ['/empty']},
@@ -187,7 +198,7 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                 ]
             },
             {label: 'Utils', icon: 'build', routerLink: ['/utils']},
-            {label: 'Docs', icon: 'find_in_page', routerLink: ['/documentation']}
+            {label: 'Docs', icon: 'find_in_page', routerLink: ['/documentation']} */
         ];
     }
 

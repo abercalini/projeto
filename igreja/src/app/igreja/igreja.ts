@@ -8,8 +8,6 @@ export class Igreja {
   porcentagemContribuicao: string;
   email: string;
   endereco = new Endereco();
-  distrito = new Distrito();
-
 }
 
 export class Endereco {
@@ -19,8 +17,4 @@ export class Endereco {
   estado: string;
   cidade: string;
   cep: string;
-}
-
-export class Distrito {
-  codigo: number;
 }

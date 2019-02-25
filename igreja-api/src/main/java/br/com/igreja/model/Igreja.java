@@ -26,8 +26,8 @@ public class Igreja implements Serializable {
 	private String telefone;
 	private String responsavel;
 	
-	/*@ManyToOne
-	@JoinColumn(name = "distrito_codigo")
+/*	@ManyToOne
+	@JoinColumn(name = "codigo_distrito")
 	private Distrito distrito; */
 	
 	@Column(name = "tipo_igreja")
