@@ -4,21 +4,21 @@
 <br>
 
     <form #inputCaixa="ngForm" (ngSubmit)="listar()">
-       
+
               <div class="ui-g">
                   <div class="ui-g-12 ui-md-12 ui-fluid">
                         <p-table [value]="caixas" [paginator]="true" [responsive]="true" [rows]="10" #tabela >
                           <ng-template pTemplate="header">
                               <tr>
                                   <th style="width: 80px;">#</th>
-                                  <th style="width: 300px;">Nome</th>
-                                  <th style="width: 150px;">Data Abertura</th>
-                                  <th style="width: 140px;">Data Fechamento</th>
+                                  <th style="width: 200px;">Nome</th>
+                                  <th style="width: 120px;">Abertura</th>
+                                  <th style="width: 120px;">Fechamento</th>
                                   <th style="width: 140px;">Saldo Abertura</th>
-                                  <th style="width: 140px;">Saldo Receita</th>
-                                  <th style="width: 140px;">Saldo Despesa</th>
-                                  <th style="width: 140px;">Saldo</th>
-                                  <th style="width: 140px;">Status</th>
+                                  <th style="width: 120px;">Receita</th>
+                                  <th style="width: 120px;">Despesa</th>
+                                  <th style="width: 120px;">Saldo</th>
+                                  <th style="width: 120px;">Status</th>
                               </tr>
                           </ng-template>
                           <ng-template pTemplate="body" let-c>
@@ -37,14 +37,14 @@
                         </p-table>
                   </div>
               </div>
-              
+
               <div class="ui-g">
                   <div class="ui-g-12 ui-md-12">
                       <a href="#" routerLink="/caixa/novo">Cadastrar novo caixa</a>
                   </div>
               </div>
 
-              <p-dialog header="{{status !== false ? 'Fechar Caixa' : 'Abrir Caixa'}}" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" 
+              <p-dialog header="{{status !== false ? 'Fechar Caixa' : 'Abrir Caixa'}}" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70"
                     [maximizable]="true" [baseZIndex]="10000">
 
                         <div class="ui-g">
@@ -60,7 +60,7 @@
                         </div>
 
               </p-dialog>
-              
+
               <div class="ui-g">
                     <div class="ui-g-12 ui-md-12 ui-fluid">
                         <p-confirmDialog #cd header="Confirmar" icon="pi pi-exclamation-triangle">
@@ -71,7 +71,7 @@
                         </p-confirmDialog>
                     </div>
                 </div>
-                
+
                 <div class="ui-g">
                     <div class="ui-g-12 ui-md-12">
                             <p-toast position="bottom-left"></p-toast>

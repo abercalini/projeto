@@ -1,0 +1,42 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="salvar(inputFormulario)">
+    <p-fieldset legend="Cadastro de Tipo Culto por Ministério">
+      <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <span class="md-inputfield">
+                    <input type="text" pInputText class="ng-dirty ng-invalid" [(ngModel)]="culto.descricao" name="descricao" required/>
+                    <label>Descrição *</label>
+                 </span>
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <span class="md-inputfield">
+                    <input type="text" pInputText class="ng-dirty ng-invalid" [(ngModel)]="culto.objetivo" name="objetivo" required/>
+                    <label>Objetivo/Observação ou data do culto *</label>
+                </span>
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-6 ui-md-2 ui-fluid">
+                <button pButton type="submit" label="Salvar" icon="pi pi-save" class="ui-button-success" [disabled]="!inputFormulario.valid"></button>
+            </div>
+            <div class="ui-g-6 ui-md-2 ui-fluid">
+                <button pButton type="button" label="Voltar" icon="pi pi-arrow-left"></button>
+            </div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12">
+                <p-toast position="bottom-left"></p-toast>
+            </div>
+        </div>
+    </p-fieldset>
+</form>

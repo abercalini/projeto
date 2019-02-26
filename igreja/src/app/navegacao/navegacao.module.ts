@@ -1,3 +1,4 @@
+import { CultoCadastroComponent } from './../culto/culto-cadastro/culto-cadastro.component';
 import { VisitantePesquisaComponent } from './../visitante/visitante-pesquisa/visitante-pesquisa.component';
 import { MembroPesquisaComponent } from './../membro/membro-pesquisa/membro-pesquisa.component';
 import { MembroCadastroComponent } from './../membro/membro-cadastro/membro-cadastro.component';
@@ -73,6 +74,8 @@ const router: Routes = [
 
   {path: 'caixa/novo', component: CaixaCadastroComponent},
   {path: 'caixa', component: CaixaPesquisaComponent},
+
+  {path: 'culto/novo', component: CultoCadastroComponent},
 
   {path: 'naoautorizado', component: NaoAutorizadoComponent},
   {path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},

@@ -1,3 +1,5 @@
+import { CultoService } from './culto/culto.service';
+import { CultoModule } from './culto/culto.module';
 import { AppTopBarComponent } from './app.topbar.component';
 import { MembroModule } from './membro/membro.module';
 import { FuncaomembroModule } from './funcaomembro/funcaomembro.module';
@@ -74,6 +76,7 @@ registerLocaleData(localePt);
     NaoAutorizadoModule,
     CaixaModule,
     EscolherIgrejaModule,
+    CultoModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},
@@ -91,7 +94,7 @@ registerLocaleData(localePt);
 
     SegurancaService, JwtHelperService, MessageService, HistoricoService, FornecedorService, ConfirmationService,
     Title, DistritoService, IgrejaService, CargoministroService, SituacaomembroService, TipoadesaoService, FuncaomembroService,
-    MembroService, VisitanteService, CaixaService
+    MembroService, VisitanteService, CaixaService, CultoService
   ],
   bootstrap: [AppComponent]
 })
