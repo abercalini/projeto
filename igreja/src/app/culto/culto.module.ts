@@ -8,10 +8,13 @@ import { FieldsetModule } from 'primeng/fieldset';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
+import { CultoPesquisaComponent } from './culto-pesquisa/culto-pesquisa.component';
+import { TableModule } from 'primeng/table';
+
 
 
 @NgModule({
-  declarations: [CultoCadastroComponent],
+  declarations: [CultoCadastroComponent, CultoPesquisaComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -19,7 +22,8 @@ import { ToastModule } from 'primeng/toast';
     FieldsetModule,
     InputTextModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    TableModule
   ]
 })
 export class CultoModule { }

@@ -1,0 +1,45 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="pesquisar()">
+    <p-fieldset legend="Lista de cultos">
+
+    <br>
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-10 ui-fluid">
+            <span class="md-inputfield">
+                <input type="text" pInputText [(ngModel)]="cultoFilter.descricao" name="descricao" />
+                <label>Pesquisar por descrição ou por objetivo</label>
+            </span>
+        </div>
+        <div class="ui-g-6 ui-md-2 ui-fluid">
+                <button pButton type="submit" label="Pesquisar" icon="pi pi-search"></button>
+        </div>    
+    </div>    
+
+
+      <div class="ui-g">
+          <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-table [value]="cultos" [paginator]="true" [responsive]="true" [rows]="10" >
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th style="width: 100px;">#</th>
+                      <th>Descrição</th>
+                      <th>Objetivo</th>
+                      <th>Opções</th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-c>
+                  <tr>
+                      <td>{{c.codigo}}</td>
+                      <td>{{c.descricao}}</td>
+                      <td>{{c.objetivo}}</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+          </div>
+      </div>
+    </p-fieldset>  
+</form>

@@ -28,6 +28,7 @@ import { NaoAutorizadoComponent } from '../nao-autorizado/nao-autorizado/nao-aut
 import { EscolherIgrejaComponent } from '../escolher-igreja/escolher-igreja/escolher-igreja.component';
 import { CaixaCadastroComponent } from '../caixa/caixa-cadastro/caixa-cadastro.component';
 import { CaixaPesquisaComponent } from '../caixa/caixa-pesquisa/caixa-pesquisa.component';
+import { CultoPesquisaComponent } from '../culto/culto-pesquisa/culto-pesquisa.component';
 
 const router: Routes = [
   {path: 'login', component: LoginComponent},
@@ -76,6 +77,7 @@ const router: Routes = [
   {path: 'caixa', component: CaixaPesquisaComponent},
 
   {path: 'culto/novo', component: CultoCadastroComponent},
+  {path: 'culto', component: CultoPesquisaComponent},
 
   {path: 'naoautorizado', component: NaoAutorizadoComponent},
   {path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},
