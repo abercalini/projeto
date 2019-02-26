@@ -120,7 +120,13 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                 items: [
                     {label: 'Caixa', icon: 'attach_money', routerLink: ['/caixa']}
                 ]
-            },  
+            },
+            {
+                label: 'Tesouraria', icon: 'attach_money',
+                items: [
+                    {label: 'Dizimo', icon: 'thumb_up', routerLink: ['/dizimo/novo']}
+                ]
+            }, 
             {
                 label: 'Cadastros', icon: 'list',
                 items: [
@@ -141,9 +147,15 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                 ]
             },
             {
+                label: 'Configurar Tesouraria', icon: 'build',
+                items: [
+                    {label: 'Culto', icon: 'group', routerLink: ['/culto']},
+                ]
+            },
+            {
                 label: 'Historico', icon: 'timer_10',
                 items: [
-                    {label: 'Log do Sistema', icon: 'timer', routerLink: ['/historico']}
+                    {label: 'Log do Sistema', icon: 'timer', routerLink: ['/historico']},
                 ]
 
             }

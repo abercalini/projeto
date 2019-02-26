@@ -1,0 +1,68 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #formularioInput="ngForm" (ngSubmit)="salvar(formularioInput)">
+    <p-fieldset legend="Cadastro do Dizimo">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+              <label>Membro que duou o dizimo *</label>
+              <p-dropdown [options]="membros" [(ngModel)]="dizimo.membro.codigo" name="dizimo" placeholder="Selecione..." [autoWidth]="false"
+                   required class="ng-dirty ng-invalid" [filter]="true"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <button pButton type="button" icon="pi pi-plus" pTooltip="Adicionar Membro" tooltipPosition="top" routerLink="/membro/novo"></button>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Evento em que ocorreu o dizimo *</label>
+                <p-dropdown [options]="cultos" [(ngModel)]="dizimo.tipoCulto.codigo" name="culto" placeholder="Selecione..." [autoWidth]="false"
+                   required class="ng-dirty ng-invalid" [filter]="true"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <button pButton type="button" icon="pi pi-plus" pTooltip="Adicionar Culto" tooltipPosition="top" routerLink="/culto/novo"></button>
+            </div>
+        </div>    
+
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Forma de Pagamento *</label>
+                <p-dropdown [options]="pagamentos" [(ngModel)]="dizimo.formaDePagamento" name="pagamento" placeholder="Selecione..." [autoWidth]="false"
+                   required class="ng-dirty ng-invalid" [filter]="true"></p-dropdown>
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <span class="md-inputfield">
+                    <input currencyMask [(ngModel)]="dizimo.valor" pInputText [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="valor" required class="ng-dirty ng-invalid"/>
+                    <label>Valor *</label>
+                </span>    
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Caixas Abertos *</label>
+                <p-dropdown [options]="caixas"  placeholder="Selecione..." [autoWidth]="false" required [filter]="true" [(ngModel)]="caixaSelecionado" name="caixa" ></p-dropdown>
+            </div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-6 ui-md-2 ui-fluid">
+                <button pButton type="submit" label="Salvar" icon="pi pi-save" class="ui-button-success" ></button>
+            </div>
+            <div class="ui-g-6 ui-md-2 ui-fluid">
+                <button pButton type="button" label="Voltar" icon="pi pi-arrow-left"></button>
+            </div>
+        </div>
+        
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <p-toast position="bottom-left"></p-toast>
+            </div>
+        </div>
+        
+    </p-fieldset>
+</form>

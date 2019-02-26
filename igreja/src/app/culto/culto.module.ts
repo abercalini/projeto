@@ -10,6 +10,8 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { CultoPesquisaComponent } from './culto-pesquisa/culto-pesquisa.component';
 import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 
@@ -23,7 +25,9 @@ import { TableModule } from 'primeng/table';
     InputTextModule,
     ButtonModule,
     ToastModule,
-    TableModule
+    TableModule,
+    TooltipModule,
+    ConfirmDialogModule
   ]
 })
 export class CultoModule { }

@@ -1,4 +1,3 @@
-import { CultoService } from './culto/culto.service';
 import { CultoModule } from './culto/culto.module';
 import { AppTopBarComponent } from './app.topbar.component';
 import { MembroModule } from './membro/membro.module';
@@ -19,12 +18,18 @@ import { SituacaomembroModule } from './situacaomembro/situacaomembro.module';
 import { NaoAutorizadoModule } from './nao-autorizado/nao-autorizado.module';
 import { CaixaModule } from './caixa/caixa.module';
 import { EscolherIgrejaModule } from './escolher-igreja/escolher-igreja.module';
+import { DizimoModule } from './dizimo/dizimo.module';
+import { VisitanteModule } from './visitante/visitante.module';
 
 
 import { AppComponent } from './app.component';
 import { AppMenuComponent, AppSubMenuComponent } from './app.menu.component';
 
 import { ScrollPanel } from 'primeng/primeng';
+
+import { RefreshTokenInterceptor } from './seguranca/RefreshTokenInterceptor';
+import { HttpErrorInterceptor } from './seguranca/HttpErrorInterceptor';
+
 
 import { SegurancaService } from './seguranca/seguranca.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -36,16 +41,16 @@ import { IgrejaService } from './igreja/igreja.service';
 import { CargoministroService } from './cargoministro/cargoministro.service';
 import { TipoadesaoService } from './tipoadesao/tipoadesao.service';
 import { SituacaomembroService } from './situacaomembro/situacaomembro.service';
+import { CultoService } from './culto/culto.service';
+import { FuncaomembroService } from './funcaomembro/funcaomembro.service';
+import { MembroService } from './membro/membro.service';
+import { VisitanteService } from './visitante/visitante.service';
+import { CaixaService } from './caixa/caixa.service';
+
 
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { FuncaomembroService } from './funcaomembro/funcaomembro.service';
-import { MembroService } from './membro/membro.service';
-import { VisitanteModule } from './visitante/visitante.module';
-import { VisitanteService } from './visitante/visitante.service';
-import { RefreshTokenInterceptor } from './seguranca/RefreshTokenInterceptor';
-import { HttpErrorInterceptor } from './seguranca/HttpErrorInterceptor';
-import { CaixaService } from './caixa/caixa.service';
+import { DizimoService } from './dizimo/dizimo.service';
 
 registerLocaleData(localePt);
 
@@ -76,7 +81,8 @@ registerLocaleData(localePt);
     NaoAutorizadoModule,
     CaixaModule,
     EscolherIgrejaModule,
-    CultoModule
+    CultoModule,
+    DizimoModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},
@@ -94,7 +100,7 @@ registerLocaleData(localePt);
 
     SegurancaService, JwtHelperService, MessageService, HistoricoService, FornecedorService, ConfirmationService,
     Title, DistritoService, IgrejaService, CargoministroService, SituacaomembroService, TipoadesaoService, FuncaomembroService,
-    MembroService, VisitanteService, CaixaService, CultoService
+    MembroService, VisitanteService, CaixaService, CultoService, DizimoService
   ],
   bootstrap: [AppComponent]
 })

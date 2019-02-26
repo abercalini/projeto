@@ -26,9 +26,21 @@ export class CaixaService {
       .map(response => response);
   }
 
+  atualizarSaldo(codigo: any, valor: number): Observable<Caixa> {
+    this.salvarOrEditar = true;
+    console.log('atualizar saldo');
+    
+    return this.httpClient.put<Caixa>(`${this.baseUrl}/atualizarsaldo/${codigo}`, JSON.stringify(valor), {headers: this.adicionarHeadersSalvar()});
+  }
+
   listarTodos(codigo: any): Observable<any> {
     this.salvarOrEditar = false;
     return this.httpClient.get<any>(`${this.baseUrl}/filtrarporigreja/${codigo}`, {headers: this.adicionarHeadersSalvar()}).map(response => response);
+  }
+
+  verificarCaixasAbertos(codigo: any): Observable<any> {
+    this.salvarOrEditar = false;
+    return this.httpClient.get<any>(`${this.baseUrl}/verificarcaixas/${codigo}`, {headers: this.adicionarHeadersSalvar()}).map(response => response);
   }
 
 

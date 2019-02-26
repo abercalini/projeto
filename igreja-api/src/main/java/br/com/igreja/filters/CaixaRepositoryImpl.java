@@ -35,5 +35,23 @@ public class CaixaRepositoryImpl implements CaixaRepositoryQuery {
 		
 		return manager.createQuery(query).getResultList();
 	}
+	
+
+	@Override
+	public List<Caixa> verificarCaixa(Long codigo) {
+		CriteriaBuilder criteriaBuilder = manager.getCriteriaBuilder();
+		CriteriaQuery<Caixa> query = criteriaBuilder.createQuery(Caixa.class);
+		Root<Caixa> from = query.from(Caixa.class);
+		
+		Join<Caixa, Igreja> join = from.join("igreja", JoinType.INNER);
+		
+		List<Predicate> predicates = new ArrayList<>();
+		
+		predicates.add(criteriaBuilder.and(criteriaBuilder.equal(join.get("codigo"), codigo), criteriaBuilder.equal(from.get("status"), true)));
+		
+		query.where(predicates.toArray(new Predicate[predicates.size()]));
+		
+		return manager.createQuery(query).getResultList();
+	}
 
 }

@@ -18,6 +18,16 @@ export class CultoService {
       .map(response => response);
   }
 
+  editar(culto: Culto): Observable<Culto> {
+    return this.httpClient.put<Culto>(`${this.baseUrl}/${culto.codigo}`, JSON.stringify(culto), {headers: this.adicionarHeadersSalvar()})
+      .map(response => response);
+  }
+
+
+  excluir(codigo: number): Observable<Culto> {
+    return this.httpClient.delete<Culto>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()});
+  }
+
   listarTodos(cultoFilter: CultoFilter , codigo: any): Observable<any> {
     
     let params = new HttpParams();
@@ -30,6 +40,11 @@ export class CultoService {
     return this.httpClient.get<any>(`${this.baseUrl}/filtrarporigreja/${codigo}`, {params, headers: this.adicionarHeaders()})
       .map(response => response);
   }
+
+  buscarPorCodigo(codigo: number): Observable<Culto> {
+    return this.httpClient.get<Culto>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()}).map(response => response);
+  }
+
 
   adicionarHeadersSalvar() {
     let headers = new HttpHeaders();
