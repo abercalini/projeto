@@ -51,6 +51,8 @@ import { CaixaService } from './caixa/caixa.service';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { DizimoService } from './dizimo/dizimo.service';
+import { OfertaModule } from './oferta/oferta.module';
+import { OfertaService } from './oferta/oferta.service';
 
 registerLocaleData(localePt);
 
@@ -82,7 +84,8 @@ registerLocaleData(localePt);
     CaixaModule,
     EscolherIgrejaModule,
     CultoModule,
-    DizimoModule
+    DizimoModule,
+    OfertaModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},
@@ -100,7 +103,7 @@ registerLocaleData(localePt);
 
     SegurancaService, JwtHelperService, MessageService, HistoricoService, FornecedorService, ConfirmationService,
     Title, DistritoService, IgrejaService, CargoministroService, SituacaomembroService, TipoadesaoService, FuncaomembroService,
-    MembroService, VisitanteService, CaixaService, CultoService, DizimoService
+    MembroService, VisitanteService, CaixaService, CultoService, DizimoService, OfertaService
   ],
   bootstrap: [AppComponent]
 })

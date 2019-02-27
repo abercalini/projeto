@@ -43,7 +43,14 @@ public class CaixaResource {
 	@PutMapping("/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_EDITAR_OBJETO')")
 	public ResponseEntity<Caixa> atualizar(@PathVariable Long codigo, @RequestBody boolean status) {
+		
 		Caixa caixaRetornado = caixaRepository.findOne(codigo);
+		
+		//Validando o valor do fechamento do caixa
+		if (status == false) {
+			caixaRetornado.setSaldoFechamento(caixaRetornado.getSaldoAbertura().add(caixaRetornado.getValorReceita()).subtract(caixaRetornado.getValorDespesas()));
+		}
+		
 		caixaRetornado.setStatus(status);
 		caixaRepository.save(caixaRetornado);
 		return ResponseEntity.status(HttpStatus.OK).body(caixaRetornado);
@@ -61,6 +68,7 @@ public class CaixaResource {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void atualizar(@PathVariable Long codigo, @RequestBody BigDecimal valor) {
 		Caixa caixaRetornado = caixaRepository.findOne(codigo);
+		// Validando o valor da receita do caixa
 		caixaRetornado.setValorReceita(valor = valor.add(caixaRetornado.getValorReceita()));
 		caixaRepository.save(caixaRetornado);
 	}

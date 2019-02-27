@@ -14,9 +14,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
-@Table(name = "dizimo")
+@Table(name = "oferta")
 @Entity
-public class Dizimo implements Serializable {
+public class Oferta implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,79 +41,101 @@ public class Dizimo implements Serializable {
 	private LocalDateTime dataDizimo;
 	
 	private BigDecimal valor;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "codigo_caixa")
+	private Caixa caixa;
+	
+	
 
 	public Long getCodigo() {
 		return codigo;
 	}
 
-
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-
 
 	public Membro getMembro() {
 		return membro;
 	}
 
-
 	public void setMembro(Membro membro) {
 		this.membro = membro;
 	}
-
 
 	public TipoCulto getTipoCulto() {
 		return tipoCulto;
 	}
 
-
 	public void setTipoCulto(TipoCulto tipoCulto) {
 		this.tipoCulto = tipoCulto;
 	}
-
 
 	public Igreja getIgreja() {
 		return igreja;
 	}
 
-
 	public void setIgreja(Igreja igreja) {
 		this.igreja = igreja;
 	}
-
-
-
 
 	public String getFormaDePagamento() {
 		return formaDePagamento;
 	}
 
-
 	public void setFormaDePagamento(String formaDePagamento) {
 		this.formaDePagamento = formaDePagamento;
 	}
-
-
-	public BigDecimal getValor() {
-		return valor;
-	}
-
-
-	public void setValor(BigDecimal valor) {
-		this.valor = valor;
-	}
-
 
 	public LocalDateTime getDataDizimo() {
 		return dataDizimo;
 	}
 
-
 	public void setDataDizimo(LocalDateTime dataDizimo) {
 		this.dataDizimo = dataDizimo;
 	}
 
+	public BigDecimal getValor() {
+		return valor;
+	}
 
+	public void setValor(BigDecimal valor) {
+		this.valor = valor;
+	}
+
+	public Caixa getCaixa() {
+		return caixa;
+	}
+
+	public void setCaixa(Caixa caixa) {
+		this.caixa = caixa;
+	}
+
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Oferta other = (Oferta) obj;
+		if (codigo == null) {
+			if (other.codigo != null)
+				return false;
+		} else if (!codigo.equals(other.codigo))
+			return false;
+		return true;
+	}
 	
 }

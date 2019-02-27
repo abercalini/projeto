@@ -7,25 +7,34 @@
     <p-fieldset legend="Lista de Dizimo recebido">
         <div class="ui-g">
             <div class="ui-g-12 ui-md-12 ui-fluid">
-                <p-table [value]="dizimos">
+                <p-table [value]="dizimos" [paginator]="true" [responsive]="true" [rows]="30">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th>#</th>
-                            <th>Pagamento</th>
-                            <th>Valor</th>
-                            <th>Membro</th>
-                            <th>Culto</th>
+                            <th style="width: 80px;">#</th>
+                            <th style="width: 200px;">Pagamento</th>
+                            <th style="width: 80px;">Valor</th>
+                            <th style="width: 150px;">Data Pagamento</th>
+                            <th style="width: 300px;">Membro</th>
+                            <th style="width: 300px;">Culto</th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-d>
                         <tr>
                             <td>{{d.codigo}}</td>
-                            <td>{{d.forma_de_pagamento}}</td>
+                            <td>{{d.formaDePagamento}}</td>
+                            <td>{{d.valor | number: '1.2-2'}}</td>
+                            <td>{{d.dataDizimo | date: 'dd/MM/yyyy h:mm'}}</td>
                             <td>{{d.membro.nome}}</td>
-                            <td>{{d.culto.descricao}}</td>
+                            <td>{{d.tipoCulto.descricao}}</td>
                         </tr>
                     </ng-template>
                 </p-table>
+            </div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <a href="#" routerLink="/dizimo/novo">Efetuar Dizimo</a>
             </div>
         </div>
     </p-fieldset>

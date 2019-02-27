@@ -1,21 +1,27 @@
-export class Dizimo {
+export class Oferta {
     codigo: number;
     membro = new Membro();
-    tipoCulto = new TipoCulto();
+    tipoCulto = new Culto();
     igreja = new Igreja();
     formaDePagamento: string;
-    valor: number;
     dataDizimo: Date;
+    valor: number;
+    caixa = new Caixa();
 }
 
 export class Membro {
     codigo: number;
 }
 
-export class TipoCulto {
+export class Culto {
     codigo: number;
 }
 
 export class Igreja {
     codigo: any;
 }
+
+export class Caixa {
+    codigo: any;
+}
+

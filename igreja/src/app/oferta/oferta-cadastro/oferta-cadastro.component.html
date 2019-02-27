@@ -1,0 +1,59 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="salvar(inputFormulario)">
+    <p-fieldset legend="Efetuar oferta">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Membro que realizaou a oferta *</label>
+                <p-dropdown [options]="membros" [(ngModel)]="oferta.membro.codigo" name="membro" [filter]="true" [autoWidth]="false" required
+                    placeholder="Selecione..." class="ng-dirty ng-invalid"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <button pButton type="button" icon="pi pi-plus" routerLink="/membro/novo" pTooltip="Adicionar membro" tooltipPosition="top"></button>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Culto que foi realizada a oferta *</label>
+                <p-dropdown [options]="cultos" [(ngModel)]="oferta.tipoCulto.codigo" name="cultos" [filter]="true" [autoWidth]="false" required
+                    placeholder="Selecione..." class="ng-dirty ng-invalid"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <button pButton type="button" icon="pi pi-plus" routerLink="/culto/novo" pTooltip="Adicionar culto" tooltipPosition="top"></button>
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Forma de pagamento *</label>
+                <p-dropdown [options]="pagamentos" [(ngModel)]="oferta.formaDePagamento" name="pagamentos" [filter]="true" [autoWidth]="false" required
+                    placeholder="Selecione..." class="ng-dirty ng-invalid"></p-dropdown>
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Data da Oferta *</label>
+                <p-calendar [(ngModel)]="oferta.dataDizimo" name="data" [inline]="true" dateFormat="dd/mm/yy" showTime="true" hourFormat="24" required ></p-calendar>
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <span class="md-inputfield">
+                    <input currencyMask [(ngModel)]="oferta.valor" pInputText [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="valor" required class="ng-dirty ng-invalid"/>
+                    <label>Valor *</label>
+                </span>
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Caixas Abertos *</label>
+            </div>
+        </div>
+
+    
+    </p-fieldset>
+</form>

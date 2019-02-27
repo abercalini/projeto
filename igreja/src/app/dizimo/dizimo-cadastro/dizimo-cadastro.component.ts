@@ -27,6 +27,8 @@ export class DizimoCadastroComponent implements OnInit {
 
   caixaSelecionado = [];
 
+ // caixaSelecionado = [];
+
   constructor(private membroService: MembroService, private cultoService: CultoService, private caixaService: CaixaService,
     private dizimoService: DizimoService, private messageService: MessageService, private historicoService: HistoricoService,
     private segurancaService: SegurancaService) { }
@@ -61,7 +63,13 @@ export class DizimoCadastroComponent implements OnInit {
       {label: 'CARTAO DE CREDITO', value: 'CARTAO_DE_CREDITO'},
       {label: 'CARTAO DE DEBITO', value: 'CARTAO_DE_DEBITO'},
       {label: 'DINHEIRO', value: 'DINHEIRO'},
+      {label: 'DEPOSITO', value: 'DEPOSITO'},
+      {label: 'CHEQUE', value: 'CHEQUE'}
     ];
+  }
+
+  testeData() {
+    console.log(this.dizimo.dataDizimo);
   }
 
   salvar(form: NgForm) {
