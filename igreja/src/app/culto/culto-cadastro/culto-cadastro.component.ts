@@ -30,7 +30,7 @@ export class CultoCadastroComponent implements OnInit {
     } else {
     this.titleService.setTitle('Cadastro do culto');
     }
-  }  
+  }
 
   salvar(form: NgForm) {
     this.culto.igreja.codigo = localStorage.getItem('codigo_igreja');
@@ -52,7 +52,7 @@ export class CultoCadastroComponent implements OnInit {
   adicionarMensagem(severity: string, detail: string, summary: string) {
     this.messageService.add({severity: severity, detail: detail, summary: summary});
   }
-  
+
   atualizarTitulo() {
     this.titleService.setTitle('Edição do culto ' + this.culto.descricao);
   }
@@ -73,7 +73,7 @@ export class CultoCadastroComponent implements OnInit {
     if (!this.editando()) {
       this.salvar(form);
     } else {
-      this.editar();      
+      this.editar();
     }
   }
 }

@@ -1,0 +1,32 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSumbit)="pesquisar()">
+    <p-fieldset legend="Lista de Dizimo recebido">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <p-table [value]="dizimos">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>#</th>
+                            <th>Pagamento</th>
+                            <th>Valor</th>
+                            <th>Membro</th>
+                            <th>Culto</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-d>
+                        <tr>
+                            <td>{{d.codigo}}</td>
+                            <td>{{d.forma_de_pagamento}}</td>
+                            <td>{{d.membro.nome}}</td>
+                            <td>{{d.culto.descricao}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </p-fieldset>
+</form>

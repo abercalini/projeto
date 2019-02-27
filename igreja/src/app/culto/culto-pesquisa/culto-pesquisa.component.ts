@@ -22,7 +22,8 @@ export class CultoPesquisaComponent implements OnInit {
   @ViewChild('tabela') tabela;
 
   constructor(private titleService: Title, private cultoService: CultoService, private messageService: MessageService,
-    private historicoService: HistoricoService, private segurancaService: SegurancaService, private confirmationService: ConfirmationService) { }
+    private historicoService: HistoricoService, private segurancaService: SegurancaService,
+    private confirmationService: ConfirmationService) { }
 
   ngOnInit() {
     this.titleService.setTitle('Pesquisa do culto');
@@ -33,7 +34,7 @@ export class CultoPesquisaComponent implements OnInit {
     this.cultoService.listarTodos(this.cultoFilter, localStorage.getItem('codigo_igreja')).subscribe(response => {
       this.cultos = response;
       console.log(response);
-    }); 
+    });
   }
 
   excluir(codigo: number) {

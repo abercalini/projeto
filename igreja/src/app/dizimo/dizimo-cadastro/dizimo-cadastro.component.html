@@ -22,7 +22,7 @@
             <div class="ui-g-12 ui-md-2 ui-fluid">
                 <button pButton type="button" icon="pi pi-plus" pTooltip="Adicionar Culto" tooltipPosition="top" routerLink="/culto/novo"></button>
             </div>
-        </div>    
+        </div>
 
         <br>
         <div class="ui-g">
@@ -38,7 +38,7 @@
                 <span class="md-inputfield">
                     <input currencyMask [(ngModel)]="dizimo.valor" pInputText [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="valor" required class="ng-dirty ng-invalid"/>
                     <label>Valor *</label>
-                </span>    
+                </span>
             </div>
         </div>
         <br>
@@ -51,18 +51,18 @@
 
         <div class="ui-g">
             <div class="ui-g-6 ui-md-2 ui-fluid">
-                <button pButton type="submit" label="Salvar" icon="pi pi-save" class="ui-button-success" ></button>
+                <button pButton type="submit" label="Salvar" icon="pi pi-save" class="ui-button-success" [disabled]="formularioInput.invalid" ></button>
             </div>
             <div class="ui-g-6 ui-md-2 ui-fluid">
                 <button pButton type="button" label="Voltar" icon="pi pi-arrow-left"></button>
             </div>
         </div>
-        
+
         <div class="ui-g">
             <div class="ui-g-12 ui-md-12 ui-fluid">
                 <p-toast position="bottom-left"></p-toast>
             </div>
         </div>
-        
+
     </p-fieldset>
 </form>

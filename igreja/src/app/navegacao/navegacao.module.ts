@@ -30,6 +30,7 @@ import { CaixaCadastroComponent } from '../caixa/caixa-cadastro/caixa-cadastro.c
 import { CaixaPesquisaComponent } from '../caixa/caixa-pesquisa/caixa-pesquisa.component';
 import { CultoPesquisaComponent } from '../culto/culto-pesquisa/culto-pesquisa.component';
 import { DizimoCadastroComponent } from '../dizimo/dizimo-cadastro/dizimo-cadastro.component';
+import { DizimoPesquisaComponent } from '../dizimo/dizimo-pesquisa/dizimo-pesquisa.component';
 
 const router: Routes = [
   {path: 'login', component: LoginComponent},
@@ -82,6 +83,7 @@ const router: Routes = [
   {path: 'culto/:codigo', component: CultoCadastroComponent},
 
   {path: 'dizimo/novo', component: DizimoCadastroComponent},
+  {path: 'dizimo', component: DizimoPesquisaComponent},
 
   {path: 'naoautorizado', component: NaoAutorizadoComponent},
   {path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},

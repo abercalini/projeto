@@ -22,16 +22,16 @@
                               </tr>
                           </ng-template>
                           <ng-template pTemplate="body" let-c>
-                              <tr>
-                                  <td>{{c.codigo}}</td>
-                                  <td>{{c.nome}}</td>
-                                  <td>{{c.dataAbertura | date: 'dd/MM/yyyy'}}</td>
-                                  <td>{{c.dataFechamento | date: 'dd/MM/yyyy'}}</td>
-                                  <td>{{c.saldoAbertura | number: '1.2-2'}}</td>
-                                  <td>{{c.valorReceita | number: '1.2-2'}}</td>
-                                  <td>{{c.valorDespesas | number: '1.2-2'}}</td>
-                                  <td>{{c.saldoFechamento | number: '1.2-2'}}</td>
-                                  <td><a href="#" routerLink="/caixa" #status (click)="showDialog(c.status, c.codigo)" style="color: black;" pTooltip="{{c.status === false ? 'Abrir Caixa' : 'Fechar Caixa'}}" tooltipPosition="top">{{c.status === false ? 'Fechado' : 'Aberto'}}</a></td>
+                              <tr >
+                                  <td [style.backgroundColor]="c.status === false ? 'PeachPuff' : 'LawnGreen'">{{c.codigo}}</td>
+                                  <td [style.backgroundColor]="c.status === false ? 'PeachPuff' : 'LawnGreen'">{{c.nome}}</td>
+                                  <td [style.backgroundColor]="c.status === false ? 'PeachPuff' : 'LawnGreen'">{{c.dataAbertura | date: 'dd/MM/yyyy'}}</td>
+                                  <td [style.backgroundColor]="c.status === false ? 'PeachPuff' : 'LawnGreen'">{{c.dataFechamento | date: 'dd/MM/yyyy'}}</td>
+                                  <td [style.backgroundColor]="c.status === false ? 'PeachPuff' : 'LawnGreen'">{{c.saldoAbertura | number: '1.2-2'}}</td>
+                                  <td [style.backgroundColor]="c.status === false ? 'PeachPuff' : 'LawnGreen'">{{c.valorReceita | number: '1.2-2'}}</td>
+                                  <td [style.backgroundColor]="c.status === false ? 'PeachPuff' : 'LawnGreen'">{{c.valorDespesas | number: '1.2-2'}}</td>
+                                  <td [style.backgroundColor]="c.status === false ? 'PeachPuff' : 'LawnGreen'">{{c.saldoFechamento | number: '1.2-2'}}</td>
+                                  <td [style.backgroundColor]="c.status === false ? 'PeachPuff' : 'LawnGreen'"><a href="#" routerLink="/caixa" #status (click)="showDialog(c.status, c.codigo)" style="color: black;" pTooltip="{{c.status === false ? 'Abrir Caixa' : 'Fechar Caixa'}}" tooltipPosition="top">{{c.status === false ? 'Fechado' : 'Aberto'}}</a></td>
                                 </tr>
                           </ng-template>
                         </p-table>

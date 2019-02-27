@@ -21,8 +21,8 @@ export class CaixaPesquisaComponent implements OnInit {
   status: boolean;
   codigo: number;
 
-  constructor(private caixaService: CaixaService, private confirmationService: ConfirmationService, private historicoService: HistoricoService,
-    private segurancaService: SegurancaService, private messageService: MessageService) { }
+  constructor(private caixaService: CaixaService, private confirmationService: ConfirmationService,
+    private historicoService: HistoricoService, private segurancaService: SegurancaService, private messageService: MessageService) { }
 
   ngOnInit() {
     this.listarTodos();
@@ -50,12 +50,12 @@ export class CaixaPesquisaComponent implements OnInit {
           this.messageService.add({severity: 'success', detail: 'Alterado com sucesso', summary: 'Alterado com sucesso'});
           this.historicoService.salvar('Alterou um caixa ', this.segurancaService.nomeUsuario).subscribe();
           this.listarTodos();
-        }); 
+        });
       }
     });
   }
 
-  
+
 
 
 

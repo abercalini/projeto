@@ -61,21 +61,19 @@ export class DizimoCadastroComponent implements OnInit {
       {label: 'CARTAO DE CREDITO', value: 'CARTAO_DE_CREDITO'},
       {label: 'CARTAO DE DEBITO', value: 'CARTAO_DE_DEBITO'},
       {label: 'DINHEIRO', value: 'DINHEIRO'},
-    ]
+    ];
   }
 
   salvar(form: NgForm) {
     this.dizimo.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.dizimoService.salvar(this.dizimo).subscribe(response => {
-      console.log(response);
 
       this.caixaService.atualizarSaldo(this.caixaSelecionado, response.valor).subscribe();
-      this.messageService.add({severity: 'success', detail:'Dizimo efetuado com sucesso', summary:'Dizimo efetuado com sucesso'});
+      this.messageService.add({severity: 'success', detail: 'Dizimo efetuado com sucesso', summary: 'Dizimo efetuado com sucesso'});
       this.historicoService.salvar('Efetuou um dizimo valor R$' + response.valor, this.segurancaService.nomeUsuario).subscribe();
-     
 
-      form.reset();
       this.dizimo = new Dizimo();
+      form.reset();
     });
   }
 
