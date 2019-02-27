@@ -25,7 +25,7 @@ import { VisitanteModule } from './visitante/visitante.module';
 import { AppComponent } from './app.component';
 import { AppMenuComponent, AppSubMenuComponent } from './app.menu.component';
 
-import { ScrollPanel } from 'primeng/primeng';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 import { RefreshTokenInterceptor } from './seguranca/RefreshTokenInterceptor';
 import { HttpErrorInterceptor } from './seguranca/HttpErrorInterceptor';
@@ -59,7 +59,6 @@ registerLocaleData(localePt);
 @NgModule({
   declarations: [
     AppComponent,
-    ScrollPanel,
     AppMenuComponent,
     AppSubMenuComponent,
     AppTopBarComponent
@@ -85,7 +84,9 @@ registerLocaleData(localePt);
     EscolherIgrejaModule,
     CultoModule,
     DizimoModule,
-    OfertaModule
+    OfertaModule,
+    ScrollPanelModule,
+
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},
