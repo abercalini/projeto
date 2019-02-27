@@ -5,6 +5,7 @@ import { FuncaoMembro } from './funcaoMembro';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -12,9 +13,11 @@ import 'rxjs/add/operator/filter';
 })
 export class FuncaomembroService {
 
-  baseUrl = 'http://localhost:8080/funcaomembro';
+  baseUrl: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { 
+    this.baseUrl = `${environment.apiUrl}/funcaomembro`;
+  }
 
   salvar(funcaoMembro: FuncaoMembro): Observable<FuncaoMembro> {
     return this.httpClient.post<FuncaoMembro>(this.baseUrl, JSON.stringify(funcaoMembro), {headers: this.adicionarHeadersSalvar()})

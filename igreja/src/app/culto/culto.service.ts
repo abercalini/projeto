@@ -3,15 +3,18 @@ import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CultoFilter } from './cultoFilter';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CultoService {
 
-  baseUrl = 'http://localhost:8080/tipoculto';
+  baseUrl: string;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = `${environment.apiUrl}/tipoculto`;
+  }
 
   salvar(culto: Culto): Observable<Culto> {
     return this.httpClient.post<Culto>(`${this.baseUrl}`, JSON.stringify(culto), {headers: this.adicionarHeadersSalvar()})

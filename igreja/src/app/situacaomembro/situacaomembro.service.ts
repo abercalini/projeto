@@ -4,6 +4,7 @@ import { SituacaoMembro } from './situacaomembro';
 
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -11,9 +12,11 @@ import 'rxjs/add/operator/map';
 })
 export class SituacaomembroService {
 
-  baseUrl = 'http://localhost:8080/situacaomembro';
+  baseUrl: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = `${environment.apiUrl}/situacaomembro`;
+  }
 
   salvar(situacaoMembro: SituacaoMembro): Observable<SituacaoMembro> {
     return this.httpClient.post<SituacaoMembro>(this.baseUrl, JSON.stringify(situacaoMembro), {headers : this.cadastrarHeaders()})

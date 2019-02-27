@@ -6,6 +6,7 @@ import { Visitante } from './visitante';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
+import { environment } from '../../environments/environment';
 
 
 
@@ -14,9 +15,11 @@ import 'rxjs/add/operator/filter';
 })
 export class VisitanteService {
 
-  baseUrl = 'http://localhost:8080/visitantes';
+  baseUrl: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = `${environment.apiUrl}/visitantes`;
+  }
 
   salvar(visitante: Visitante): Observable<Visitante> {
     return this.httpClient.post<Visitante>(this.baseUrl, JSON.stringify(visitante), {headers: this.adicionarHeadersSalvar()})

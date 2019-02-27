@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Oferta } from './oferta';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class OfertaService {
 
   baseUrl = 'http://localhost:8080/oferta';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = `${environment.apiUrl}/oferta`;
+  }
 
   salvar(oferta: Oferta): Observable<Oferta> {
     return this.httpClient.post<Oferta>(`${this.baseUrl}`, JSON.stringify(oferta), {headers: this.adicionarHeadersSalvar()})

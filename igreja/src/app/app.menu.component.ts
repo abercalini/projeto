@@ -158,6 +158,12 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                     {label: 'Log do Sistema', icon: 'timer', routerLink: ['/historico']},
                 ]
 
+            },
+            {
+                label: 'Sair', icon: 'material_icons',
+                items: [
+                    {label: 'Sair', icon: 'material_icons', routerLink: ['/login']}
+                ]
             }
          /*   {
                 label: 'Template Pages', icon: 'get_app',

@@ -6,14 +6,18 @@ import { IgrejaFilter } from './igrejaFilter';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IgrejaService {
 
-  baseUrl = 'http://localhost:8080/igreja';
-  constructor(private httpClient: HttpClient) { }
+  baseUrl: string;
+  
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = `${environment.apiUrl}/igreja`;
+  }
 
   salvar(igreja: Igreja): Observable<Igreja> {
     return this.httpClient.post<Igreja>(`${this.baseUrl}`, JSON.stringify(igreja), {headers : this.adicionarHeadersSalvar()})

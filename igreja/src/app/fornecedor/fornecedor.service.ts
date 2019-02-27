@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -14,9 +15,11 @@ import 'rxjs/add/operator/filter';
 })
 export class FornecedorService {
 
-  urlBase = 'http://localhost:8080/fornecedor';
+  urlBase: string;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    this.urlBase = `${environment.apiUrl}/fornecedor`;
+  }
 
   salvar(fornecedor: Fornecedor): Observable<Fornecedor> {
     return this.httpClient.post<Fornecedor>(`${this.urlBase}`, JSON.stringify(fornecedor), {headers : this.cadastrarHeadersSalvar()})

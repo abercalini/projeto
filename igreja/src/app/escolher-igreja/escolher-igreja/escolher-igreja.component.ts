@@ -21,6 +21,7 @@ export class EscolherIgrejaComponent implements OnInit {
 
   listarIgrejas() {
     this.igrejaService.listarTodos().subscribe(response => {
+      console.log(response);
       this.igrejas = response.map(i => ({value: i.codigo, label: i.nome}));
     });
   }

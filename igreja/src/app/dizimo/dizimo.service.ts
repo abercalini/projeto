@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Dizimo } from './dizimo';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DizimoService {
 
-  baseUrl = 'http://localhost:8080/dizimo';
+  baseUrl: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { 
+    this.baseUrl = `${environment.apiUrl}/dizimo`;
+  }
 
   salvar(dizimo: Dizimo): Observable<Dizimo> {
     return this.httpClient.post<Dizimo>(`${this.baseUrl}`, JSON.stringify(dizimo), {headers: this.adicionarHeadersSalvar()})

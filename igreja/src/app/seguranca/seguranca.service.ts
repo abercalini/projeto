@@ -7,6 +7,7 @@ import { Observable, throwError} from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
@@ -15,12 +16,13 @@ import 'rxjs/add/operator/catch';
 export class SegurancaService {
 
   helper = new JwtHelperService();
-  baseUrl = 'http://localhost:8080/oauth/token';
+  baseUrl: string;
   tokenPayload: any;
   tokenDecodificado: any;
   nomeUsuario: any;
 
   constructor(private httpClient: HttpClient) {
+    this.baseUrl = `${environment.apiUrl}/oauth/token`;
     this.carregarToken();
   }
 

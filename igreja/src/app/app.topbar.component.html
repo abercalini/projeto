@@ -1,7 +1,7 @@
 <div class="layout-topbar">
 
     <a routerLink="/" *ngIf="app.isHorizontal() && !app.isMobile()" class="topbar-logo">
-        <img alt="logo" src="assets/layout/images/logo-slim.png" />
+        <img alt="logo"  src="assets/layout/images/logo-slim.png" />
         <span class="app-name">SERENITY</span>
     </a>
 
@@ -18,12 +18,12 @@
     <div class="layout-topbar-menu-wrapper">
         <ul class="topbar-menu fadeInDown" [ngClass]="{'topbar-menu-active': app.topbarMenuActive}" (click)="app.onTopbarMenuClick($event)">
             <li #profile class="profile-item" [ngClass]="{'active-topmenuitem': app.activeTopbarItem === profile}" (click)="app.onTopbarRootItemClick($event, profile)">
-                <a href="#">
+              <!--  <a href="#">
                     <span class="profile-image-wrapper">
                         <img src="assets/layout/images/avatar.png"/>
                     </span>
                     <span class="topbar-item-name profile-name">Wendy Lorina</span>
-                </a>
+                </a> -->
                 <ul class="fadeInDown">
                     <li role="menuitem">
                         <a href="#">
@@ -56,7 +56,7 @@
                     <i class="topbar-icon material-icons">settings</i>
                     <span class="topbar-item-name">Settings</span>
                 </a>
-                <ul class="fadeInDown">
+           <!--     <ul class="fadeInDown">
                     <li role="menuitem">
                         <a href="#">
                             <i class="material-icons">palette</i>
@@ -81,7 +81,7 @@
                             <span>Wallpaper</span>
                         </a>
                     </li>
-                </ul>
+                </ul> -->
             </li>
             <li #messages [ngClass]="{'active-topmenuitem':app.activeTopbarItem === messages}" (click)="app.onTopbarRootItemClick($event, messages)">
                 <a href="#">
@@ -89,7 +89,7 @@
                     <span class="topbar-badge animated rubberBand">5</span>
                     <span class="topbar-item-name">Messages</span>
                 </a>
-                <ul class="fadeInDown">
+              <!--  <ul class="fadeInDown">
                     <li role="menuitem">
                         <a href="#" class="topbar-message">
                             <img src="assets/layout/images/avatar1.png" width="35"/>
@@ -120,7 +120,7 @@
                             <span>Out of office</span>
                         </a>
                     </li>
-                </ul>
+                </ul> -->
             </li>
             <li #notifications [ngClass]="{'active-topmenuitem':app.activeTopbarItem === notifications}" (click)="app.onTopbarRootItemClick($event, notifications)">
                 <a href="#">
@@ -128,7 +128,7 @@
                     <span class="topbar-badge animated rubberBand">4</span>
                     <span class="topbar-item-name">Notifications</span>
                 </a>
-                <ul class="fadeInDown">
+            <!--    <ul class="fadeInDown">
                     <li role="menuitem">
                         <a href="#">
                             <i class="material-icons">bug_report</i>
@@ -153,7 +153,7 @@
                             <span>Book flight</span>
                         </a>
                     </li>
-                </ul>
+                </ul> -->
             </li>
             <li class="search-item">
                 <span class="md-inputfield">

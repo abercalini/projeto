@@ -2,15 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Caixa } from './caixa';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CaixaService {
 
-  constructor(private httpClient: HttpClient) { }
+  baseUrl: string;
 
-  baseUrl = 'http://localhost:8080/caixa';
+  constructor(private httpClient: HttpClient) { 
+    this.baseUrl = `${environment.apiUrl}/caixa`;
+  }
+  
   salvarOrEditar: boolean;
 
   salvar(caixa: Caixa): Observable<Caixa> {

@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
+import { environment } from '../../environments/environment';
 
 
 
@@ -14,9 +15,11 @@ import 'rxjs/add/operator/filter';
 })
 export class MembroService {
 
-  baseUrl = 'http://localhost:8080/membro';
+  baseUrl: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = `${environment.apiUrl}/membro`;
+  }
 
   buscarCep(cep: string): Observable<any> {
     return this.httpClient.get<any>(`https://viacep.com.br/ws/${cep}/json/`).map(response => response);

@@ -5,15 +5,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DistritoService {
 
-  baseUrl = 'http://localhost:8080/distritos';
+  baseUrl: string;
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient) {
+    this.baseUrl = `${environment.apiUrl}/distritos`;
+  }
 
   salvar(distrito: Distrito): Observable<Distrito> {
     return this.httpClient.post<Distrito>(`${this.baseUrl}`, JSON.stringify(distrito), {headers : this.adicionarHeadersSalvar()})

@@ -5,15 +5,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CargoministroService {
 
-  baseUrl = 'http://localhost:8080/cargoministro';
+  baseUrl: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) { 
+    this.baseUrl = `${environment.apiUrl}/cargoministro`;
+  }
 
   salvar(cargoMinistro: CargoMinistro): Observable<CargoMinistro> {
     return this.httpClient.post<CargoMinistro>(this.baseUrl, JSON.stringify(cargoMinistro), {headers: this.adicionarHeadersSalvar()})

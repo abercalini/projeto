@@ -6,15 +6,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HistoricoService {
 
-  urlBase = 'http://localhost:8080/historico';
+  urlBase: string;
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient) {
+    this.urlBase = `${environment.apiUrl}/historico`;
+  }
 
   salvar(descricao: string, usuario: string): Observable<any> {
     return this.httpClient.post<any>(`${this.urlBase}`, JSON.stringify(this.cadastrarHistorico(descricao, usuario)),
