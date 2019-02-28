@@ -12,10 +12,13 @@ import { ToastModule } from 'primeng/toast';
 import { CalendarModule } from 'primeng/calendar';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { OfertaPesquisaComponent } from './oferta-pesquisa/oferta-pesquisa.component';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({
-  declarations: [OfertaCadastroComponent],
+  declarations: [OfertaCadastroComponent, OfertaPesquisaComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -27,7 +30,9 @@ import { InputTextModule } from 'primeng/inputtext';
     ToastModule,
     CalendarModule,
     CurrencyMaskModule,
-    InputTextModule
+    InputTextModule,
+    InputTextareaModule,
+    TableModule
   ]
 })
 export class OfertaModule { }

@@ -20,6 +20,18 @@ export class OfertaService {
     .map(response => response);
   }
 
+  listarTodos(codigo: any): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/filtrarporigreja/${codigo}`, {headers: this.adicionarHeaders()}).map(response => response);
+  }
+
+  adicionarHeaders() {
+    let headers = new HttpHeaders();
+    const token = localStorage.getItem('token');
+
+    headers = headers.set('Authorization', `Bearer ${token}`);
+    return headers;
+  }
+
   adicionarHeadersSalvar() {
     let headers = new HttpHeaders();
     const token = localStorage.getItem('token');

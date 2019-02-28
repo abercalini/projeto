@@ -1,16 +1,15 @@
 export class Oferta {
     codigo: number;
-    membro = new Membro();
     tipoCulto = new Culto();
     igreja = new Igreja();
     formaDePagamento: string;
     dataDizimo: Date;
     valor: number;
     caixa = new Caixa();
-}
-
-export class Membro {
-    codigo: number;
+    tipoOferta: string;
+    observacao: string;
+	conferente1: string;
+	conferente2: string;
 }
 
 export class Culto {

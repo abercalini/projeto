@@ -32,6 +32,8 @@ import { CultoPesquisaComponent } from '../culto/culto-pesquisa/culto-pesquisa.c
 import { DizimoCadastroComponent } from '../dizimo/dizimo-cadastro/dizimo-cadastro.component';
 import { DizimoPesquisaComponent } from '../dizimo/dizimo-pesquisa/dizimo-pesquisa.component';
 import { OfertaCadastroComponent } from '../oferta/oferta-cadastro/oferta-cadastro.component';
+import { OfertaPesquisaComponent } from '../oferta/oferta-pesquisa/oferta-pesquisa.component';
+import { DashbordInicialComponent } from '../dashbord/dashbord-inicial/dashbord-inicial.component';
 
 const router: Routes = [
   {path: 'login', component: LoginComponent},
@@ -87,6 +89,9 @@ const router: Routes = [
   {path: 'dizimo', component: DizimoPesquisaComponent},
 
   {path: 'oferta/novo', component: OfertaCadastroComponent},
+  {path: 'oferta', component: OfertaPesquisaComponent},
+
+  {path: 'dashbord', component: DashbordInicialComponent},
 
   {path: 'naoautorizado', component: NaoAutorizadoComponent},
   {path: 'pagina-nao-encontrada', component: PaginaNaoEncontradaComponent},

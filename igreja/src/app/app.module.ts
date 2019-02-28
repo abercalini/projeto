@@ -53,6 +53,7 @@ import localePt from '@angular/common/locales/pt';
 import { DizimoService } from './dizimo/dizimo.service';
 import { OfertaModule } from './oferta/oferta.module';
 import { OfertaService } from './oferta/oferta.service';
+import { DashbordModule } from './dashbord/dashbord.module';
 
 registerLocaleData(localePt);
 
@@ -86,6 +87,7 @@ registerLocaleData(localePt);
     DizimoModule,
     OfertaModule,
     ScrollPanelModule,
+    DashbordModule
 
   ],
   providers: [

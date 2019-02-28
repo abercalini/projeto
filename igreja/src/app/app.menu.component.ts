@@ -124,7 +124,8 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
             {
                 label: 'Tesouraria', icon: 'attach_money',
                 items: [
-                    {label: 'Dizimo', icon: 'thumb_up', routerLink: ['/dizimo']}
+                    {label: 'Dizimo', icon: 'thumb_up', routerLink: ['/dizimo']},
+                    {label: 'Oferta', icon: 'thumb_up', routerLink: ['/oferta']}
                 ]
             }, 
             {

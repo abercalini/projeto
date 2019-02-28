@@ -23,10 +23,6 @@ public class Oferta implements Serializable {
 	private Long codigo;
 	
 	@ManyToOne
-	@JoinColumn(name = "codigo_membro")
-	private Membro membro;
-	
-	@ManyToOne
 	@JoinColumn(name = "codigo_culto")
 	private TipoCulto tipoCulto;
 	
@@ -46,6 +42,15 @@ public class Oferta implements Serializable {
 	@JoinColumn(name = "codigo_caixa")
 	private Caixa caixa;
 	
+	@Column(name = "tipo_oferta")
+	private String tipoOferta;
+	
+	private String observacao;
+	
+	private String conferente1;
+	
+	private String conferente2;
+	
 	
 
 	public Long getCodigo() {
@@ -54,14 +59,6 @@ public class Oferta implements Serializable {
 
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
-	}
-
-	public Membro getMembro() {
-		return membro;
-	}
-
-	public void setMembro(Membro membro) {
-		this.membro = membro;
 	}
 
 	public TipoCulto getTipoCulto() {
@@ -111,8 +108,39 @@ public class Oferta implements Serializable {
 	public void setCaixa(Caixa caixa) {
 		this.caixa = caixa;
 	}
-
 	
+	public String getTipoOferta() {
+		return tipoOferta;
+	}
+
+	public void setTipoOferta(String tipoOferta) {
+		this.tipoOferta = tipoOferta;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	public String getConferente1() {
+		return conferente1;
+	}
+
+	public void setConferente1(String conferente1) {
+		this.conferente1 = conferente1;
+	}
+
+	public String getConferente2() {
+		return conferente2;
+	}
+
+	public void setConferente2(String conferente2) {
+		this.conferente2 = conferente2;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;

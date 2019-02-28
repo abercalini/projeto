@@ -32,7 +32,6 @@ export class CaixaService {
 
   atualizarSaldo(codigo: any, valor: number): Observable<Caixa> {
     this.salvarOrEditar = true;
-    console.log('atualizar saldo');
     
     return this.httpClient.put<Caixa>(`${this.baseUrl}/atualizarsaldo/${codigo}`, JSON.stringify(valor), {headers: this.adicionarHeadersSalvar()});
   }

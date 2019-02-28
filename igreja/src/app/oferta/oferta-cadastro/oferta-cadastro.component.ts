@@ -10,6 +10,7 @@ import { SegurancaService } from '../../seguranca/seguranca.service';
 import { MembroService } from '../../membro/membro.service';
 import { CultoService } from '../../culto/culto.service';
 import { CultoFilter } from '../../culto/cultoFilter';
+import { CaixaService } from '../../caixa/caixa.service';
 
 @Component({
   selector: 'app-oferta-cadastro',
@@ -22,24 +23,29 @@ export class OfertaCadastroComponent implements OnInit {
   membros = [];
   cultos = [];
   pagamentos = [];
+  ofertas = [];
+  caixas = [];
   cultoFilter = new CultoFilter();
 
   constructor(private titleService: Title, private ofertaService: OfertaService, private historicoService: HistoricoService,
     private segurancaService: SegurancaService, private messageService: MessageService, private membroService: MembroService,
-    private cultoService: CultoService) { }
+    private cultoService: CultoService, private caixaService: CaixaService) { }
 
   ngOnInit() {
     this.titleService.setTitle('Efetuar oferta');
     this.listarMembros();
     this.listarCultos();
     this.listarPagamentos();
+    this.listarOfertas();
+    this.listaCaixas(); 
   }
 
   salvar(form: NgForm) {
     this.oferta.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.ofertaService.salvar(this.oferta).subscribe(response => {
-      this.historicoService.salvar('Efetuou uma oferta R$' + response.valor, this.segurancaService.nomeUsuario);
+      this.historicoService.salvar('Efetuou uma oferta R$' + response.valor, this.segurancaService.nomeUsuario).subscribe();
       this.adicionarMensagem('success', 'Oferta efetuada com sucesso', 'Oferta efetuada com sucesso');
+      this.caixaService.atualizarSaldo(localStorage.getItem('codigo_igreja'), response.valor).subscribe();
       form.reset();
       this.oferta = new Oferta();
     });
@@ -63,10 +69,23 @@ export class OfertaCadastroComponent implements OnInit {
 
   listarPagamentos() {
     this.pagamentos = [
-      {label: 'CARTAO DE CREDITO', value: 'CARTAO_DE_CREDITO'},
-      {label: 'CARTAO DE DEBITO', value: 'CARTAO_DE_DEBITO'},
-      {label: 'DINHEIRO', value: 'DINHEIRO'}
-    ]
+      {label: 'Cartão de credito', value: 'Cartão de credito'},
+      {label: 'Cartão de debito', value: 'Cartão de debito'},
+      {label: 'Dinheiro', value: 'Dinheiro'}
+    ];
+  }
+
+  listarOfertas() {
+    this.ofertas = [
+      {label: 'Oferta para missões', value: 'Oferta para missões'},
+      {label: 'Oferta para ação social', value: 'Oferta para ação social'},
+      {label: 'Oferta para departamento', value: 'Oferta para departamento'},
+      {label: 'Outras ofertas', value: 'Outras ofertas'}
+    ];
+  }
+
+  listaCaixas() {
+    this.caixaService.verificarCaixasAbertos(localStorage.getItem('codigo_igreja')).subscribe(response => this.caixas = response.map(c => ({value: c.codigo, label: c.nome})));
   }
 
 }

@@ -1,0 +1,49 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="pesquisar()">
+    <div class="ui-g">
+        <div class="ui-g-6 ui-md-2 ui-fluid">
+            <button pButton type="button" label="Adicionar Oferta" icon="pi pi-plus" routerLink="/oferta/novo"></button>
+        </div>
+    </div>
+    <p-fieldset legend="Lista de ofertas">
+      <!--  <div class="ui-g">
+            <div class="ui-g-12 ui-md-10 ui-fluid">
+                <label>Pesquisar</label>
+                <input type="text" pInputText />
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <button pButton type="submit" label="Pesquisar" icon="pi pi-search" ></button>
+            </div>
+        </div> -->
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <p-table [value]="ofertas" [responsive]="true" [paginator]="true" [rows]="30">
+                  <ng-template pTemplate="header">
+                      <tr>
+                          <th style="width: 60px;">#</th>
+                          <th style="width: 150px;">Pagamento</th>
+                          <th style="width: 80px;">Valor</th>
+                          <th style="width: 150px;">Data</th>
+                          <th style="width: 250px;">Culto</th>
+                          <th style="width: 250px;">Caixa</th>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-o>
+                      <tr>
+                          <td>{{o.codigo}}</td>
+                          <td>{{o.formaDePagamento}}</td>
+                          <td>{{o.valor | number: '1.2-2'}}</td>
+                          <td>{{o.dataDizimo}}</td>
+                          <td>{{o.tipoCulto.descricao}}</td>
+                          <td>{{o.caixa.nome}}</td>
+                      </tr>
+                  </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </p-fieldset>
+</form>

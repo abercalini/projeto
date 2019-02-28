@@ -7,15 +7,7 @@
     <p-fieldset legend="Efetuar oferta">
         <div class="ui-g">
             <div class="ui-g-12 ui-md-4 ui-fluid">
-                <label>Membro que realizaou a oferta *</label>
-                <p-dropdown [options]="membros" [(ngModel)]="oferta.membro.codigo" name="membro" [filter]="true" [autoWidth]="false" required
-                    placeholder="Selecione..." class="ng-dirty ng-invalid"></p-dropdown>
-            </div>
-            <div class="ui-g-12 ui-md-2 ui-fluid">
-                <button pButton type="button" icon="pi pi-plus" routerLink="/membro/novo" pTooltip="Adicionar membro" tooltipPosition="top"></button>
-            </div>
-            <div class="ui-g-12 ui-md-4 ui-fluid">
-                <label>Culto que foi realizada a oferta *</label>
+                <label>Culto *</label>
                 <p-dropdown [options]="cultos" [(ngModel)]="oferta.tipoCulto.codigo" name="cultos" [filter]="true" [autoWidth]="false" required
                     placeholder="Selecione..." class="ng-dirty ng-invalid"></p-dropdown>
             </div>
@@ -26,34 +18,66 @@
         <br>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-4 ui-fluid">
-                <label>Forma de pagamento *</label>
-                <p-dropdown [options]="pagamentos" [(ngModel)]="oferta.formaDePagamento" name="pagamentos" [filter]="true" [autoWidth]="false" required
+                <label>Tipo da Oferta</label>
+                <p-dropdown [options]="ofertas" [(ngModel)]="oferta.tipoOferta" name="oferta" [filter]="true" [autoWidth]="false" required
                     placeholder="Selecione..." class="ng-dirty ng-invalid"></p-dropdown>
             </div>
         </div>
         <br>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Obsercação</label>
+                <textarea [rows]="3" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="oferta.observacao" name="observacao"></textarea>
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Valor *</label>
+                <input currencyMask [(ngModel)]="oferta.valor" pInputText [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="valor" 
+                    required class="ng-dirty ng-invalid" placeholder="0.00"/>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Forma de pagamento *</label>
+                <p-dropdown [options]="pagamentos" [(ngModel)]="oferta.formaDePagamento" name="pagamentos" [filter]="true" [autoWidth]="false" required
+                    placeholder="Selecione..." class="ng-dirty ng-invalid"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
                 <label>Data da Oferta *</label>
-                <p-calendar [(ngModel)]="oferta.dataDizimo" name="data" [inline]="true" dateFormat="dd/mm/yy" showTime="true" hourFormat="24" required ></p-calendar>
+                <p-calendar [(ngModel)]="oferta.dataDizimo" name="data" dateFormat="dd/mm/yy" showTime="true" hourFormat="24" required ></p-calendar>
             </div>
         </div>
         <br>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-4 ui-fluid">
-                <span class="md-inputfield">
-                    <input currencyMask [(ngModel)]="oferta.valor" pInputText [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" name="valor" required class="ng-dirty ng-invalid"/>
-                    <label>Valor *</label>
-                </span>
+                <label>Conferente 1</label>    
+                <input type="text" pInputText [(ngModel)]="oferta.conferente1" name="conferente1"/>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Conferente 2</label>
+                <input type="text" pInputText [(ngModel)]="oferta.conferente2" name="conferente2"/>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Caixa *</label>
+                <p-dropdown [options]="caixas" [(ngModel)]="oferta.caixa.codigo" name="caixa" [filter]="true" [autoWidth]="false" 
+                required class="ng-dirty ng-invalid" emptyFilterMessage="Nenhum caixa aberto" placeholder="Selecione..."></p-dropdown>
             </div>
         </div>
         <br>
         <div class="ui-g">
-            <div class="ui-g-12 ui-md-4 ui-fluid">
-                <label>Caixas Abertos *</label>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <button pButton type="submit" label="Salvar" class="ui-button-success" icon="pi pi-save" [disabled]="inputFormulario.invalid"></button>
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <button pButton type="button" label="Voltar" icon="pi pi-arrow-left" routerLink="/oferta" ></button>
             </div>
         </div>
-
-    
     </p-fieldset>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
+        </div>
+    </div>
+
 </form>
