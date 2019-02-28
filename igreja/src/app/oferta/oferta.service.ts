@@ -24,6 +24,14 @@ export class OfertaService {
     return this.httpClient.get<any>(`${this.baseUrl}/filtrarporigreja/${codigo}`, {headers: this.adicionarHeaders()}).map(response => response);
   }
 
+  buscarPorCodigo(codigo: number): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()}).map(response => response);
+  }
+
+  excluir(codigo: number): Observable<Oferta> {
+    return this.httpClient.delete<any>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()});
+  }
+
   adicionarHeaders() {
     let headers = new HttpHeaders();
     const token = localStorage.getItem('token');

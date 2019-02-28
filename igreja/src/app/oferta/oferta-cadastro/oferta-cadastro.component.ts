@@ -45,7 +45,7 @@ export class OfertaCadastroComponent implements OnInit {
     this.ofertaService.salvar(this.oferta).subscribe(response => {
       this.historicoService.salvar('Efetuou uma oferta R$' + response.valor, this.segurancaService.nomeUsuario).subscribe();
       this.adicionarMensagem('success', 'Oferta efetuada com sucesso', 'Oferta efetuada com sucesso');
-      this.caixaService.atualizarSaldo(localStorage.getItem('codigo_igreja'), response.valor).subscribe();
+      this.caixaService.atualizarSaldo(this.oferta.caixa.codigo, response.valor).subscribe();
       form.reset();
       this.oferta = new Oferta();
     });

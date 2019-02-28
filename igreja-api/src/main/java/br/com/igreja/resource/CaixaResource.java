@@ -3,6 +3,7 @@ package br.com.igreja.resource;
 import java.math.BigDecimal;
 import java.util.List;
 
+import org.hibernate.jpa.criteria.ValueHandlerFactory.BigDecimalValueHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -72,6 +73,16 @@ public class CaixaResource {
 		caixaRetornado.setValorReceita(valor = valor.add(caixaRetornado.getValorReceita()));
 		caixaRepository.save(caixaRetornado);
 	}
+	
+	@PutMapping("atualizarsaldoexcluir/{codigo}")
+	@PreAuthorize("hasAuthority('ROLE_EDITAR_OBJETO')")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void atualizarSaldoExclusao(@PathVariable Long codigo, @RequestBody BigDecimal valor) {
+		Caixa caixaRetornado = caixaRepository.findOne(codigo);
+		System.out.println(valor);
+	}
+	
+	
 	
 	
 	

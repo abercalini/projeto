@@ -129,6 +129,14 @@ public class Caixa implements Serializable {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	
+	@Override
+	public String toString() {
+		return "Caixa [codigo=" + codigo + ", nome=" + nome + ", dataFechamento=" + dataFechamento + ", dataAbertura="
+				+ dataAbertura + ", valorReceita=" + valorReceita + ", valorDespesas=" + valorDespesas
+				+ ", saldoFechamento=" + saldoFechamento + ", saldoAbertura=" + saldoAbertura + ", status=" + status
+				+ ", igreja=" + igreja + "]";
+	}
 
 	@Override
 	public int hashCode() {

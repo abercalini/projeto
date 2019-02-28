@@ -15,6 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { OfertaPesquisaComponent } from './oferta-pesquisa/oferta-pesquisa.component';
 import { TableModule } from 'primeng/table';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { TableModule } from 'primeng/table';
     CurrencyMaskModule,
     InputTextModule,
     InputTextareaModule,
-    TableModule
+    TableModule,
+    ConfirmDialogModule
   ]
 })
 export class OfertaModule { }

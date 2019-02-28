@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,5 +37,20 @@ public class OfertaResource {
 	@ResponseStatus(HttpStatus.OK)
 	public List<Oferta> listarTodos(@PathVariable Long codigo) {
 		return ofertaRepository.filtrarPorIgreja(codigo);
+	}
+	
+	@GetMapping("/{codigo}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_OBJETO')")
+	public ResponseEntity<Oferta> buscarPorCodigo(@PathVariable Long codigo) {
+		Oferta ofertaRetornada = ofertaRepository.findOne(codigo);
+		return ResponseEntity.status(HttpStatus.OK).body(ofertaRetornada);
+	}
+	
+	@DeleteMapping("/{codigo}")
+	@PreAuthorize("hasAuthority('ROLE_EXCLUIR_OBJETO')")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void excluir(@PathVariable Long codigo) {
+		// ofertaRepository.delete(codigo);
+		System.out.println("Excluido");
 	}
 }
