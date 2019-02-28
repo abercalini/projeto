@@ -6,6 +6,7 @@ export class Dizimo {
     formaDePagamento: string;
     valor: number;
     dataDizimo: Date;
+    observacao: string;
 }
 
 export class Membro {

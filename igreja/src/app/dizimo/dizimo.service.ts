@@ -11,7 +11,7 @@ export class DizimoService {
 
   baseUrl: string;
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient) {
     this.baseUrl = `${environment.apiUrl}/dizimo`;
   }
 

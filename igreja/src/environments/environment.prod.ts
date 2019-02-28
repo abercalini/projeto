@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://igreja-angular.herokuapp.com'
+  apiUrl: 'https://bercaline-api.herokuapp.com'
 };

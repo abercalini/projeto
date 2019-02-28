@@ -55,7 +55,7 @@
   "devDependencies": {
   },
   "engines": {
-    "nonde": "11.10.0",
-    "npm": "6.7.0"
+    "nonde": "10.15.0",
+    "npm": "6.4.1"
   }
 }

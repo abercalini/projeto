@@ -41,17 +41,25 @@ public class Dizimo implements Serializable {
 	private LocalDateTime dataDizimo;
 	
 	private BigDecimal valor;
+	
+	private String observacao;
 
 
 	public Long getCodigo() {
 		return codigo;
 	}
 
-
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
 
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
 
 	public Membro getMembro() {
 		return membro;

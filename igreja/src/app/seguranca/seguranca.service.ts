@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { Observable, throwError} from 'rxjs';
+import { Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/catch';

@@ -29,7 +29,7 @@
         <br>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-4 ui-fluid">
-                <label>Data do dizimo</label>
+                <label>Data do dizimo *</label>
                 <p-calendar [(ngModel)]="dizimo.dataDizimo" showTime="true" hourFormat="12" dateFormat="dd/mm/yy" name="data"></p-calendar>
             </div>
         </div>
@@ -48,6 +48,15 @@
                 <label>Forma de Pagamento *</label>
                 <p-dropdown [options]="pagamentos" [(ngModel)]="dizimo.formaDePagamento" name="pagamento" placeholder="Selecione..." [autoWidth]="false"
                    required class="ng-dirty ng-invalid" [filter]="true"></p-dropdown>
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <span class="md-inputfield">
+                    <textarea [rows]="3" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="dizimo.observacao" name="observacao" ></textarea>
+                    <label>Observação</label>
+                </span>
             </div>
         </div>
         <br>

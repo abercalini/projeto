@@ -14,6 +14,7 @@ import { ToastModule } from 'primeng/toast';
 import { DizimoPesquisaComponent } from './dizimo-pesquisa/dizimo-pesquisa.component';
 import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { CalendarModule } from 'primeng/calendar';
     InputTextModule,
     ToastModule,
     TableModule,
-    CalendarModule
+    CalendarModule,
+    InputTextareaModule
   ]
 })
 export class DizimoModule { }
