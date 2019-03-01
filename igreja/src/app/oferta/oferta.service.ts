@@ -20,6 +20,12 @@ export class OfertaService {
     .map(response => response);
   }
 
+  atualizarSaldoProporcional(codigo: number, valor: number): Observable<Oferta> {
+    return this.httpClient.put<Oferta>(`${this.baseUrl}/atualizarsaldoproporcional/${codigo}`, JSON.stringify(valor), 
+      {headers: this.adicionarHeadersSalvar()}).map(response => response);
+    
+  }
+
   listarTodos(codigo: any): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrl}/filtrarporigreja/${codigo}`, {headers: this.adicionarHeaders()}).map(response => response);
   }

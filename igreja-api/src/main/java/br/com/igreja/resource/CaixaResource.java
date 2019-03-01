@@ -70,13 +70,9 @@ public class CaixaResource {
 	public void atualizar(@PathVariable Long codigo, @RequestBody BigDecimal valor) {
 		Caixa caixaRetornado = caixaRepository.findOne(codigo);
 		
-		System.out.println("Valor depositado " + valor);
-		
 		// Validando o valor da receita do caixa
 		caixaRetornado.setValorReceita(valor = valor.add(caixaRetornado.getValorReceita()));
 		caixaRetornado.setSaldoFechamento(caixaRetornado.getValorReceita().add(caixaRetornado.getSaldoAbertura()));
-		
-		System.out.println("Valor fechamento : " + caixaRetornado.getSaldoFechamento());
 		
 		caixaRepository.save(caixaRetornado);
 	}
@@ -95,6 +91,23 @@ public class CaixaResource {
 	}
 	
 	
+	@PutMapping("atulizarvalorproporcional/{codigo}")
+	@PreAuthorize("hasAuthority('ROLE_EDITAR_OBJETO')")
+	@ResponseStatus(HttpStatus.OK)
+	public void atualizarSaldoParcial(@PathVariable Long codigo, @RequestBody BigDecimal valor) {
+		Caixa caixaRetornado = caixaRepository.findOne(codigo);
+		
+		if (valor.compareTo(new BigDecimal("0")) < 0 ) {
+			String converter = valor.toString();
+			String replace = converter.replace('-', '+');
+			caixaRetornado.setValorReceita(caixaRetornado.getValorReceita().add(new BigDecimal(replace)));
+		} else {
+			caixaRetornado.setValorReceita(caixaRetornado.getValorReceita().subtract(valor));
+		}
+		
+		caixaRetornado.setSaldoFechamento(caixaRetornado.getSaldoAbertura().add(caixaRetornado.getValorReceita()));
+		caixaRepository.save(caixaRetornado);
+	}
 	
 	
 	

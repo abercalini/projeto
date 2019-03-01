@@ -43,7 +43,7 @@ export class OfertaCadastroComponent implements OnInit {
   salvar(form: NgForm) {
     this.oferta.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.ofertaService.salvar(this.oferta).subscribe(response => {
-      this.historicoService.salvar('Efetuou uma oferta R$' + response.valor, this.segurancaService.nomeUsuario).subscribe();
+      this.historicoService.salvar('Efetuou uma oferta no valor de R$' + response.valor, this.segurancaService.nomeUsuario).subscribe();
       this.adicionarMensagem('success', 'Oferta efetuada com sucesso', 'Oferta efetuada com sucesso');
       this.caixaService.atualizarSaldo(this.oferta.caixa.codigo, response.valor).subscribe();
       form.reset();

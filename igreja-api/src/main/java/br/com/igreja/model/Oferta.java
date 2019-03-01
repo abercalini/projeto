@@ -165,5 +165,15 @@ public class Oferta implements Serializable {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Oferta [codigo=" + codigo + ", tipoCulto=" + tipoCulto + ", igreja=" + igreja + ", formaDePagamento="
+				+ formaDePagamento + ", dataDizimo=" + dataDizimo + ", valor=" + valor + ", caixa=" + caixa
+				+ ", tipoOferta=" + tipoOferta + ", observacao=" + observacao + ", conferente1=" + conferente1
+				+ ", conferente2=" + conferente2 + "]";
+	}
+	
+	
 	
 }

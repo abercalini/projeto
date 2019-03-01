@@ -37,6 +37,12 @@ export class CaixaService {
       JSON.stringify(valor), {headers: this.adicionarHeadersSalvar()});
   }
 
+  atualizarSaldoPropocional(codigo: number, valor: number): Observable<Caixa> {
+    this.salvarOrEditar = true;
+    return this.httpClient.put<Caixa>(`${this.baseUrl}/atulizarvalorproporcional/${codigo}`, JSON.stringify(valor), {headers: this.adicionarHeadersSalvar()})
+      .map(response => response);
+  }
+
   atualizarSaldoExclusao(codigo: any, valor: number): Observable<Caixa> {
     this.salvarOrEditar = true;
     return this.httpClient.put<Caixa>(`${this.baseUrl}/atualizarsaldoexcluir/${codigo}`,

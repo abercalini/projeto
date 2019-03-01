@@ -35,14 +35,14 @@
                   </ng-template>
                   <ng-template pTemplate="body" let-o>
                       <tr>
-                          <td>{{o.codigo}}</td>
+                          <td >{{o.codigo}}</td>
                           <td>{{o.formaDePagamento}}</td>
                           <td>{{o.valor | number: '1.2-2'}}</td>
                           <td>{{o.dataDizimo}}</td>
                           <td>{{o.tipoCulto.descricao}}</td>
                           <td>{{o.caixa.nome}}</td>
                           <td>
-                                <button pButton type="button" icon="pi pi-pencil" style="background-color: teal;" pTooltip="Editar" tooltipPosition="top"></button>
+                                <button pButton type="button" icon="pi pi-pencil" style="background-color: teal;" pTooltip="Editar" tooltipPosition="top" (click)="op1.toggle($event); alterar(o)"></button>
                                 <button pButton type="button" icon="pi pi-times" style="background-color: red;" pTooltip="Excluir" tooltipPosition="top" (click)="prepararExclusao(o.codigo)"></button>
                           </td>
                       </tr>
@@ -66,6 +66,45 @@
                     <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()" style="background-color: teal; color: black;"></button>
                 </p-footer>
             </p-confirmDialog>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-overlayPanel #op1>
+                <a href="#" routerLink="/oferta" style="color: black;" (click)="showDialog()" >Alterar Valor</a>
+            </p-overlayPanel>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-dialog header="Alterar valor" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" 
+                [maximizable]="true" [baseZIndex]="10000">
+
+                <div class="ui-g-12 ui-md-12 ui-fluid">
+                    <h3>Valor da oferta Atual é de {{valorOfertaAtual | number: '1.2-2'}}</h3>
+                </div>
+                <br>
+                <div class="ui-g-12 ui-md-12 ui-fluid">
+                    <label>Valor</label>
+                    <input currencyMask [(ngModel)]="valor" name="valor" pInputText [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+                </div>
+                <br>
+                <div class="ui-g-6 ui-md-6 ui-fluid">
+                    <button pButton type="button" label="Alterar" icon="pi pi-check" class="ui-button-success" (click)="alterarValor()"></button>
+                </div>
+                <div class="ui-g-6 ui-md-6 ui-fluid">
+                    <button label="Voltar" icon="pi pi-arrow-left" pButton type="button" (click)="voltar()"></button>
+                </div>
+
+            </p-dialog>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
         </div>
     </div>
 
