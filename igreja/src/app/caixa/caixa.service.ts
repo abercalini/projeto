@@ -11,10 +11,10 @@ export class CaixaService {
 
   baseUrl: string;
 
-  constructor(private httpClient: HttpClient) { 
+  constructor(private httpClient: HttpClient) {
     this.baseUrl = `${environment.apiUrl}/caixa`;
   }
-  
+
   salvarOrEditar: boolean;
 
   salvar(caixa: Caixa): Observable<Caixa> {
@@ -26,36 +26,40 @@ export class CaixaService {
 
   atualizar(codigo: number, status: boolean): Observable<Caixa> {
     this.salvarOrEditar = true;
-    return this.httpClient.put<Caixa>(`${this.baseUrl}/${codigo}`, JSON.stringify(status), {headers: this.adicionarHeadersSalvar()})
+    return this.httpClient.put<Caixa>(`${this.baseUrl}/${codigo}`, JSON.stringify(status),  {headers: this.adicionarHeadersSalvar()})
       .map(response => response);
   }
 
   atualizarSaldo(codigo: any, valor: number): Observable<Caixa> {
     this.salvarOrEditar = true;
-    
-    return this.httpClient.put<Caixa>(`${this.baseUrl}/atualizarsaldo/${codigo}`, JSON.stringify(valor), {headers: this.adicionarHeadersSalvar()});
+
+    return this.httpClient.put<Caixa>(`${this.baseUrl}/atualizarsaldo/${codigo}`,
+      JSON.stringify(valor), {headers: this.adicionarHeadersSalvar()});
   }
 
   atualizarSaldoExclusao(codigo: any, valor: number): Observable<Caixa> {
     this.salvarOrEditar = true;
-    return this.httpClient.put<Caixa>(`${this.baseUrl}/atualizarsaldoexcluir/${codigo}`, JSON.stringify(valor), {headers: this.adicionarHeadersSalvar()});
+    return this.httpClient.put<Caixa>(`${this.baseUrl}/atualizarsaldoexcluir/${codigo}`,
+      JSON.stringify(valor), {headers: this.adicionarHeadersSalvar()});
   }
 
   listarTodos(codigo: any): Observable<any> {
     this.salvarOrEditar = false;
-    return this.httpClient.get<any>(`${this.baseUrl}/filtrarporigreja/${codigo}`, {headers: this.adicionarHeadersSalvar()}).map(response => response);
+    return this.httpClient.get<any>(`${this.baseUrl}/filtrarporigreja/${codigo}`,
+      {headers: this.adicionarHeadersSalvar()}).map(response => response);
   }
 
   verificarCaixasAbertos(codigo: any): Observable<any> {
     this.salvarOrEditar = false;
-    return this.httpClient.get<any>(`${this.baseUrl}/verificarcaixas/${codigo}`, {headers: this.adicionarHeadersSalvar()}).map(response => response);
+    return this.httpClient.get<any>(`${this.baseUrl}/verificarcaixas/${codigo}`,
+      {headers: this.adicionarHeadersSalvar()}).map(response => response);
   }
 
 
 
   adicionarHeadersSalvar() {
     let headers = new HttpHeaders();
-    
+
     const token = localStorage.getItem('token');
     if (this.salvarOrEditar) {
       headers = headers.set('Content-Type', 'application/json');
@@ -64,7 +68,7 @@ export class CaixaService {
     } else {
       headers = headers.set('Authorization', `Bearer ${token}`);
       return headers;
-    }  
-    
+    }
+
   }
 }

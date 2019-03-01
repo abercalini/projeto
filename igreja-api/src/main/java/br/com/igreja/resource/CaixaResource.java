@@ -30,6 +30,7 @@ public class CaixaResource {
 	@PostMapping
 	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_OBJETO')")
 	public ResponseEntity<Caixa> salvar(@RequestBody Caixa caixa) {
+		caixa.setSaldoFechamento(caixa.getSaldoAbertura());
 		Caixa caixaRetornado = caixaRepository.save(caixa);
 		return ResponseEntity.status(HttpStatus.CREATED).body(caixaRetornado);
 	}
@@ -44,14 +45,13 @@ public class CaixaResource {
 	@PutMapping("/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_EDITAR_OBJETO')")
 	public ResponseEntity<Caixa> atualizar(@PathVariable Long codigo, @RequestBody boolean status) {
-		
 		Caixa caixaRetornado = caixaRepository.findOne(codigo);
-		
-		//Validando o valor do fechamento do caixa
+	/*	//Validando o valor do fechamento do caixa
 		if (status == false) {
 			caixaRetornado.setSaldoFechamento(caixaRetornado.getSaldoAbertura().add(caixaRetornado.getValorReceita()).subtract(caixaRetornado.getValorDespesas()));
-		}
-		
+		} */
+		// caixaRetornado.setSaldoFechamento(caixaRetornado.getSaldoAbertura().add(caixaRetornado.getValorReceita().subtract(caixaRetornado.getValorDespesas())));
+		//System.out.println(caixaRetornado.getSaldoAbertura().add(caixaRetornado.getValorReceita().subtract(caixaRetornado.getValorDespesas())));
 		caixaRetornado.setStatus(status);
 		caixaRepository.save(caixaRetornado);
 		return ResponseEntity.status(HttpStatus.OK).body(caixaRetornado);
@@ -69,8 +69,15 @@ public class CaixaResource {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void atualizar(@PathVariable Long codigo, @RequestBody BigDecimal valor) {
 		Caixa caixaRetornado = caixaRepository.findOne(codigo);
+		
+		System.out.println("Valor depositado " + valor);
+		
 		// Validando o valor da receita do caixa
 		caixaRetornado.setValorReceita(valor = valor.add(caixaRetornado.getValorReceita()));
+		caixaRetornado.setSaldoFechamento(caixaRetornado.getValorReceita().add(caixaRetornado.getSaldoAbertura()));
+		
+		System.out.println("Valor fechamento : " + caixaRetornado.getSaldoFechamento());
+		
 		caixaRepository.save(caixaRetornado);
 	}
 	
@@ -79,7 +86,12 @@ public class CaixaResource {
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void atualizarSaldoExclusao(@PathVariable Long codigo, @RequestBody BigDecimal valor) {
 		Caixa caixaRetornado = caixaRepository.findOne(codigo);
-		System.out.println(valor);
+		
+		//Validando a exclusão da receita
+		caixaRetornado.setValorReceita(caixaRetornado.getValorReceita().subtract(valor));
+		caixaRetornado.setSaldoFechamento(caixaRetornado.getSaldoFechamento().subtract(valor));
+		
+		caixaRepository.save(caixaRetornado);
 	}
 	
 	

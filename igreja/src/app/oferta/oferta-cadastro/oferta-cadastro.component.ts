@@ -37,7 +37,7 @@ export class OfertaCadastroComponent implements OnInit {
     this.listarCultos();
     this.listarPagamentos();
     this.listarOfertas();
-    this.listaCaixas(); 
+    this.listaCaixas();
   }
 
   salvar(form: NgForm) {
@@ -85,7 +85,8 @@ export class OfertaCadastroComponent implements OnInit {
   }
 
   listaCaixas() {
-    this.caixaService.verificarCaixasAbertos(localStorage.getItem('codigo_igreja')).subscribe(response => this.caixas = response.map(c => ({value: c.codigo, label: c.nome})));
+    this.caixaService.verificarCaixasAbertos(localStorage.getItem('codigo_igreja'))
+      .subscribe(response => this.caixas = response.map(c => ({value: c.codigo, label: c.nome})));
   }
 
 }

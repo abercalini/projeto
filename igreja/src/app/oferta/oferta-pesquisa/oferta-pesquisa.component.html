@@ -30,7 +30,7 @@
                           <th style="width: 150px;">Data</th>
                           <th style="width: 250px;">Culto</th>
                           <th style="width: 250px;">Caixa</th>
-                          <th style="width: 70px;">Ações</th>
+                          <th style="width: 100px;">Ações</th>
                       </tr>
                   </ng-template>
                   <ng-template pTemplate="body" let-o>
@@ -62,7 +62,7 @@
         <div class="ui-g-12 ui-md-12 ui-fluid">
             <p-confirmDialog #cd header="Confirmação" icon="pi pi-exclamation-triangle">
                 <p-footer>
-                    <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()" style="background-color: red; color: black;"></button>   
+                    <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()" style="background-color: red; color: black;"></button>
                     <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()" style="background-color: teal; color: black;"></button>
                 </p-footer>
             </p-confirmDialog>

@@ -34,7 +34,7 @@ export class CaixaPesquisaComponent implements OnInit {
     });
   }
 
-  showDialog(status: boolean, codigo: number) {
+  showDialog(status: boolean, codigo: number, valor: number) {
     this.status = status;
     this.codigo = codigo;
     this.display = true;

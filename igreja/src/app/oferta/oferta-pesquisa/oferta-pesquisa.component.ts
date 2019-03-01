@@ -15,8 +15,8 @@ export class OfertaPesquisaComponent implements OnInit {
 
   ofertas = [];
 
-  constructor(private ofertaService: OfertaService, private messageService: MessageService, private confirmationService: ConfirmationService,
-    private caixaService: CaixaService) { }
+  constructor(private ofertaService: OfertaService, private messageService: MessageService,
+    private confirmationService: ConfirmationService, private caixaService: CaixaService) { }
 
   ngOnInit() {
     this.pesquisar();
@@ -34,17 +34,14 @@ export class OfertaPesquisaComponent implements OnInit {
         this.messageService.add({severity: 'error', summary: 'Banco dessa oferta encontra-se fechado'});
         return ;
       }
-      
+
       this.confirmationService.confirm({
         message: 'Deseja exluir a oferta?',
         accept: () => {
           this.ofertaService.excluir(codigo).subscribe(() => {
             this.messageService.add({severity: 'success', summary: 'Excluido com sucesso', detail: ''});
             this.caixaService.atualizarSaldoExclusao(response.caixa.codigo, valor).subscribe();
-            console.log(response);
-            console.log(valor);
-            
-            
+            this.pesquisar();
           });
         }
       });

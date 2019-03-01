@@ -50,7 +50,6 @@ public class OfertaResource {
 	@PreAuthorize("hasAuthority('ROLE_EXCLUIR_OBJETO')")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void excluir(@PathVariable Long codigo) {
-		// ofertaRepository.delete(codigo);
-		System.out.println("Excluido");
+		ofertaRepository.delete(codigo);
 	}
 }
