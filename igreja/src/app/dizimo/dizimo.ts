@@ -7,6 +7,7 @@ export class Dizimo {
     valor: number;
     dataDizimo: Date;
     observacao: string;
+    caixa = new Caixa();
 }
 
 export class Membro {
@@ -19,4 +20,8 @@ export class TipoCulto {
 
 export class Igreja {
     codigo: any;
+}
+
+export class Caixa {
+    codigo: number;
 }

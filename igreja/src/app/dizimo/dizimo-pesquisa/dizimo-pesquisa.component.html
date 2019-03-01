@@ -4,10 +4,16 @@
 <br>
 
 <form #inputFormulario="ngForm">
+    <div class="ui-g">
+        <div class="ui-g-6 ui-md-2 ui-fluid">
+            <button pButton type="button" label="Adicionar Dizimo" icon="pi pi-plus" routerLink="/dizimo/novo"></button>
+        </div>
+    </div>
+    
     <p-fieldset legend="Lista de Dizimo recebido">
         <div class="ui-g">
             <div class="ui-g-12 ui-md-12 ui-fluid">
-                <p-table [value]="dizimos" [paginator]="true" [responsive]="true" [rows]="30">
+                <p-table [value]="dizimos" [paginator]="true" [responsive]="true" [rows]="30" #tabela>
                     <ng-template pTemplate="header">
                         <tr>
                             <th style="width: 80px;">#</th>
@@ -16,6 +22,8 @@
                             <th style="width: 150px;">Data Pagamento</th>
                             <th style="width: 300px;">Membro</th>
                             <th style="width: 300px;">Culto</th>
+                            <th style="width: 150px;">Caixa</th>
+                            <th style="width: 100px;">Opção</th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-d>
@@ -23,9 +31,14 @@
                             <td>{{d.codigo}}</td>
                             <td>{{d.formaDePagamento}}</td>
                             <td>{{d.valor | number: '1.2-2'}}</td>
-                            <td>{{d.dataDizimo | date: 'dd/MM/yyyy h:mm'}}</td>
+                            <td>{{d.dataDizimo | date: 'dd/MM/yyyy'}}</td>
                             <td>{{d.membro.nome}}</td>
                             <td>{{d.tipoCulto.descricao}}</td>
+                            <td>{{d.caixa.nome}}</td>
+                            <td>
+                                <button pButton type="button" icon="pi pi-pencil" style="background-color: teal;" pTooltip="Editar" tooltipPosition="top" (click)="op.toggle($event); buscarDizimo(d);"></button>
+                                <button pButton type="button" icon="pi pi-times" style="background-color: red;" pTooltip="Excluir" tooltipPosition="top" (click)="excluir(d)"></button>
+                            </td>
                         </tr>
                     </ng-template>
                 </p-table>
@@ -34,8 +47,48 @@
 
         <div class="ui-g">
             <div class="ui-g-12 ui-md-12 ui-fluid">
-                <a href="#" routerLink="/dizimo/novo">Efetuar Dizimo</a>
+                <p-overlayPanel #op>
+                    <a href="#" routerLink="/dizimo" (click)="showDialog();" style="color: black;">Alterar valor</a>
+                </p-overlayPanel>
             </div>
         </div>
     </p-fieldset>
+    
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fuid">
+            <p-confirmDialog #cd header="Confirmação" icon="pi pi-exclamation-triangle">
+                <p-footer>
+                    <button type="button" pButton icon="pi pi-check" label="Sim" style="background-color: red;" (click)="cd.accept()"></button>    
+                    <button type="button" pButton icon="pi pi-times" label="Não" style="background-color: teal;" (click)="cd.reject()"></button>
+                </p-footer>
+            </p-confirmDialog>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-dialog header="Alterar valor" [(visible)]="display" [modal]="true" [responsive]="true" [style]="{width: '350px', minWidth: '200px'}" [minY]="70" 
+            [maximizable]="true" [baseZIndex]="10000">
+                <div class="ui-g-12 ui-md-12 ui-fluid">
+                    <h3>Valor do dizimo atual é de {{valorDizimo | number: '1.2-2'}}</h3>
+                </div>
+                <div class="ui-g-12 ui-md-12 ui-fluid">
+                    <input currencyMask [(ngModel)]="valorAlterado" name="valorAlterado" pInputText [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+                </div>
+                <br>
+                <div class="ui-g-6 ui-md-6 ui-fluid">
+                    <button pButton type="button" label="Alterar" class="ui-button-success" icon="pi pi-save" (click)="alterarDizimo()"></button>
+                </div>
+                <div class="ui-g-6 ui-md-6 ui-fluid">
+                    <button icon="pi pi-arrow-left" label="Voltar" (click)="voltar()" pButton></button>
+                </div>
+            </p-dialog>
+        </div>
+    </div>
 </form>

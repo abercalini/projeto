@@ -25,6 +25,15 @@ export class DizimoService {
       .map(response => response);
   }
 
+  excluir(codigo: number): Observable<Dizimo> {
+    return this.httpClient.delete<Dizimo>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()});
+  }
+
+  atualizarSaldoDizimo(codigo: number, valor: number): Observable<Dizimo> {
+    return this.httpClient.put<Dizimo>(`${this.baseUrl}/atualizarsaldodizimo/${codigo}`, JSON.stringify(valor),
+      {headers: this.adicionarHeadersSalvar()}).map(response => response);
+  }
+
   adicionarHeadersSalvar() {
     let headers = new HttpHeaders();
     const token = localStorage.getItem('token');

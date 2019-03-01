@@ -15,6 +15,10 @@ import { DizimoPesquisaComponent } from './dizimo-pesquisa/dizimo-pesquisa.compo
 import { TableModule } from 'primeng/table';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { DialogModule } from 'primeng/dialog';
+
 
 
 @NgModule({
@@ -32,7 +36,10 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     ToastModule,
     TableModule,
     CalendarModule,
-    InputTextareaModule
+    InputTextareaModule,
+    ConfirmDialogModule,
+    OverlayPanelModule,
+    DialogModule
   ]
 })
 export class DizimoModule { }

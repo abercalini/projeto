@@ -25,7 +25,7 @@ export class DizimoCadastroComponent implements OnInit {
   caixas = [];
   cultoFilter = new CultoFilter();
 
-  caixaSelecionado = [];
+ // caixaSelecionado = [];
 
  // caixaSelecionado = [];
 
@@ -60,11 +60,11 @@ export class DizimoCadastroComponent implements OnInit {
 
   listarPagamentos() {
     this.pagamentos = [
-      {label: 'CARTAO DE CREDITO', value: 'CARTAO_DE_CREDITO'},
-      {label: 'CARTAO DE DEBITO', value: 'CARTAO_DE_DEBITO'},
-      {label: 'DINHEIRO', value: 'DINHEIRO'},
-      {label: 'DEPOSITO', value: 'DEPOSITO'},
-      {label: 'CHEQUE', value: 'CHEQUE'}
+      {label: 'Cartão de credito', value: 'Cartão de credito'},
+      {label: 'Cartão de débito', value: 'Cartão de débito'},
+      {label: 'Dinheiro', value: 'Dinheiro'},
+      {label: 'Deposito', value: 'Deposito'},
+      {label: 'Cheque', value: 'Cheque'}
     ];
   }
 
@@ -76,7 +76,7 @@ export class DizimoCadastroComponent implements OnInit {
     this.dizimo.igreja.codigo = localStorage.getItem('codigo_igreja');
     this.dizimoService.salvar(this.dizimo).subscribe(response => {
 
-      this.caixaService.atualizarSaldo(this.caixaSelecionado, response.valor).subscribe();
+      this.caixaService.atualizarSaldo(this.dizimo.caixa.codigo, response.valor).subscribe();
       this.messageService.add({severity: 'success', detail: 'Dizimo efetuado com sucesso', summary: 'Dizimo efetuado com sucesso'});
       this.historicoService.salvar('Efetuou um dizimo valor R$' + response.valor, this.segurancaService.nomeUsuario).subscribe();
 

@@ -3,7 +3,6 @@ package br.com.igreja.resource;
 import java.math.BigDecimal;
 import java.util.List;
 
-import org.hibernate.jpa.criteria.ValueHandlerFactory.BigDecimalValueHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -106,6 +105,7 @@ public class CaixaResource {
 		}
 		
 		caixaRetornado.setSaldoFechamento(caixaRetornado.getSaldoAbertura().add(caixaRetornado.getValorReceita()));
+		System.out.println(caixaRetornado.getSaldoFechamento());
 		caixaRepository.save(caixaRetornado);
 	}
 	
