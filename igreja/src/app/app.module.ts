@@ -1,3 +1,5 @@
+import { CentroCustoService } from './centro-custo/centro-custo.service';
+import { CentroCustoModule } from './centro-custo/centro-custo.module';
 import { CultoModule } from './culto/culto.module';
 import { AppTopBarComponent } from './app.topbar.component';
 import { MembroModule } from './membro/membro.module';
@@ -62,7 +64,7 @@ registerLocaleData(localePt);
     AppComponent,
     AppMenuComponent,
     AppSubMenuComponent,
-    AppTopBarComponent
+    AppTopBarComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,8 +89,8 @@ registerLocaleData(localePt);
     DizimoModule,
     OfertaModule,
     ScrollPanelModule,
-    DashbordModule
-
+    DashbordModule,
+    CentroCustoModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},
@@ -106,7 +108,7 @@ registerLocaleData(localePt);
 
     SegurancaService, JwtHelperService, MessageService, HistoricoService, FornecedorService, ConfirmationService,
     Title, DistritoService, IgrejaService, CargoministroService, SituacaomembroService, TipoadesaoService, FuncaomembroService,
-    MembroService, VisitanteService, CaixaService, CultoService, DizimoService, OfertaService
+    MembroService, VisitanteService, CaixaService, CultoService, DizimoService, OfertaService, CentroCustoService
   ],
   bootstrap: [AppComponent]
 })

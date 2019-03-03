@@ -88,7 +88,7 @@ export class OfertaPesquisaComponent implements OnInit {
       this.display = false;
       this.pesquisar();
 
-      let verificacao = this.oferta.valor > response.valor ? true : false;
+      const verificacao = this.oferta.valor > response.valor ? true : false;
       let valorProporcional: number;
 
       if (verificacao) {
@@ -99,7 +99,7 @@ export class OfertaPesquisaComponent implements OnInit {
 
       this.caixaService.atualizarSaldoPropocional(this.oferta.caixa.codigo, valorProporcional).subscribe();
     });
-   // this.caixaService.atualizarSaldoPropocional(this.oferta.caixa.codigo, this.valor).subscribe();    
+   // this.caixaService.atualizarSaldoPropocional(this.oferta.caixa.codigo, this.valor).subscribe();
   }
 
 }

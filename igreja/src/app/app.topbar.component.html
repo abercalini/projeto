@@ -1,4 +1,4 @@
-<div class="layout-topbar">
+<div class="layout-topbar" *ngIf="mostrarMenu()">
 
     <a routerLink="/" *ngIf="app.isHorizontal() && !app.isMobile()" class="topbar-logo">
         <img alt="logo"  src="assets/layout/images/logo-slim.png" />

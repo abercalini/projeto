@@ -1,0 +1,38 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="salvar(inputFormulario)">
+    <p-fieldset legend="Cadastro de custo de custos">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+              <label>Centro de custos *</label>
+              <input type="text" pInputText  [(ngModel)]="centroCusto.nome" name="nome" required />
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Tipo *</label>
+                <p-dropdown [options]="tipos" [(ngModel)]="centroCusto.tipo" name="tipo" [filter]="true" [autoWidth]="false"
+                  placeholder="Selecione..." required></p-dropdown>
+            </div>
+        </div>
+        <div class="ui-g">
+          <div class="ui-g-6 ui-md-2 ui-fluid">
+              <button pButton type="submit" label="Salvar" icon="pi pi-save" class="ui-button-success"
+                 [disabled]="inputFormulario.invalid" ></button>
+          </div>
+          <div class="ui-g-6 ui-md-2 ui-fluid">
+              <button pButton type="button" label="Voltar" icon="pi pi-arrow-left" routerLink="/centrocusto"></button>
+          </div>
+        </div>
+    </p-fieldset>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
+        </div>
+    </div>
+
+</form>

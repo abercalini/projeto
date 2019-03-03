@@ -32,10 +32,10 @@ export class CultoService {
   }
 
   listarTodos(cultoFilter: CultoFilter , codigo: any): Observable<any> {
-    
+
     let params = new HttpParams();
 
-    if(cultoFilter.descricao) {
+    if (cultoFilter.descricao) {
       params = params.set('descricao', cultoFilter.descricao);
       params = params.set('objetivo', cultoFilter.descricao);
     }

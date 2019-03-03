@@ -1,4 +1,4 @@
-<div *ngIf="exibirMenu()">
+<div *ngIf="mostrarMenu()">
 <div class="layout-sidebar" [ngClass]="{'layout-sidebar-active': app.sidebarActive, 'layout-sidebar-dark': app.darkMenu}"
     (click)="app.onSidebarClick($event)" (mouseover)="app.sidebarActive=true" (mouseleave)="app.sidebarActive=false">
     <div class="sidebar-logo">

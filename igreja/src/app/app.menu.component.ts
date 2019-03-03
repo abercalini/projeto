@@ -19,8 +19,12 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
 
     constructor(public app: AppComponent, private router: Router) {}
 
-    exibirMenu() {
-      return this.router.url !== '/login';
+    mostrarMenu() {
+      if (this.router.url === '/login' || this.router.url === '/escolherigreja') {
+        return false;
+      } else {
+        return true;
+      }
     }
 
     ngAfterViewInit() {
@@ -127,7 +131,7 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                     {label: 'Dizimo', icon: 'thumb_up', routerLink: ['/dizimo']},
                     {label: 'Oferta', icon: 'thumb_up', routerLink: ['/oferta']}
                 ]
-            }, 
+            },
             {
                 label: 'Cadastros', icon: 'list',
                 items: [

@@ -1,3 +1,5 @@
+import { CentroCustoPesquisaComponent } from './../centro-custo/centro-custo-pesquisa/centro-custo-pesquisa.component';
+import { CentroCustoCadastroComponent } from './../centro-custo/centro-custo-cadastro/centro-custo-cadastro.component';
 import { CultoCadastroComponent } from './../culto/culto-cadastro/culto-cadastro.component';
 import { VisitantePesquisaComponent } from './../visitante/visitante-pesquisa/visitante-pesquisa.component';
 import { MembroPesquisaComponent } from './../membro/membro-pesquisa/membro-pesquisa.component';
@@ -90,6 +92,9 @@ const router: Routes = [
 
   {path: 'oferta/novo', component: OfertaCadastroComponent},
   {path: 'oferta', component: OfertaPesquisaComponent},
+
+  {path: 'centrocusto/novo', component: CentroCustoCadastroComponent},
+  {path: 'centrocusto', component: CentroCustoPesquisaComponent},
 
   {path: 'dashbord', component: DashbordInicialComponent},
 
