@@ -1,0 +1,114 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="salvar(inputFormulario)">
+    <p-fieldset legend="Cadastro de Despesas">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <label>Descricao *</label>
+                <input type="text" pInputText [(ngModel)]="despesa.descricao" name="descricao" required/>
+            </div>
+            <br>
+            <div class="ui-g-12 ui-md-10 ui-fluid">
+                <label>Fornecedor / Empresa *</label>
+                <p-dropdown [options]="fornecedores" [(ngModel)]="despesa.fornecedor.codigo" name="fornecedor"
+                    [filter]="true" placeholder="Selecione..." required [autoWidth]="false"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <label style="color: white;">Teste</label>
+                <button pButton type="button" label="Adicionar Fornecedor" icon="pi pi-plus" routerLink="/fornecedor/novo"></button>
+            </div>
+            <br>
+            <div class="ui-g-12 ui-md-6 ui-fluid">
+                <label>Data Pagamento *</label>
+                <p-calendar [(ngModel)]="despesa.dataPagamento" name="pagamento" dateFormat="dd/mm/yy" required></p-calendar>
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-fluid">
+                <label>Data Vencimento *</label>
+                <p-calendar  dateFormat="dd/mm/yy" required></p-calendar>
+            </div>
+            <br>
+            <div class="ui-g-12 ui-md-5 ui-fluid">
+                <label>Centro de Custo *</label>
+                <p-dropdown [options]="custos" [(ngModel)]="despesa.centroCusto.codigo" name="custo"
+                    [filter]="true" placeholder="Selecione..." required [autoWidth]="false"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-1 ui-fluid">
+                <button pButton type="button" icon="pi pi-plus" routerLink="/centrocusto/novo" pTooltip="Adcionar Centro de Custo" tooltipPosition="top"></button>
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-fluid">
+                <label>Caixas Abertos *</label>
+                <p-dropdown [options]="caixas" [(ngModel)]="despesa.caixa.codigo" name="caixa"
+                    [filter]="true" placeholder="Selecione..." required [autoWidth]="false"></p-dropdown>
+            </div>
+            <br>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <label>Valor *</label>
+                <input currencyMask [(ngModel)]="despesa.valor" name="valor" pInputText required placeholder="0.00" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" (keydown.Tab)="valorTotal()"/>
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <label>Desconto</label>
+                <input currencyMask [(ngModel)]="despesa.desconto" name="desconto" pInputText placeholder="0.00" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" (keydown.Tab)="valorTotal()"/>
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <label>Juros</label>
+                <input currencyMask [(ngModel)]="despesa.juros" name="juros" pInputText placeholder="0.00" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }" (keydown.Tab)="valorTotal()"/>
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <label>Valor Total</label>
+                <input currencyMask [(ngModel)]="despesa.valorTotal" style="color: green;" name="valorTotal" pInputText placeholder="0.00" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Forma de Pagamento *</label>
+                <p-dropdown [options]="pagamentos" [(ngModel)]="despesa.formaPagamento" name="pagamento" #pagamento
+                    [filter]="true" placeholder="Selecione..." required [autoWidth]="false"></p-dropdown>
+            </div>
+        </div>
+
+        <div *ngIf="despesa.formaPagamento === 'Cartão de credito'" class="ui-g">
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <label>Foi Parcelado ?</label>
+                <p-toggleButton [(ngModel)]="despesa.parcelado" name="parcelado" onLabel="Sim" offLabel="Não"></p-toggleButton>
+            </div>
+            <div *ngIf="despesa.parcelado === true" class="ui-g-12 ui-md-2 ui-fluid">
+                <label>Quantidade de parcela</label>
+                <p-spinner size="30" [(ngModel)]="despesa.quantidadeParcela" name="quantidadeParcela"></p-spinner>
+            </div>
+            <div *ngIf="despesa.parcelado === true" class="ui-g-12 ui-md-2 ui-fluid">
+                <label style="color: white;">Teste</label>
+                <button pButton type="button" label="Gerar Parcela" (click)="gerarParcelas();"></button>
+            </div>
+        </div>
+
+        <div *ngIf="despesa.formaPagamento === 'Cartão de credito'" class="ui-g">
+            <div class="ui-g-12 ui-md-6 ui-fluid">
+                <p-table [value]="despesa.parcelas">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Valor</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-p>
+                        <tr>
+                            <td>{{p.valor | number: '1.2-2'}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+
+            </div>
+        </div>
+
+        <br>
+        <div class="ui-g-12 ui-md-2 ui-fluid">
+            <button pButton type="submit" label="Salvar" icon="pi pi-save" class="ui-button-success"></button>
+        </div>
+    </p-fieldset>
+
+    <div class="ui-g">
+      <div class="ui-g-12 ui-md-12 ui-fluid">
+          <p-toast position="bottom-left"></p-toast>
+      </div>
+    </div>
+</form>

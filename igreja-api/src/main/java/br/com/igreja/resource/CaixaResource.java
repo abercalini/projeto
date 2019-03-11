@@ -71,7 +71,7 @@ public class CaixaResource {
 		
 		// Validando o valor da receita do caixa
 		caixaRetornado.setValorReceita(valor = valor.add(caixaRetornado.getValorReceita()));
-		caixaRetornado.setSaldoFechamento(caixaRetornado.getValorReceita().add(caixaRetornado.getSaldoAbertura()));
+		caixaRetornado.setSaldoFechamento(caixaRetornado.getValorReceita().add(caixaRetornado.getSaldoAbertura().subtract(caixaRetornado.getValorDespesas())));
 		
 		caixaRepository.save(caixaRetornado);
 	}
@@ -104,11 +104,21 @@ public class CaixaResource {
 			caixaRetornado.setValorReceita(caixaRetornado.getValorReceita().subtract(valor));
 		}
 		
-		caixaRetornado.setSaldoFechamento(caixaRetornado.getSaldoAbertura().add(caixaRetornado.getValorReceita()));
-		System.out.println(caixaRetornado.getSaldoFechamento());
+		caixaRetornado.setSaldoFechamento(caixaRetornado.getSaldoAbertura().add(caixaRetornado.getValorReceita().subtract(caixaRetornado.getValorDespesas())));
 		caixaRepository.save(caixaRetornado);
 	}
 	
+	@PutMapping("atualizarsaldodespesa/{codigo}")
+	@PreAuthorize("hasAuthority('ROLE_EDITAR_OBJETO')")
+	@ResponseStatus(HttpStatus.OK)
+	public void atualizarSaldo(@PathVariable Long codigo, @RequestBody BigDecimal valor) {
+		Caixa caixaRetornado = caixaRepository.findOne(codigo);
+		BigDecimal valorAux = valor;
+		caixaRetornado.setValorDespesas(valor = valor.add(caixaRetornado.getValorDespesas()));
+		caixaRetornado.setSaldoFechamento(caixaRetornado.getSaldoFechamento().subtract(valorAux));
+		System.out.println(caixaRetornado.getSaldoFechamento());
+		caixaRepository.save(caixaRetornado);
+	}
 	
 	
 	

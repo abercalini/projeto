@@ -1,0 +1,80 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="listarTodos()">
+    <div class="ui-g">
+        <div class="ui-g-6 ui-md-2 ui-fluid">
+            <button pButton type="button" label="Adicionar Entrada" icon="pi pi-plus" routerLink="/entrada/novo" ></button>
+        </div>
+    </div>
+
+    <p-fieldset legend="Listar Entradas">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <p-table [value]="entradas" [responsive]="true" [rows]="30" [paginator]="true" #tabela>
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 80px;">#</th>
+                            <th style="width: 100px;">Pagamento</th>
+                            <th style="width: 100px;">Vencimento</th>
+                            <th style="width: 100px;">Desconto</th>
+                            <th style="width: 100px;">Juros</th>
+                            <th style="width: 100px;">Valor Total</th>
+                            <th style="width: 150px;">Pagamento</th>
+                            <th style="width: 100px;">Parcelado</th>
+                            <th style="width: 150px;">Caixa</th>
+                            <th style="width: 80px;"></th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-e>
+                        <tr>
+                            <td>{{e.codigo}}</td>
+                            <td>{{e.dataPagamento | date: 'dd/MM/y'}}</td>
+                            <td>{{e.dataVencimento | date: 'dd/MM/y'}}</td>
+                            <td style="text-align: center;">{{e.desconto | number: '1.2-2'}}</td>
+                            <td style="text-align: center;">{{e.juros | number: '1.2-2'}}</td>
+                            <td style="text-align: center;">{{e.valorTotal | number: '1.2-2'}}</td>
+                            <td>{{e.formaPagamento}}</td>
+                            <td style="text-align: center;">{{e.parcelado === true ? 'Sim' : 'Não'}}</td>
+                            <td>{{e.caixa.nome}}</td>
+                            <td>
+                                <button style="margin-left: 15px; background-color: teal;" pButton type="button" icon="ui-icon-view-module" (click)="op.toggle($event); pegarDados(e);"></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+
+        <p-overlayPanel  #op>
+            <div class="ui-g">
+                <div class="ui-g-12 ui-md-12 ui-fluid">
+                    <a  style="color: black;" (click)="visualizar()">Visualizar</a>
+                </div>
+                <div class="ui-g-12 ui-md-12 ui-fluid">
+                    <a style="color: black;" (click)="prepararExclusao()">Excluir</a>
+                </div>
+            </div>
+        </p-overlayPanel>
+    </p-fieldset>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+          <p-confirmDialog #cd header="Confirmação" icon="pi pi-exclamation-triangle">
+            <p-footer>
+                <button type="button" pButton icon="pi pi-check" label="Sim" style="color: red; background-color: tan;" (click)="cd.accept()"></button>
+                <button type="button" pButton icon="pi pi-times" label="Não" style="color: green; background-color: palegreen;" (click)="cd.reject()"></button>
+            </p-footer>
+        </p-confirmDialog>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
+        </div>
+    </div>
+
+</form>

@@ -1,0 +1,33 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="pesquisar()">
+    <p-fieldset legend="Listar Arquivos">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <p-table [value]="arquivos">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>#</th>
+                            <th>Arquivo</th>
+                            <th>Nome</th>
+                            <th>Data</th>
+                            <th>Descricao</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-a>
+                        <tr>
+                            <td>{{a.codigo}}</td>
+                            <td>{{a.arquivo}}</td>
+                            <td>{{a.nome}}</td>
+                            <td>{{a.data}}</td>
+                            <td>{{a.descricao}}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </p-fieldset>
+</form>

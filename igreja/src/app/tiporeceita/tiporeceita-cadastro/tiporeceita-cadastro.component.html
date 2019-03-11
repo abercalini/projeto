@@ -1,0 +1,31 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #formularioInput="ngForm" (ngSubmit)="prepararSalvar(formularioInput)">
+    <p-fieldset legend="{{editando() !== true ? 'Cadastro de ' : 'Editando '}}  tipo Entrada">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <label>Tipo de Entrada *</label>
+                <input type="text" pInputText [(ngModel)]="tipoEntrada.descricao" name="Descricao" required />
+            </div>
+        </div>
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-6 ui-md-2 ui-fluid">
+                <button pButton type="submit" label="Salvar" icon="pi pi-save" class="ui-button-success"
+                    [disabled]="!formularioInput.valid"></button>
+            </div>
+            <div class="ui-g-6 ui-md-2 ui-fluid">
+                <button pButton type="button" label="Voltar" icon="pi pi-arrow-left" routerLink="/receita"></button>
+            </div>
+        </div>
+    </p-fieldset>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
+        </div>
+    </div>
+</form>

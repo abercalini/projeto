@@ -45,7 +45,8 @@ export class VisitanteService {
     if (visitanteFilter.nome) {
       params = params.set('nome', visitanteFilter.nome);
     }
-    return this.httpClient.get<any>(`${this.baseUrl}/filtrarPorIgreja/${codigo}`, {params, headers: this.adicionarHeaders()}).map(response => response);
+    return this.httpClient.get<any>(`${this.baseUrl}/filtrarPorIgreja/${codigo}`,
+      {params, headers: this.adicionarHeaders()}).map(response => response);
   }
 
   buscarCep(cep: string): Observable<any> {

@@ -64,4 +64,5 @@ public class DistritoResource {
 		
 		return ResponseEntity.status(HttpStatus.OK).body(distritoRetornado);
 	}
+	
 }

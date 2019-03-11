@@ -99,8 +99,7 @@ public class Membro implements Serializable{
 	private Igreja igreja;
 	
 	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name = "membro_funcoes", joinColumns = @JoinColumn(name = "codigo_membro"),
-		inverseJoinColumns = @JoinColumn(name = "codigo_funcao"))
+	@JoinTable(name = "membro_funcoes", joinColumns = @JoinColumn(name = "codigo_membro"), inverseJoinColumns = @JoinColumn(name = "codigo_funcao"))
 	private List<FuncaoMembro> funcoes = new ArrayList<>();
 	
 	

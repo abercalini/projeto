@@ -3,8 +3,8 @@
 <br>
 <br>
 
-<form #inputFormulario="ngForm" (ngSubmit)="salvar(inputFormulario)">
-    <p-fieldset legend="Cadastro de custo de custos">
+<form #inputFormulario="ngForm" (ngSubmit)="prepararSalvar(inputFormulario)">
+    <p-fieldset legend="{{editando() !== true ? 'Cadastro de' : 'Editando' }} centro de custos">
         <div class="ui-g">
             <div class="ui-g-12 ui-md-4 ui-fluid">
               <label>Centro de custos *</label>

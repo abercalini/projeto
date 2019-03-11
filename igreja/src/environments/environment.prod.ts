@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://bercaline-api.herokuapp.com'
+  apiUrl: 'https://abercalini.herokuapp.com/'
 };

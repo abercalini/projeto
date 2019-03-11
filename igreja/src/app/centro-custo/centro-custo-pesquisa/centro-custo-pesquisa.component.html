@@ -24,7 +24,7 @@
         <br>
         <div class="ui-g">
             <div class="ui-g-12 ui-md-12 ui-fluid">
-              <p-table [value]="custos" [responsive]="true" [rows]="30" [paginator]="true">
+              <p-table [value]="custos" [responsive]="true" [rows]="30" [paginator]="true" #tabela>
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 50px;">#</th>
@@ -39,7 +39,8 @@
                         <td>{{c.nome}}</td>
                         <td>{{c.tipo}}</td>
                         <td>
-                          <button pButton type="button" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" style="background-color: teal;"></button>
+                          <button pButton type="button" icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top" style="background-color: teal;"
+                            [routerLink]="['/centrocusto/',c.codigo]"></button>
                           <button pButton type="button" icon="pi pi-times" pTooltip="Excluir" tooltipPosition="top" style="background-color: red;"
                               (click)="excluir(c.codigo)"></button>
                         </td>
@@ -58,6 +59,12 @@
                   <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
                 </p-footer>
             </p-confirmDialog>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
         </div>
     </div>
 </form>

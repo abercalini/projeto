@@ -1,0 +1,124 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="salvar(inputFormulario);">
+
+    <p-fieldset legend="Cadastro de Entrada">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <label>Descrição *</label>
+                <input type="text" pInputText [(ngModel)]="entrada.descricao" name="descricao" required />
+            </div>
+        </div>
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-5 ui-fluid">
+                <label>Centro Custo *</label>
+                <p-dropdown [options]="custos" [(ngModel)]="entrada.centroCusto.codigo" name="custo"
+                  required [autoWidth]="false" placeholder="Selecione..." [filter]="true"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-1 ui-fluid">
+                <button pButton type="button" icon="pi pi-plus" pTooltip="Adicionar Centro Custo" routerLink="/centrocusto/novo"
+                   style="background-color: green;" tooltipPosition="top"></button>
+            </div>
+            <div class="ui-g-12 ui-md-5 ui-fluid">
+                <label>Tipo Receita *</label>
+                <p-dropdown [options]="receitas" [(ngModel)]="entrada.tipoEntrada.codigo" name="tipoEntrada"
+                  required [autoWidth]="false" placeholder="Selecione..." [filter]="true"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-1 ui-fluid">
+                <button pButton type="button" icon="pi pi-plus" pTooltip="Adicionar Tipo Receita" routerLink="/receita/novo"
+                style="background-color: green;" tooltipPosition="top"></button>
+            </div>
+
+            <div class="ui-g-12 ui-md-6 ui-fluid">
+                <label>Data Pagamento *</label>
+                <p-calendar [(ngModel)]="entrada.dataPagamento" name="dataPagamento" dateFormat="dd/mm/yy" required></p-calendar>
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-fluid">
+                <label>Data Vencimento *</label>
+                <p-calendar [(ngModel)]="entrada.dataVencimento" name="dataVencimento" dateFormat="dd/mm/yy" required></p-calendar>
+            </div>
+
+            <div class="ui-g-12 ui-md-3 ui-fluid">
+                <label>Valor *</label>
+                <input currencyMask [(ngModel)]="entrada.valor" name="valor" required pInputText  [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+                  (keydown.Tab)="gerarValorTotal()"/>
+            </div>
+            <div class="ui-g-12 ui-md-3 ui-fluid">
+                <label>Desconto</label>
+                <input currencyMask [(ngModel)]="entrada.desconto" name="desconto" pInputText  [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+                  (keydown.Tab)="gerarValorTotal()"/>
+            </div>
+            <div class="ui-g-12 ui-md-3 ui-fluid">
+                <label>Juros</label>
+                <input currencyMask [(ngModel)]="entrada.juros" name="juros" pInputText  [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"
+                  (keydown.Tab)="gerarValorTotal()"/>
+            </div>
+            <div class="ui-g-12 ui-md-3 ui-fluid">
+                <label>Valor Total *</label>
+                <input currencyMask [(ngModel)]="entrada.valorTotal" style="color: green;" name="valorTotal" required pInputText  [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }"/>
+            </div>
+
+            <div class="ui-g-12 ui-md-3 ui-fluid">
+                <label>Caixas Abertos *</label>
+                <p-dropdown [options]="caixas" [(ngModel)]="entrada.caixa.codigo" name="caixa"
+                required [autoWidth]="false" placeholder="Selecione..." [filter]="true"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-3 ui-fluid">
+                <label>Forma de Pagamento *</label>
+                <p-dropdown [options]="pagamentos" [(ngModel)]="entrada.formaPagamento" name="formaPagamento"
+                  required [autoWidth]="false" placeholder="Selecione..." [filter]="true"></p-dropdown>
+            </div>
+        </div>
+
+        <div class="ui-g">
+          <div *ngIf="entrada.formaPagamento === 'Cartão de Credito'" class="ui-g-12 ui-md-2 ui-fluid">
+              <label>Foi Parcelado ?</label>
+              <p-toggleButton onLabel="Sim" offLabel="Não"onIcon="pi pi-check" offIcon="pi pi-times" [(ngModel)]="entrada.parcelado" name="parcelado"></p-toggleButton>
+          </div>
+          <div *ngIf="entrada.parcelado === true" class="ui-g-12 ui-md-2 ui-fluid">
+              <label>Quantidade de Parcela</label>
+              <p-spinner size="12" [(ngModel)]="entrada.quantidadeParcela" name="quantidadeParcela"></p-spinner>
+          </div>
+          <div *ngIf="entrada.parcelado === true" class="ui-g-12 ui-md-2 ui-fluid">
+              <label style="color: white;">Teste</label>
+              <button pButton type="button" label="Gerar Parcelas" (click)="gerarParcelas()" ></button>
+          </div>
+       </div>
+       <div *ngIf="entrada.parcelado === true" class="ui-g">
+          <div class="ui-g-12 ui-md-6 ui-fluid">
+              <p-table [value]="entrada.parcelas" [responsive]="true" [rows]="6" [paginator]="true">
+                  <ng-template pTemplate="header">
+                      <tr>
+                          <th>Valor</th>
+                          <th>Data Vencimento</th>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-p>
+                      <tr>
+                          <td>{{p.valor | number: '1.2-2'}}</td>
+                          <td>{{p.dataVencimento | date: 'dd/MM/y'}}</td>
+                      </tr>
+                  </ng-template>
+              </p-table>
+          </div>
+       </div>
+
+       <div class="ui-g">
+          <div class="ui-g-6 ui-md-2 ui-fluid">
+              <button pButton type="submit" label="Salvar" class="ui-button-success" icon="pi pi-save" [disabled]="entrada.codigo || inputFormulario.invalid" ></button>
+          </div>
+          <div class="ui-g-6 ui-md-2 ui-fluid">
+              <button pButton type="button" label="Voltar" icon="pi pi-arrow-left" routerLink="/entrada"></button>
+          </div>
+       </div>
+    </p-fieldset>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
+        </div>
+    </div>
+</form>

@@ -40,8 +40,8 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                     {label: 'Static Menu', icon: 'view_quilt', command: (event) => {this.app.layoutMode = 'static'; }},
                     {label: 'Overlay Menu', icon: 'flip_to-front', command: (event) => {this.app.layoutMode = 'overlay'; }},
                     {label: 'Horizontal Menu', icon: 'border_horizontal', command: (event) => {this.app.layoutMode = 'horizontal'; }},
-                    {label: 'Light Menu', icon: 'label', command: (event) => {this.app.darkMenu = false; }},
-                    {label: 'Dark Menu', icon: 'label_outline', command: (event) => {this.app.darkMenu = true; }},
+                    {label: 'Light Menu', icon: 'label', command: (event) => {this.app.darkMenu = true; }},
+                    {label: 'Dark Menu', icon: 'label_outline', command: (event) => {this.app.darkMenu = false; }},
                     {
                         label: 'Orientation', icon: 'format_align_right',
                         items: [
@@ -129,7 +129,8 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                 label: 'Tesouraria', icon: 'attach_money',
                 items: [
                     {label: 'Dizimo', icon: 'thumb_up', routerLink: ['/dizimo']},
-                    {label: 'Oferta', icon: 'thumb_up', routerLink: ['/oferta']}
+                    {label: 'Oferta', icon: 'thumb_up', routerLink: ['/oferta']},
+                    {label: 'Entrada', routerLink: ['/entrada']}
                 ]
             },
             {
@@ -155,6 +156,8 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                 label: 'Configurar Tesouraria', icon: 'build',
                 items: [
                     {label: 'Culto', icon: 'group', routerLink: ['/culto']},
+                    {label: 'Centro de Custo', icon: 'new_releases', routerLink: ['/centrocusto']},
+                    {label: 'Tipo Receita', routerLink: ['/receita']}
                 ]
             },
             {

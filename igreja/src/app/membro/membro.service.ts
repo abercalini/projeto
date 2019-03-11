@@ -40,7 +40,8 @@ export class MembroService {
   }
 
   listarTodos(codigo: any): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseUrl}/listarPorIgreja/${codigo}`, {headers: this.adicionarHeaders()}).map(response => response);
+    return this.httpClient.get<any>(`${this.baseUrl}/listarPorIgreja/${codigo}`,
+      {headers: this.adicionarHeaders()}).map(response => response);
   }
 
   buscarPorCodigo(codigo: number): Observable<Membro> {

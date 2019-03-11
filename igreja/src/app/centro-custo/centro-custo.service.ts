@@ -21,13 +21,27 @@ export class CentroCustoService {
       .map(response => response);
   }
 
+  atualizar(centroCusto: CentroCusto): Observable<CentroCusto> {
+    return this.httpClient.put<CentroCusto>(`${this.baseUrl}/${centroCusto.codigo}`, JSON.stringify(centroCusto),
+      {headers: this.adicionarHeadersSalvar()}).map(response => response);
+  }
+
   listarTodos(codigo: any, centroCustoFilter: CentroCustoFilter): Observable<any> {
     let params = new HttpParams();
     if (centroCustoFilter.pesquisa) {
       params = params.set('pesquisa', centroCustoFilter.pesquisa);
     }
+    return this.httpClient.get<any>(`${this.baseUrl}/filtrarporigreja/${codigo}`,
+      {params, headers: this.adicionarHeaders()}).map(response => response);
+  }
 
-    return this.httpClient.get<any>(`${this.baseUrl}/${codigo}`, {params, headers: this.adicionarHeaders()}).map(response => response);
+  excluir(codigo: number): Observable<CentroCusto> {
+    return this.httpClient.delete<CentroCusto>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()});
+  }
+
+  buscarPorCodigo(codigo: number): Observable<CentroCusto> {
+    return this.httpClient.get<CentroCusto>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()})
+      .map(response => response);
   }
 
 

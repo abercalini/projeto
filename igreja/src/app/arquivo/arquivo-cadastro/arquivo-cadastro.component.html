@@ -1,0 +1,37 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="salvar(inputFormulario)" enctype="multipart/form-data">
+    <p-fieldset legend="Cadastro de Arquivo">
+      <div class="ui-g">
+        <div class="ui-g-12 ui-m-12 ui-fluid">
+            <label>Arquivo *</label>
+            <input type="file" (change)="inputFileSelectd($event)" required>
+        </div>
+        <div class="ui-g-12 ui-md-3 ui-fluid">
+            <label>Nome arquivo *</label>
+            <input type="text" pInputText [(ngModel)]="arquivo.nomeArquivo" name="nomeArquivo" />
+        </div>
+      </div>
+      <div class="ui-g">
+          <div class="ui-g-12 ui-md-3 ui-fluid">
+              <label>Descrição</label>
+              <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="arquivo.descricao" name="descricao" ></textarea>
+          </div>
+      </div>
+      <div class="ui-g">
+          <div class="ui-g-12 ui-md-3 ui-fluid">
+              <label>Data *</label>
+              <p-calendar [(ngModel)]="arquivo.data" dateFormat="dd/mm/yy" name="data"></p-calendar>
+          </div>
+      </div>
+      <br>
+      <div class="ui-g">
+          <div class="ui-g-6 ui-md-2 ui-fluid">
+              <button pButton type="submit" label="Salvar" class="ui-button-success" icon="pi pi-save"></button>
+          </div>
+      </div>
+    </p-fieldset>
+</form>

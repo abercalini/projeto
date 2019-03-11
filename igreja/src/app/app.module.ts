@@ -1,3 +1,7 @@
+import { ArquivoService } from './arquivo/arquivo.service';
+import { ArquivoModule } from './arquivo/arquivo.module';
+import { EntradaModule } from './entrada/entrada.module';
+import { DespesaModule } from './despesa/despesa.module';
 import { CentroCustoService } from './centro-custo/centro-custo.service';
 import { CentroCustoModule } from './centro-custo/centro-custo.module';
 import { CultoModule } from './culto/culto.module';
@@ -22,16 +26,15 @@ import { CaixaModule } from './caixa/caixa.module';
 import { EscolherIgrejaModule } from './escolher-igreja/escolher-igreja.module';
 import { DizimoModule } from './dizimo/dizimo.module';
 import { VisitanteModule } from './visitante/visitante.module';
+import { TiporeceitaModule } from './tiporeceita/tiporeceita.module';
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 
 import { AppComponent } from './app.component';
 import { AppMenuComponent, AppSubMenuComponent } from './app.menu.component';
 
-import { ScrollPanelModule } from 'primeng/scrollpanel';
-
 import { RefreshTokenInterceptor } from './seguranca/RefreshTokenInterceptor';
 import { HttpErrorInterceptor } from './seguranca/HttpErrorInterceptor';
-
 
 import { SegurancaService } from './seguranca/seguranca.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -49,13 +52,15 @@ import { MembroService } from './membro/membro.service';
 import { VisitanteService } from './visitante/visitante.service';
 import { CaixaService } from './caixa/caixa.service';
 
-
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { DizimoService } from './dizimo/dizimo.service';
 import { OfertaModule } from './oferta/oferta.module';
 import { OfertaService } from './oferta/oferta.service';
 import { DashbordModule } from './dashbord/dashbord.module';
+import { DespesaService } from './despesa/despesa.service';
+import { TiporeceitaService } from './tiporeceita/tiporeceita.service';
+import { EntradaService } from './entrada/entrada.service';
 
 registerLocaleData(localePt);
 
@@ -90,7 +95,11 @@ registerLocaleData(localePt);
     OfertaModule,
     ScrollPanelModule,
     DashbordModule,
-    CentroCustoModule
+    CentroCustoModule,
+    DespesaModule,
+    TiporeceitaModule,
+    EntradaModule,
+    ArquivoModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},
@@ -108,7 +117,8 @@ registerLocaleData(localePt);
 
     SegurancaService, JwtHelperService, MessageService, HistoricoService, FornecedorService, ConfirmationService,
     Title, DistritoService, IgrejaService, CargoministroService, SituacaomembroService, TipoadesaoService, FuncaomembroService,
-    MembroService, VisitanteService, CaixaService, CultoService, DizimoService, OfertaService, CentroCustoService
+    MembroService, VisitanteService, CaixaService, CultoService, DizimoService, OfertaService, CentroCustoService, DespesaService,
+    TiporeceitaService, EntradaService, ArquivoService
   ],
   bootstrap: [AppComponent]
 })

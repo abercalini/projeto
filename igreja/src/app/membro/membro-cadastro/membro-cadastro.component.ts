@@ -76,7 +76,6 @@ export class MembroCadastroComponent implements OnInit {
   salvar(form: NgForm) {
     const codigoIgreja = localStorage.getItem('codigo_igreja');
     this.membro.igreja.codigo = codigoIgreja;
-
     this.membroService.salvar(this.membro).subscribe(response => {
       form.reset();
       this.membro = new Membro();
@@ -108,7 +107,8 @@ export class MembroCadastroComponent implements OnInit {
   }
 
   adicionarAdesao() {
-    this.tipoAdesaoService.listarTodos(localStorage.getItem('codigo_igreja')).subscribe(response => this.tipoAdesao = response.map(t => ({value: t.codigo, label: t.nome})));
+    this.tipoAdesaoService.listarTodos(localStorage.getItem('codigo_igreja'))
+      .subscribe(response => this.tipoAdesao = response.map(t => ({value: t.codigo, label: t.nome})));
   }
 
   adicionarCargos() {

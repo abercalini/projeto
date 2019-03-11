@@ -1,0 +1,69 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="listarReceitas();">
+
+  <div class="ui-g">
+      <div class="ui-g-6 ui-md-2 ui-fluid">
+          <button pButton type="button" label="Adicionar Receita" icon="pi pi-plus" routerLink="/receita/novo" ></button>
+      </div>
+  </div>
+  <br>
+    <p-fieldset legend="Lista de Entrada">
+
+        <div class="ui-g">
+            <div class="ui-g-7 ui-md-10 ui-fluid">
+                <label>Pesquisar por Descrição</label>
+                <input type="text" pInputText  [(ngModel)]="descricaoFilter" name="descricao"/>
+            </div>
+            <div class="ui-g-5 ui-md-2 ui-fluid">
+                <label style="color: white;">Teste</label>
+                <button pButton type="submit" label="Pesquisar" icon="pi pi-search" ></button>
+            </div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+              <p-table [value]="receitas" [responsive]="true" [paginator]="true" [rows]="30" #tabela>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="width: 80px;">#</th>
+                        <th style="width: 800px;">Descrição</th>
+                        <th style="width: 80px;">Opções</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-r>
+                    <tr>
+                        <td>{{r.codigo}}</td>
+                        <td>{{r.descricao}}</td>
+                        <td>
+                            <button pButton type="button" icon="pi pi-pencil" style="background-color: teal;" pTooltip="Editar" [routerLink]="['/receita/', r.codigo]" tooltipPosition="top"></button>
+                            <button pButton type="button" icon="pi pi-times" style="background-color: red;" pTooltip="Excluir" tooltipPosition="top" (click)="prepararExcluir(r.codigo);"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+            </div>
+        </div>
+    </p-fieldset>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-confirmDialog #cd header="Confirmação" icon="pi pi-exclamation-triangle">
+                <p-footer>
+                    <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()" style="color: red; background-color: tan;"></button>
+                    <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()" style="color: green; background-color: palegreen;"></button>
+                </p-footer>
+            </p-confirmDialog>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
+        </div>
+    </div>
+
+</form>

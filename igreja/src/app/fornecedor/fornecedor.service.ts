@@ -27,8 +27,8 @@ export class FornecedorService {
   }
 
   editar(fornecedor: Fornecedor): Observable<Fornecedor> {
-    return this.httpClient.put<Fornecedor>(`${this.urlBase}/${fornecedor.codigo}`, JSON.stringify(fornecedor), {headers: this.cadastrarHeadersSalvar()})
-      .map(response => response);
+    return this.httpClient.put<Fornecedor>(`${this.urlBase}/${fornecedor.codigo}`,
+      JSON.stringify(fornecedor), {headers: this.cadastrarHeadersSalvar()}).map(response => response);
   }
 
   excluir(codigo: number): Observable<Fornecedor> {
@@ -55,7 +55,8 @@ export class FornecedorService {
     if (fornecedorFilter.nome) {
       params = params.append('nome', fornecedorFilter.nome);
     }
-    return this.httpClient.get<any>(`${this.urlBase}/filtrarPorIgreja/${codigo}`, {params, headers: this.adicionarHeaeders()}).map(response => response);
+    return this.httpClient.get<any>(`${this.urlBase}/filtrarPorIgreja/${codigo}`,
+      {params, headers: this.adicionarHeaeders()}).map(response => response);
   }
 
   buscarCep(cep: string): Observable<any> {

@@ -1,3 +1,6 @@
+import { ArquivoPesquisaComponent } from './../arquivo/arquivo-pesquisa/arquivo-pesquisa.component';
+import { ArquivoCadastroComponent } from './../arquivo/arquivo-cadastro/arquivo-cadastro.component';
+import { DespesaCadastroComponent } from './../despesa/despesa-cadastro/despesa-cadastro.component';
 import { CentroCustoPesquisaComponent } from './../centro-custo/centro-custo-pesquisa/centro-custo-pesquisa.component';
 import { CentroCustoCadastroComponent } from './../centro-custo/centro-custo-cadastro/centro-custo-cadastro.component';
 import { CultoCadastroComponent } from './../culto/culto-cadastro/culto-cadastro.component';
@@ -36,6 +39,10 @@ import { DizimoPesquisaComponent } from '../dizimo/dizimo-pesquisa/dizimo-pesqui
 import { OfertaCadastroComponent } from '../oferta/oferta-cadastro/oferta-cadastro.component';
 import { OfertaPesquisaComponent } from '../oferta/oferta-pesquisa/oferta-pesquisa.component';
 import { DashbordInicialComponent } from '../dashbord/dashbord-inicial/dashbord-inicial.component';
+import { TiporeceitaCadastroComponent } from '../tiporeceita/tiporeceita-cadastro/tiporeceita-cadastro.component';
+import { TiporeceitaPesquisaComponent } from '../tiporeceita/tiporeceita-pesquisa/tiporeceita-pesquisa.component';
+import { EntradaCadastroComponent } from '../entrada/entrada-cadastro/entrada-cadastro.component';
+import { EntradaPesquisaComponent } from '../entrada/entrada-pesquisa/entrada-pesquisa.component';
 
 const router: Routes = [
   {path: 'login', component: LoginComponent},
@@ -95,6 +102,20 @@ const router: Routes = [
 
   {path: 'centrocusto/novo', component: CentroCustoCadastroComponent},
   {path: 'centrocusto', component: CentroCustoPesquisaComponent},
+  {path: 'centrocusto/:codigo', component: CentroCustoCadastroComponent},
+
+  {path: 'despesa/novo', component: DespesaCadastroComponent},
+
+  {path: 'receita/novo', component: TiporeceitaCadastroComponent},
+  {path: 'receita/:codigo', component: TiporeceitaCadastroComponent},
+  {path: 'receita', component: TiporeceitaPesquisaComponent},
+
+  {path: 'entrada/novo', component: EntradaCadastroComponent},
+  {path: 'entrada', component: EntradaPesquisaComponent},
+  {path: 'entrada/:codigo', component: EntradaCadastroComponent},
+
+  {path: 'arquivo/novo', component: ArquivoCadastroComponent},
+  {path: 'arquivo', component: ArquivoPesquisaComponent},
 
   {path: 'dashbord', component: DashbordInicialComponent},
 
