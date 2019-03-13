@@ -20,7 +20,9 @@
                     <ng-template pTemplate="body" let-a>
                         <tr>
                             <td>{{a.codigo}}</td>
-                            <td>{{a.arquivo}}</td>
+                            <td>
+                              <img [attr.src]="a.arquivo" width="1" height="1" />
+                            </td>
                             <td>{{a.nome}}</td>
                             <td>{{a.data}}</td>
                             <td>{{a.descricao}}</td>

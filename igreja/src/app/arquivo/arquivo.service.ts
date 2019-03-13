@@ -1,3 +1,4 @@
+import { log } from 'util';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -22,7 +23,27 @@ export class ArquivoService {
 
   listarTodos(codigo: any): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrl}/${codigo}`, {headers: this.adicionarHeaders()})
-      .map(response => response);
+      .map(response => {
+
+        const arquivo = response as Arquivo;
+
+        for (let i = 0; i < response.length; i++) {
+          if (arquivo[i].arquivo) {
+           arquivo[i].arquivo = new File([arquivo[i].arquivo], arquivo[i].nomeArquivo);
+          }
+        }
+
+        return arquivo;
+
+      });
+  }
+
+  converterBlobToImage(arquivos: [Arquivo]) {
+    let contador = 0;
+    for (const arquivo of arquivos) {
+      console.log(contador);
+      contador ++;
+    }
   }
 
   upload(formData: any): Observable<any> {

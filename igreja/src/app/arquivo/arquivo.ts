@@ -1,6 +1,6 @@
 export class Arquivo {
   codigo: number;
-  arquivo: any[] = [];
+  arquivo: BlobPart;
   nomeArquivo: string;
   descricao: string;
   data: Date;

@@ -1,3 +1,4 @@
+import { ReuniaoModule } from './reuniao/reuniao.module';
 import { ArquivoService } from './arquivo/arquivo.service';
 import { ArquivoModule } from './arquivo/arquivo.module';
 import { EntradaModule } from './entrada/entrada.module';
@@ -99,7 +100,8 @@ registerLocaleData(localePt);
     DespesaModule,
     TiporeceitaModule,
     EntradaModule,
-    ArquivoModule
+    ArquivoModule,
+    ReuniaoModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},

@@ -43,6 +43,7 @@ import { TiporeceitaCadastroComponent } from '../tiporeceita/tiporeceita-cadastr
 import { TiporeceitaPesquisaComponent } from '../tiporeceita/tiporeceita-pesquisa/tiporeceita-pesquisa.component';
 import { EntradaCadastroComponent } from '../entrada/entrada-cadastro/entrada-cadastro.component';
 import { EntradaPesquisaComponent } from '../entrada/entrada-pesquisa/entrada-pesquisa.component';
+import { ReuniaoCadastroComponent } from '../reuniao/reuniao-cadastro/reuniao-cadastro.component';
 
 const router: Routes = [
   {path: 'login', component: LoginComponent},
@@ -116,6 +117,8 @@ const router: Routes = [
 
   {path: 'arquivo/novo', component: ArquivoCadastroComponent},
   {path: 'arquivo', component: ArquivoPesquisaComponent},
+
+  {path: 'reuniao', component: ReuniaoCadastroComponent},
 
   {path: 'dashbord', component: DashbordInicialComponent},
 
