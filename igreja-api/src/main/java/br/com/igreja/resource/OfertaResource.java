@@ -55,7 +55,7 @@ public class OfertaResource {
 		ofertaRepository.delete(codigo);
 	}
 	
-	@PutMapping("/atualizarsaldoproporcional/{codigo}")
+	@PutMapping("/atuali	zarsaldoproporcional/{codigo}")
 	@PreAuthorize("hasAuthority('ROLE_EDITAR_OBJETO')")
 	public ResponseEntity<Oferta> atualizarValorParcial(@PathVariable Long codigo, @RequestBody BigDecimal valor) {
 		Oferta ofertaRetornada = ofertaRepository.findOne(codigo);
@@ -63,5 +63,12 @@ public class OfertaResource {
 		ofertaRepository.save(ofertaRetornada);
 		return ResponseEntity.status(HttpStatus.OK).body(ofertaRetornada);
 	}
+	
+	
+	
+	
+	
+	
+	
 	
 }

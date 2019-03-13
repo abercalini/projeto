@@ -1,0 +1,34 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="salvar(inputFormulario)">
+    <p-fieldset legend="Cadastro de Geração">
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <label>Nome Geração *</label>
+                <input type="text" pInputText [(ngModel)]="geracao.nome" name="nome" required/>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Data *</label>
+                <p-calendar [(ngModel)]="geracao.data" name="data" required dateFormat="dd.mm.yy"></p-calendar>
+            </div>
+            <div class="ui-g-12 ui-md-1 ui-fluid">
+                <label>Hora *</label>
+                <p-inputMask [(ngModel)]="horarioInicial" mask="99:99" name="inicio"></p-inputMask>
+            </div>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <label>Até</label>
+            </div>
+            <div class="ui-g-12 ui-md-1 ui-fluid">
+                <label style="color:  white;">teste</label>
+                <p-inputMask [(ngModel)]="horarioFinal" mask="99:99" name="fim"></p-inputMask>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Dia</label>
+                <p-dropdown [options]="dias" [(ngModel)]="geracao.dia" placeholder="Selecione..." required [autoWidth]="false" [filter]="true" name="dia"></p-dropdown>
+            </div>
+        </div>
+    </p-fieldset>   
+</form>

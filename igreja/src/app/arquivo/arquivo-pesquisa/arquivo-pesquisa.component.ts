@@ -22,4 +22,8 @@ export class ArquivoPesquisaComponent implements OnInit {
     });
   }
 
+  pesquisar() {
+    
+  }
+
 }

@@ -62,6 +62,7 @@ import { DashbordModule } from './dashbord/dashbord.module';
 import { DespesaService } from './despesa/despesa.service';
 import { TiporeceitaService } from './tiporeceita/tiporeceita.service';
 import { EntradaService } from './entrada/entrada.service';
+import { GeracaoModule } from './geracao/geracao.module';
 
 registerLocaleData(localePt);
 
@@ -101,7 +102,8 @@ registerLocaleData(localePt);
     TiporeceitaModule,
     EntradaModule,
     ArquivoModule,
-    ReuniaoModule
+    ReuniaoModule,
+    GeracaoModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'pt-BR'},

@@ -44,6 +44,7 @@ import { TiporeceitaPesquisaComponent } from '../tiporeceita/tiporeceita-pesquis
 import { EntradaCadastroComponent } from '../entrada/entrada-cadastro/entrada-cadastro.component';
 import { EntradaPesquisaComponent } from '../entrada/entrada-pesquisa/entrada-pesquisa.component';
 import { ReuniaoCadastroComponent } from '../reuniao/reuniao-cadastro/reuniao-cadastro.component';
+import { GeracaoCadastroComponent } from '../geracao/geracao-cadastro/geracao-cadastro.component';
 
 const router: Routes = [
   {path: 'login', component: LoginComponent},
@@ -120,6 +121,8 @@ const router: Routes = [
 
   {path: 'reuniao', component: ReuniaoCadastroComponent},
 
+  {path: 'geracao/novo', component: GeracaoCadastroComponent},
+  
   {path: 'dashbord', component: DashbordInicialComponent},
 
   {path: 'naoautorizado', component: NaoAutorizadoComponent},
