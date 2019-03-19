@@ -1,0 +1,77 @@
+<br>
+<br>
+<br>
+<br>
+
+<form #inputFormulario="ngForm" (ngSubmit)="pesquisar()">
+
+    <div class="ui-g">
+        <div class="ui-g-6 ui-md-2 ui-fluid">
+            <button pButton type="button" label="Adicionar Geração" icon="pi pi-plus" routerLink="/geracao/novo"></button>
+        </div>
+    </div>
+
+    <p-fieldset legend="Pesquisa de Células">
+
+        <div class="ui-g">
+            <div class="ui-g-8 ui-md-10">
+                <label>Pesquisa</label>
+                <input type="text" pInputText placeholder="Pesquisa por nome por dia ou por endereço" #pesquisaFiltro/>
+            </div>
+            <div class="ui-g-4 ui-md-2">
+                <label style="background-color: white; color: white;">Teste</label>
+                <button pButton type="submit" label="Pesquisar" icon="pi pi-search" ></button>
+            </div>
+        </div>
+
+        <div class="ui-g">
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <p-table [value]="geracoes" [responsive]="true" [paginator]="true" [rows]="30" #tabela>
+                  <ng-template pTemplate="header">
+                      <tr>
+                          <th style="width: 50px;">#</th>
+                          <th style="width: 150px;">Nome</th>
+                          <th style="width: 100px;">Dia Reunião</th>
+                          <th style="width: 150px;">Horário</th>
+                          <th style="width: 150px;">Local</th>
+                          <th style="width: 150px;">Endereço</th>
+                          <th style="width: 60px;">Opções</th>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-g>
+                      <tr>
+                          <td>{{g.codigo}}</td>
+                          <td>{{g.nome}}</td>
+                          <td>{{g.dias}}</td>
+                          <td>{{g.horario}}</td>
+                          <td>{{g.local}}</td>
+                          <td>{{g.endereco}}</td>
+                          <td>
+                            <button pButton type="button" icon="pi pi-pencil" style="background-color: teal;" pTooltip="Editar" tooltipPosition="top" [routerLink]="['/geracao', g.codigo]" ></button>
+                            <button pButton type="button"  icon="pi pi-times" style="background-color: red;" pTooltip="Excluir" tooltipPosition="top" (click)="excluir(g.codigo)" ></button>
+                          </td>
+                      </tr>
+                  </ng-template>
+                </p-table>
+            </div>
+        </div> 
+    </p-fieldset>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
+        </div>
+    </div>
+
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-confirmDialog #cd header="Confirmação" icon="pi pi-exclamation-triangle">
+                <p-footer>
+                    <button type="button" pButton icon="pi pi-check" label="Sim" (click)="cd.accept()"></button>
+                    <button type="button" pButton icon="pi pi-times" label="Não" (click)="cd.reject()"></button>
+                </p-footer>
+            </p-confirmDialog>
+        </div>
+    </div>
+
+</form>

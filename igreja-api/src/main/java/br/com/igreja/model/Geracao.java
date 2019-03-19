@@ -121,6 +121,4 @@ public class Geracao implements Serializable {
 	}
 	
 	
-	
-	
 }

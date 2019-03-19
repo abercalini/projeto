@@ -3,8 +3,8 @@
 <br>
 <br>
 
-<form #inputFormulario="ngForm" (ngSubmit)="salvar(inputFormulario)">
-    <p-fieldset legend="Cadastro de Geração">
+<form #inputFormulario="ngForm" (ngSubmit)="prepararSalvar(inputFormulario)">
+    <p-fieldset legend="{{editando() === true ? 'Edição ' : 'Cadastro '}} de Geração">
         <div class="ui-g">
             <div class="ui-g-12 ui-md-12 ui-fluid">
                 <label>Nome Geração *</label>
@@ -12,23 +12,51 @@
             </div>
             <div class="ui-g-12 ui-md-4 ui-fluid">
                 <label>Data *</label>
-                <p-calendar [(ngModel)]="geracao.data" name="data" required dateFormat="dd.mm.yy"></p-calendar>
+                <p-calendar [(ngModel)]="geracao.data" name="data" required dateFormat="dd/mm/yy"></p-calendar>
             </div>
-            <div class="ui-g-12 ui-md-1 ui-fluid">
-                <label>Hora *</label>
+            <div class="ui-g-12 ui-md-2 ui-fluid">
+                <label>Inicio *</label>
                 <p-inputMask [(ngModel)]="horarioInicial" mask="99:99" name="inicio"></p-inputMask>
             </div>
             <div class="ui-g-12 ui-md-2 ui-fluid">
-                <label>Até</label>
-            </div>
-            <div class="ui-g-12 ui-md-1 ui-fluid">
-                <label style="color:  white;">teste</label>
+                <label>Fim</label>
                 <p-inputMask [(ngModel)]="horarioFinal" mask="99:99" name="fim"></p-inputMask>
             </div>
             <div class="ui-g-12 ui-md-4 ui-fluid">
                 <label>Dia</label>
-                <p-dropdown [options]="dias" [(ngModel)]="geracao.dia" placeholder="Selecione..." required [autoWidth]="false" [filter]="true" name="dia"></p-dropdown>
+                <p-dropdown [options]="dias" [(ngModel)]="geracao.dias" placeholder="Selecione..." required [autoWidth]="false" [filter]="true" name="dia"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Endereço *</label>
+                <input type="text" pInputText [(ngModel)]="geracao.endereco" name="endereco" required/>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Cidade *</label>
+                <input type="text" pInputText [(ngModel)]="geracao.cidade" name="cidade" required/>
+            </div>
+            <div class="ui-g-12 ui-md-4 ui-fluid">
+                <label>Estado</label>
+                <p-dropdown [options]="estados" [(ngModel)]="geracao.estado" placeholder="Selecione..." [autoWidth]="false" [filter]="true" name="estado"></p-dropdown>
+            </div>
+            <div class="ui-g-12 ui-md-12 ui-fluid">
+                <label>Local *</label>
+                <input type="text" pInputText [(ngModel)]="geracao.local" required name="local"/>
             </div>
         </div>
-    </p-fieldset>   
+        <br>
+        <div class="ui-g">
+            <div class="ui-g-6 ui-md-2 ui-fluid">
+                <button pButton type="submit" label="Salvar" class="ui-button-success" icon="pi pi-save"></button>
+            </div>
+            <div class="ui-g-6 ui-md-2 ui-fluid">
+                <button pButton type="button" label="Voltar" icon="pi pi pi-arrow-left" routerLink="/geracao" ></button>
+            </div>
+        </div>
+    </p-fieldset>
+    
+    <div class="ui-g">
+        <div class="ui-g-12 ui-md-12 ui-fluid">
+            <p-toast position="bottom-left"></p-toast>
+        </div>
+    </div>
 </form>

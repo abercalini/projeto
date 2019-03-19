@@ -8,11 +8,18 @@ import { FormsModule } from '@angular/forms';
 import { CalendarModule } from 'primeng/calendar';
 import { InputMaskModule } from 'primeng/inputmask';
 import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { GeracaoPesquisaComponent } from './geracao-pesquisa/geracao-pesquisa.component';
+import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
+import { RouterModule } from '@angular/router';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 
 @NgModule({
-  declarations: [GeracaoCadastroComponent],
+  declarations: [GeracaoCadastroComponent, GeracaoPesquisaComponent],
   imports: [
     CommonModule,
     FieldsetModule,
@@ -20,7 +27,13 @@ import { DropdownModule } from 'primeng/dropdown';
     FormsModule,
     CalendarModule,
     InputMaskModule,
-    DropdownModule
+    DropdownModule,
+    ButtonModule,
+    ToastModule,
+    TableModule,
+    TooltipModule,
+    RouterModule,
+    ConfirmDialogModule
     
   ]
 })

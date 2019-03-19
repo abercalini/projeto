@@ -161,6 +161,12 @@ export class AppMenuComponent implements OnInit, AfterViewInit {
                 ]
             },
             {
+                label: 'Célula', icon: 'note',
+                items: [
+                    {label: 'Geração', icon: 'panorama', routerLink:['/geracao']}
+                ]
+            },
+            {
                 label: 'Historico', icon: 'timer_10',
                 items: [
                     {label: 'Log do Sistema', icon: 'timer', routerLink: ['/historico']},

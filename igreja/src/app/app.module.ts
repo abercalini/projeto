@@ -63,6 +63,7 @@ import { DespesaService } from './despesa/despesa.service';
 import { TiporeceitaService } from './tiporeceita/tiporeceita.service';
 import { EntradaService } from './entrada/entrada.service';
 import { GeracaoModule } from './geracao/geracao.module';
+import { GeracaoService } from './geracao/geracao.service';
 
 registerLocaleData(localePt);
 
@@ -122,7 +123,7 @@ registerLocaleData(localePt);
     SegurancaService, JwtHelperService, MessageService, HistoricoService, FornecedorService, ConfirmationService,
     Title, DistritoService, IgrejaService, CargoministroService, SituacaomembroService, TipoadesaoService, FuncaomembroService,
     MembroService, VisitanteService, CaixaService, CultoService, DizimoService, OfertaService, CentroCustoService, DespesaService,
-    TiporeceitaService, EntradaService, ArquivoService
+    TiporeceitaService, EntradaService, ArquivoService, GeracaoService
   ],
   bootstrap: [AppComponent]
 })

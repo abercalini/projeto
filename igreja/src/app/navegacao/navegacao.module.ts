@@ -45,6 +45,7 @@ import { EntradaCadastroComponent } from '../entrada/entrada-cadastro/entrada-ca
 import { EntradaPesquisaComponent } from '../entrada/entrada-pesquisa/entrada-pesquisa.component';
 import { ReuniaoCadastroComponent } from '../reuniao/reuniao-cadastro/reuniao-cadastro.component';
 import { GeracaoCadastroComponent } from '../geracao/geracao-cadastro/geracao-cadastro.component';
+import { GeracaoPesquisaComponent } from '../geracao/geracao-pesquisa/geracao-pesquisa.component';
 
 const router: Routes = [
   {path: 'login', component: LoginComponent},
@@ -122,6 +123,8 @@ const router: Routes = [
   {path: 'reuniao', component: ReuniaoCadastroComponent},
 
   {path: 'geracao/novo', component: GeracaoCadastroComponent},
+  {path: 'geracao/:codigo', component: GeracaoCadastroComponent},
+  {path: 'geracao', component: GeracaoPesquisaComponent},
   
   {path: 'dashbord', component: DashbordInicialComponent},
 

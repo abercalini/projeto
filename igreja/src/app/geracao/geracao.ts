@@ -1,5 +1,6 @@
 export class Geracao {
     codigo: any;
+    nome: string;
     horario: string;
     dias: string;
     data: Date;
